@@ -1,10 +1,57 @@
-const ReservasForm = () => {
+import { useEffect, useState } from "react";
+
+const ReservasForm = ({submitReserva}) => {
+
+  const [formReserva, setFormReserva] = useState({
+    solicitante: "",
+    dni: "",
+    fecha: "",
+    hora: "",
+    motivo: "",
+  });
+
+  const [alert, setAlert] = useState(false);
+
+  const { solicitante, dni, fecha, hora, motivo } = formReserva;
+
+  const handleChange = (e) => {
+    setFormReserva({
+      ...formReserva,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (
+      [
+        solicitante.trim(),
+        dni.trim(),
+        fecha.trim(),
+        hora.trim(),
+        motivo.trim(),
+      ].includes("")
+    ) {
+      setAlert(true);
+    } else {
+      submitReserva(formReserva);
+      setFormReserva({
+        solicitante: "",
+        dni: "",
+        fecha: "",
+        hora: "",
+        motivo: "",
+      });
+      setAlert(false);
+    }
+  };
+
   return ( 
     <section className=" d-flex flex-column gap-3 col-md-4">
       <h3 className="text-center" id="formTitle">🐱Crear</h3>
       <form
         className=" sectionForm text-dark rounded"
-        // onSubmit={handleSubmit}
+        onSubmit={handleSubmit}
       >
         <div className="text-dark form-floating mb-3" style={{ display: "none" }}>
           <input
@@ -21,11 +68,11 @@ const ReservasForm = () => {
         <div className="form-floating mb-3">
           <input
             type="text"
-            name="mascota"
-            placeholder="Nombre de la Mascota"
+            name="solicitante"
+            placeholder="Nombre del Solicitante"
             className="form-control"
             // value={mascota}
-            // onChange={handleChange}
+            onChange={handleChange}
             required
           />
           <label htmlFor="mascota" className="text-dark">Nombre del Solicitante</label>
@@ -34,11 +81,11 @@ const ReservasForm = () => {
         <div className="form-floating mb-3">
           <input
             type="text"
-            name="propietario"
-            placeholder="Nombre del propietario"
+            name="dni"
+            placeholder="Documento de Identidad"
             className="form-control"
             // value={propietario}
-            // onChange={handleChange}
+            onChange={handleChange}
             required
           />
           <label htmlFor="propietario" className="text-dark">Documento de Identidad</label>
@@ -48,10 +95,10 @@ const ReservasForm = () => {
           <input
             type="date"
             name="fecha"
-            placeholder="Fecha"
+            placeholder="Fecha de Reserva"
             className="form-control"
             // value={fecha}
-            // onChange={handleChange}
+            onChange={handleChange}
             required
           />
           <label htmlFor="fecha" className="text-dark">Fecha de Reserva</label>
@@ -61,10 +108,10 @@ const ReservasForm = () => {
           <input
             type="time"
             name="hora"
-            placeholder="Hora"
+            placeholder="Hora de Reserva"
             className="form-control"
             // value={hora}
-            // onChange={handleChange}
+            onChange={handleChange}
             required
           />
           <label htmlFor="hora" className="text-dark">Hora de Reserva</label>
@@ -73,11 +120,11 @@ const ReservasForm = () => {
         <div className="form-floating mb-3">
           <input
             type="text"
-            name="sintomas"
-            placeholder="Síntomas"
+            name="motivo"
+            placeholder="Motivo de Reserva"
             className="form-control"
             // value={sintomas}
-            // onChange={handleChange}
+            onChange={handleChange}
             required
           />
           <label htmlFor="sintomas" className="text-dark">Motivo de Reserva</label>
@@ -90,7 +137,7 @@ const ReservasForm = () => {
         </button>
       </form>
       {
-      <div className="align-self-center badge bg-warning text-dark">Todos los campos son obligatorios</div>
+        alert && <div className="align-self-center badge bg-warning text-dark">Todos los campos son obligatorios</div>
       }
     </section>
    );
