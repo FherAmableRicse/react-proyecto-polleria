@@ -1,5 +1,5 @@
 # React - Proyecto Polleria 🐔 
 
 ## 👩‍💻 Tecnologías usadas 👩‍💻
-HTML, SCSS, Javascript y React.
+HTML, CSS, Javascript y React.
 
