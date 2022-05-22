@@ -15,12 +15,12 @@ function App() {
     setReservas([...reservas, reserva]);
   };
 
-  const readReserva = (id) => {
-    const reserva = reservas.find((element) => {
-      return element.id === id;
-    });
-    setReserva(reserva);
-  };
+  // const readReserva = (id) => {
+  //   const reserva = reservas.find((element) => {
+  //     return element.id === id;
+  //   });
+  //   setReserva(reserva);
+  // };
 
   const submitReserva=(reserva)=>{
     if(reserva.id){

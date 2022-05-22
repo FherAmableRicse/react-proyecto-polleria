@@ -6,8 +6,6 @@ const ReservasReservas=({reservas, readReserva})=>{
       <h3 className="text-center text-danger">Reservas</h3>
         {reservas.length ? (
           reservas.map((reserva) => {
-            
-            
             return (
               <ReservasReserva
               key={reserva.id}
@@ -21,7 +19,7 @@ const ReservasReservas=({reservas, readReserva})=>{
             className="d-flex justify-content-center gap-2 list-group-item"
             aria-current="true"
           >
-            <h4 className="fw-bolder m-0">No hay citas registradas</h4>
+            <h4 className="fw-bolder m-0">No hay reservas registradas</h4>
           </li>
         )}
       </ul>

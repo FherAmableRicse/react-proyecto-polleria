@@ -1,6 +1,6 @@
 const ReservasReserva = ({ reserva }) => {
   const { id, solicitante, dni, fecha, hora, motivo } = reserva;
-  const urlWhatsapp = `https://wa.me/51999122789?text=${process.env.REACT_APP_URL}`;
+  const urlWhatsapp = `${process.env.REACT_APP_URL}`;
   return (
     <li
       className="d-flex flex-column gap-2 list-group-item list-group-item-action"
