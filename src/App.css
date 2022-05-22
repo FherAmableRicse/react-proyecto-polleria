@@ -1,3 +1,7 @@
+/* .lista__reservas{
+  margin-top: 10rem;
+} */
+
 .main {
   width: 100%;
 }
@@ -30,10 +34,19 @@ html {
   font-size: 0.75rem;
 }
 
+.container-reservas {
+  margin-top: 7rem;
+}
+
+.container-reservas__reserva{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5rem;
+}
+
 .sectionForm {
   margin: auto;
-  margin-top: 6rem;
-
 }
 
 h1,
@@ -134,4 +147,15 @@ input[type="time"] {
 .footer {
   text-align: center;
   color: var(--text-color);
+}
+
+@media (min-width : 854px) {
+  .container-reservas {
+    margin-top: 11rem;
+  }
+
+  .container-reservas__reserva{
+    display: flex;
+    flex-direction: row;
+  }
 }

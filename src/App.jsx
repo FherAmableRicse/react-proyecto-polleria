@@ -31,16 +31,21 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <>
       <Header />
-      <ReservasForm 
-        submitReserva={submitReserva}
-      />
-      <ReservasReservas 
-        reservas={reservas}
-        readReserva={readReserva}
-      />
-    </div>
+      <main>
+        <section className="container-reservas container">
+          <div className="container-reservas__reserva">
+            <ReservasForm
+              submitReserva={submitReserva}
+            />
+            <ReservasReservas
+              reservas={reservas}
+            />
+          </div>
+        </section>
+      </main>
+    </>
   );
 }
 

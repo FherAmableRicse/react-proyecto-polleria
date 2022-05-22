@@ -47,12 +47,12 @@ const ReservasForm = ({submitReserva}) => {
   };
 
   return ( 
-    <section className=" d-flex flex-column gap-3 col-md-4">
-      <h3 className="text-center" id="formTitle">🐱Crear</h3>
+    <section className="d-flex flex-column gap-3 col-md-5">
       <form
-        className=" sectionForm text-dark rounded"
+        className=" sectionForm text-dark rounded container"
         onSubmit={handleSubmit}
       >
+        <h3 className="text-center text-danger" id="formTitle">Crear Reserva</h3>
         <div className="text-dark form-floating mb-3" style={{ display: "none" }}>
           <input
             type="number"
@@ -71,24 +71,24 @@ const ReservasForm = ({submitReserva}) => {
             name="solicitante"
             placeholder="Nombre del Solicitante"
             className="form-control"
-            // value={mascota}
+            value={solicitante}
             onChange={handleChange}
             required
           />
-          <label htmlFor="mascota" className="text-dark">Nombre del Solicitante</label>
+          <label htmlFor="solicitante" className="text-dark">Nombre del Solicitante</label>
         </div>
 
         <div className="form-floating mb-3">
           <input
-            type="text"
+            type="number"
             name="dni"
             placeholder="Documento de Identidad"
             className="form-control"
-            // value={propietario}
+            value={dni}
             onChange={handleChange}
             required
           />
-          <label htmlFor="propietario" className="text-dark">Documento de Identidad</label>
+          <label htmlFor="dni" className="text-dark">Documento de Identidad</label>
         </div>
 
         <div className="form-floating mb-3">
@@ -97,7 +97,7 @@ const ReservasForm = ({submitReserva}) => {
             name="fecha"
             placeholder="Fecha de Reserva"
             className="form-control"
-            // value={fecha}
+            value={fecha}
             onChange={handleChange}
             required
           />
@@ -110,7 +110,7 @@ const ReservasForm = ({submitReserva}) => {
             name="hora"
             placeholder="Hora de Reserva"
             className="form-control"
-            // value={hora}
+            value={hora}
             onChange={handleChange}
             required
           />
@@ -123,11 +123,11 @@ const ReservasForm = ({submitReserva}) => {
             name="motivo"
             placeholder="Motivo de Reserva"
             className="form-control"
-            // value={sintomas}
+            value={motivo}
             onChange={handleChange}
             required
           />
-          <label htmlFor="sintomas" className="text-dark">Motivo de Reserva</label>
+          <label htmlFor="motivo" className="text-dark">Motivo de Reserva</label>
         </div>
         <button
           type="submit"
