@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 
-const ReservasForm = ({submitReserva}) => {
+const ReservasForm = ({ reserva, submitReservasForm }) => {
 
   const [formReserva, setFormReserva] = useState({
-    solicitante: "",
-    dni: "",
-    fecha: "",
-    hora: "",
-    motivo: "",
+    _id: '',
+    solicitante: '',
+    dni: '',
+    fecha: '',
+    hora: '',
+    motivo: '',
   });
 
   const [alert, setAlert] = useState(false);
@@ -23,36 +24,43 @@ const ReservasForm = ({submitReserva}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (
-      [
-        solicitante.trim(),
-        dni.trim(),
-        fecha.trim(),
-        hora.trim(),
-        motivo.trim(),
-      ].includes("")
-    ) {
+    if ([solicitante.trim(), dni.trim(), fecha.trim(), hora.trim(), motivo.trim(),].includes("")) {
       setAlert(true);
     } else {
-      submitReserva(formReserva);
+      submitReservasForm(formReserva);
       setFormReserva({
-        solicitante: "",
-        dni: "",
-        fecha: "",
-        hora: "",
-        motivo: "",
+        _id: '',
+        solicitante: '',
+        dni: '',
+        fecha: '',
+        hora: '',
+        motivo: '',
       });
       setAlert(false);
     }
   };
 
-  return ( 
+  useEffect(() => {
+    if (reserva._id) {
+      const { _id, solicitante, dni, fecha, hora, motivo } = reserva;
+      setFormReserva({
+        _id,
+        solicitante,
+        dni,
+        fecha,
+        hora,
+        motivo
+      });
+    }
+  }, [reserva]);
+
+  return (
     <section className="d-flex flex-column gap-3 col-md-5">
       <form
         className=" sectionForm text-dark rounded container"
         onSubmit={handleSubmit}
       >
-        <h3 className="text-center text-danger" id="formTitle">Crear Reserva</h3>
+        <h3 className="text-center text-danger" id="formTitle">🍴 {reserva._id ? 'Editar' : 'Crear'} Reserva 🍴</h3>
         <div className="text-dark form-floating mb-3" style={{ display: "none" }}>
           <input
             type="number"
@@ -133,14 +141,14 @@ const ReservasForm = ({submitReserva}) => {
           type="submit"
           className="btn btn-primary w-100"
         >
-        Reservar
+          {reserva._id ? 'Editar' : 'Crear'} Reserva
         </button>
       </form>
       {
         alert && <div className="align-self-center badge bg-warning text-dark">Todos los campos son obligatorios</div>
       }
     </section>
-   );
+  );
 }
- 
+
 export default ReservasForm;

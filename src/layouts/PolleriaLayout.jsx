@@ -13,18 +13,3 @@ const PolleriaLayout = () => {
 }
 
 export default PolleriaLayout
-
-
-{/* <Header />
-      <main>
-        <section className="container-reservas container">
-          <div className="container-reservas__reserva">
-            <ReservasForm
-              submitReserva={submitReserva}
-            />
-            <ReservasReservas
-              reservas={reservas}
-            />
-          </div>
-        </section>
-      </main> */}

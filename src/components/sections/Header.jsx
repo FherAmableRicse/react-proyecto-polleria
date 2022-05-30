@@ -1,6 +1,7 @@
 import "../../styles/css/Header.css";
 import logo from "../../assets/img/logo.png";
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const headerNavMenuLinkList = useRef();
@@ -31,34 +32,34 @@ const Header = () => {
               <p>📞Huancayo: (064) 211445</p>
             </li>
           </ul>
-          <a href="#" className="header-nav__register-link">
+          <Link to="" className="header-nav__register-link">
             👩‍🍳 Ingresar/Registrarse
-          </a>
+          </Link>
         </div>
         <div className="header-nav__container">
-          <a href="/" className="header-nav__link-logo-container">
-            <img src={logo}  alt="Logo Pollería PICOM"className="header-nav__link-logo"/>
-          </a>
-          <button className="header-nav__menu-icon-container"  onClick={openMenu}>
+          <Link to="/" className="header-nav__link-logo-container">
+            <img src={logo} alt="Logo Pollería PICOM" className="header-nav__link-logo" />
+          </Link>
+          <button className="header-nav__menu-icon-container" onClick={openMenu}>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#fff" className="header-nav__menu-icon" >
               <path d="M4 6h16v2H4zm4 5h12v2H8zm5 5h7v2h-7z"></path>
             </svg>
           </button>
           <ul className="header-nav__menu-link-list" ref={headerNavMenuLinkList} >
             <li className="header-nav__menu-link-item">
-              <a href="#inicio" className="header-nav__menu-link header-nav__menu-link--active">INICIO</a>
+              <Link to="" className="header-nav__menu-link header-nav__menu-link--active">INICIO</Link>
             </li>
             <li className="header-nav__menu-link-item">
-              <a href="#" className="header-nav__menu-link">EMPIEZA TU PEDIDO</a>
+              <Link to="pedidos" className="header-nav__menu-link">EMPIEZA TU PEDIDO</Link>
             </li>
             <li className="header-nav__menu-link-item">
-              <a href="#" className="header-nav__menu-link">RESERVAS</a>
+              <Link to="reservas" className="header-nav__menu-link">RESERVAS</Link>
             </li>
             <li className="header-nav__menu-link-item">
-              <a href="#" className="header-nav__menu-link">NOSOTROS </a>
+              <Link to="nosotros" className="header-nav__menu-link">NOSOTROS </Link>
             </li>
             <li className="header-nav__menu-link-item">
-              <a href="#" className="header-nav__menu-link">CONTÁCTENOS</a>
+              <Link to="contacto" className="header-nav__menu-link">CONTÁCTENOS</Link>
             </li>
             <li className="header-nav__menu-link-item header-nav__menu-close-icon-container" onClick={closeMenu}>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#fff" className="header-nav__menu-close-icon">

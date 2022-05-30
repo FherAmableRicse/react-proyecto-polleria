@@ -38,7 +38,7 @@ html {
   margin-top: 7rem;
 }
 
-.container-reservas__reserva{
+.container-reservas__reserva {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -154,7 +154,7 @@ input[type="time"] {
     margin-top: 11rem;
   }
 
-  .container-reservas__reserva{
+  .container-reservas__reserva {
     display: flex;
     flex-direction: row;
   }

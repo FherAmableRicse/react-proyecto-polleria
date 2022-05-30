@@ -1,5 +1,5 @@
-const ReservasReserva = ({ reserva }) => {
-  const { id, solicitante, dni, fecha, hora, motivo } = reserva;
+const ReservasReserva = ({ reserva, readReserva, deleteReserva }) => {
+  const { _id, solicitante, dni, fecha, hora, motivo } = reserva;
   const urlWhatsapp = `${process.env.REACT_APP_URL}`;
   return (
     <li
@@ -26,6 +26,21 @@ const ReservasReserva = ({ reserva }) => {
           >
             Confirmar
           </a>
+
+          <button
+            type="button"
+            className="btn btn-warning btn-sm"
+            onClick={() => readReserva(_id)}
+          >
+            Editar
+          </button>
+          <button
+            type="button"
+            className="btn btn-danger btn-sm"
+            onClick={() => deleteReserva(_id)}
+          >
+            Eliminar
+          </button>
         </div>
       </div>
     </li>
