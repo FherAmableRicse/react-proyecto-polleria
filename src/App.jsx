@@ -1,4 +1,3 @@
-import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import PolleriaLayout from './layouts/PolleriaLayout';
 import Reservas from './pages/Reservas';

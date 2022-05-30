@@ -1,9 +1,9 @@
 import ReservasReserva from "./ReservasReserva";
 const ReservasReservas = ({ reservas, readReserva, deleteReserva }) => {
   return (
-    <section className=" d-flex flex-column gap-3 col-md-6">
-      <ul className="lista__reservas list-group">
-        <h3 className="text-center text-danger">🍴 Reservas 🍴</h3>
+    <section className="d-flex flex-column gap-3 col-md-6">
+      <ul className="list-group">
+        <h3 className="fw-bolder text-center text-danger">🍴 Reservas 🍴</h3>
         {reservas.length ? (
           reservas.map((reserva) => {
             return (

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-
+import Error from "../Error";
+import '../../App.css'
 const ReservasForm = ({ reserva, submitReservasForm }) => {
 
   const [formReserva, setFormReserva] = useState({
@@ -55,12 +56,12 @@ const ReservasForm = ({ reserva, submitReservasForm }) => {
   }, [reserva]);
 
   return (
-    <section className="d-flex flex-column gap-3 col-md-5">
+    <section className="mb-auto container-reservas-form d-flex flex-column gap-3 col-md-5">
       <form
         className=" sectionForm text-dark rounded container"
         onSubmit={handleSubmit}
       >
-        <h3 className="text-center text-danger" id="formTitle">🍴 {reserva._id ? 'Editar' : 'Crear'} Reserva 🍴</h3>
+        <h3 className="fw-bolder text-center text-danger" id="formTitle">🍴 {reserva._id ? 'Editar' : 'Crear'} Reserva 🍴</h3>
         <div className="text-dark form-floating mb-3" style={{ display: "none" }}>
           <input
             type="number"
@@ -143,10 +144,13 @@ const ReservasForm = ({ reserva, submitReservasForm }) => {
         >
           {reserva._id ? 'Editar' : 'Crear'} Reserva
         </button>
+        {
+          alert && <Error>Todos los campos son obligatorios</Error>
+        }
       </form>
-      {
-        alert && <div className="align-self-center badge bg-warning text-dark">Todos los campos son obligatorios</div>
-      }
+
+
+
     </section>
   );
 }

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   const headerNavMenuLinkList = useRef();
+  const headerNavMenuLinkListItems = document.querySelectorAll('.header-nav__menu-link-item');
 
   const openMenu = () => {
     headerNavMenuLinkList.current.classList.add(
