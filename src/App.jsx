@@ -1,12 +1,11 @@
-import { useState } from 'react';
-import './App.css';
-import ReservasForm from './components/reservas/ReservasForm';
-import ReservasReservas from './components/reservas/ReservasReservas';
-import Header from './components/sections/Header';
-import { v4 as uuidv4 } from 'uuid';
-import { Route, Routes } from 'react-router-dom';
-import PolleriaLayout from './layouts/PolleriaLayout';
-
+import { useState } from "react";
+import "./App.css";
+import ReservasForm from "./components/reservas/ReservasForm";
+import ReservasReservas from "./components/reservas/ReservasReservas";
+import Header from "./components/sections/Header";
+import { v4 as uuidv4 } from "uuid";
+import { Route, Routes } from "react-router-dom";
+import PolleriaLayout from "./layouts/PolleriaLayout";
 
 function App() {
   const [reservas, setReservas] = useState([]);
@@ -26,16 +25,13 @@ function App() {
 
   const submitReserva = (reserva) => {
     if (reserva.id) {
-      console.log('editar');
+      console.log("editar");
     } else {
       createReserva(reserva);
     }
   };
 
   return (
-
-
-
     <Routes>
       <Route path="/" element={<PolleriaLayout />}>
         <Route path="pedidos" element={<h1>Empieza tu pedido</h1>} />
@@ -46,9 +42,6 @@ function App() {
       </Route>
       <Route path="*" element={<h1>404</h1>} />
     </Routes>
-
-
-
   );
 }
 
