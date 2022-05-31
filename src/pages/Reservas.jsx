@@ -72,4 +72,4 @@ const Reservas = () => {
   )
 }
 
-export default Reservas
+export default Reservas;

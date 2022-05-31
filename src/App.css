@@ -31,6 +31,7 @@ html {
 
 .container-reservas {
   margin-top: 7rem;
+  /* background-image: url(./assets/img/header-general-bg.jpg); */
 }
 
 .container-reservas__reserva {
@@ -69,12 +70,10 @@ html {
 }
 
 h1,
-h2,
 h3 {
   color: white;
   text-align: center;
   text-transform: uppercase;
-  letter-spacing: 0.1rem;
   font-family: 'Oswald', sans-serif;
 }
 

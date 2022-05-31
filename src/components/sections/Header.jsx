@@ -1,5 +1,4 @@
 import "../../styles/css/Header.css";
-import logo from "../../assets/img/logo.png";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 
@@ -38,8 +37,8 @@ const Header = () => {
           </Link>
         </div>
         <div className="header-nav__container">
-          <Link to="/" className="header-nav__link-logo-container">
-            <img src={logo} alt="Logo Pollería PICOM" className="header-nav__link-logo" />
+          <Link to="" className="header-nav__link-logo-container">
+            <img src="https://i.postimg.cc/Cx0GhqjK/logo.png" alt="Logo Pollería PICOM" className="header-nav__link-logo" />
           </Link>
           <button className="header-nav__menu-icon-container" onClick={openMenu}>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#fff" className="header-nav__menu-icon" >
