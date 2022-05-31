@@ -60,14 +60,14 @@ const ReservasReserva = ({ reserva, readReserva, deleteReserva }) => {
             href={`${urlWhatsapp} Solicitante: ${solicitante}, DNI: ${dni}, Fecha: ${fecha}, Hora: ${hora}, Motivo: ${motivo}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-success btn-sm"
+            className="btn btn-primary btn-sm"
           >
             Confirmar
           </a>
 
           <button
             type="button"
-            className="btn btn-primary btn-sm"
+            className="btn btn-warning btn-sm"
             onClick={() => readReserva(_id)}
           >
             Editar

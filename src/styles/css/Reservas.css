@@ -1,0 +1,29 @@
+.container-reservas {
+  margin-top: 7rem;
+}
+
+.container-reservas__reserva {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5rem;
+}
+
+.sectionForm {
+  margin: auto;
+}
+
+@media (min-width : 854px) {
+  .container-reservas {
+    margin-top: 11rem;
+  }
+
+  .container-reservas__reserva {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .container-reservas-form {
+    max-height: 100vh;
+  }
+}

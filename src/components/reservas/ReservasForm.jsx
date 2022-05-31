@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Error from "../Error";
 import '../../App.css'
+import '../../styles/css/Reservas.css'
 const ReservasForm = ({ reserva, submitReservasForm }) => {
 
   const [formReserva, setFormReserva] = useState({

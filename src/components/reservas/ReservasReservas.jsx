@@ -17,12 +17,12 @@ const ReservasReservas = ({ reservas, readReserva, deleteReserva }) => {
           })
         ) : (
           <>
-            <p
+            <div
               className="d-flex justify-content-center gap-2 list-group-item"
               aria-current="true"
             >
               <h4 className="fw-bolder m-0">No hay reservas registradas</h4>
-            </p>
+            </div>
             <li
               className="d-flex flex-column gap-2 list-group-item list-group-item-action"
               aria-current="true"
@@ -40,13 +40,13 @@ const ReservasReservas = ({ reservas, readReserva, deleteReserva }) => {
               <div className="mt-3 d-flex align-items-start justify-content-start">
                 <div className="d-flex gap-1">
                   <button
-                    className="btn btn-success btn-sm px-4 py-1"
+                    className="btn btn-primary btn-sm px-4 py-1"
                   >
                     ?
                   </button>
                   <button
                     type="button"
-                    className="btn btn-primary btn-sm px-4 py-1"
+                    className="btn btn-warning btn-sm px-4 py-1"
                   >
                     ?
                   </button>

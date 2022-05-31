@@ -114,8 +114,9 @@
   text-align: center;
   margin: 0 1rem;
   font-size: 0.743rem;
-  color: #000000;
-  text-shadow: 0 0 0.2rem #ffffff;
+
+  text-shadow: 0 0 0.125rem var(--primary-highlight-color), 0 0 0.25rem var(--primary-highlight-color);
+
   font-family: var(--font-main);
 }
 

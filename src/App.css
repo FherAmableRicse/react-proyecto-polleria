@@ -11,7 +11,10 @@ html {
 .body {
   margin: 0;
   padding: 0;
-  background-image: linear-gradient(var(--primary-gradient-color), var(--secondary-gradient-color));
+  /* background-image: linear-gradient(var(--primary-gradient-color), var(--secondary-gradient-color)); */
+  background-image: url("https://i.postimg.cc/BbCsJNYB/3.jpg");
+  background-position: top center;
+  background-size: cover;
   min-height: 100%;
 }
 
@@ -27,22 +30,6 @@ html {
 .header__slogan {
   text-transform: none;
   font-size: 0.75rem;
-}
-
-.container-reservas {
-  margin-top: 7rem;
-  /* background-image: url(./assets/img/header-general-bg.jpg); */
-}
-
-.container-reservas__reserva {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5rem;
-}
-
-.sectionForm {
-  margin: auto;
 }
 
 .colored-toast.swal2-icon-success {
@@ -77,24 +64,7 @@ h3 {
   font-family: 'Oswald', sans-serif;
 }
 
-
 .footer {
   text-align: center;
   color: var(--text-color);
-}
-
-
-@media (min-width : 854px) {
-  .container-reservas {
-    margin-top: 11rem;
-  }
-
-  .container-reservas__reserva {
-    display: flex;
-    flex-direction: row;
-  }
-
-  .container-reservas-form {
-    max-height: 100vh;
-  }
 }

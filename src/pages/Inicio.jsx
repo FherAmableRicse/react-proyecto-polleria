@@ -40,7 +40,7 @@ const Inicio = () => {
         <img src="https://i.postimg.cc/YqKgRWDx/pollo-p.png" alt="imagen pollo a la brasa" className="main__publicity-image" />
         <div className="main__publicity-text">
           <h2>El Verdadero Sabor a Leña</h2>
-          <p>Solo nosotros tenemos el mejor pollo y la mejor leña, encuentranos en cualquier distrito de la
+          <p>Solo nosotros tenemos el mejor pollo y la mejor leña, encuéntranos en cualquier distrito de la
             capital.</p>
           <p>¡Te esperamos!</p>
         </div>
