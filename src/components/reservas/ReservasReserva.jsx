@@ -41,17 +41,17 @@ const ReservasReserva = ({ reserva, readReserva, deleteReserva }) => {
 
   return (
     <li
-      className="d-flex flex-column gap-2 list-group-item list-group-item-action"
+      className="d-flex flex-column gap-2 list-group-item list-group-item-action animate__animated animate__bounceInUp"
       aria-current="true"
     >
       <div className="d-flex align-items-center justify-content-between">
-        <h5 className=" m-0 text-primary">Solicitante: <span className="text-dark">{solicitante}</span></h5>
-        <small className="badge bg-primary rounded-pill p-2">
+        <h5 className=" m-0 text-secondary">Solicitante: <span className="text-dark">{solicitante}</span></h5>
+        <small className="badge bg-dark rounded-pill p-2">
           📅 {fecha} | 🕖{hora}
         </small>
       </div>
-      <h5 className="m-0 text-primary">Motivo: <span className="text-dark">{motivo}</span></h5>
-      <h5 className="m-0 text-primary">
+      <h5 className="m-0 text-secondary">Motivo: <span className="text-dark">{motivo}</span></h5>
+      <h5 className="m-0 text-secondary">
         Documento de identidad: <span className="text-dark">{dni}</span>
       </h5>
       <div className="mt-3 d-flex align-items-start justify-content-start">
@@ -60,7 +60,7 @@ const ReservasReserva = ({ reserva, readReserva, deleteReserva }) => {
             href={`${urlWhatsapp} Solicitante: ${solicitante}, DNI: ${dni}, Fecha: ${fecha}, Hora: ${hora}, Motivo: ${motivo}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-primary btn-sm"
+            className="btn btn-dark btn-sm"
           >
             Confirmar
           </a>

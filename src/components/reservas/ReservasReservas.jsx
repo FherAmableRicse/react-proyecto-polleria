@@ -1,7 +1,7 @@
 import ReservasReserva from "./ReservasReserva";
 const ReservasReservas = ({ reservas, readReserva, deleteReserva }) => {
   return (
-    <section className="d-flex flex-column gap-3 col-md-6">
+    <section className="d-flex flex-column gap-3 col-md-6 animate__animated animate__lightSpeedInRight">
       <ul className="list-group">
         <h3 className="fw-bolder text-center text-danger">🍴 Reservas 🍴</h3>
         {reservas.length ? (
@@ -28,19 +28,19 @@ const ReservasReservas = ({ reservas, readReserva, deleteReserva }) => {
               aria-current="true"
             >
               <div className="d-flex align-items-center justify-content-between">
-                <h5 className=" m-0 text-primary">Solicitante: <span className="text-dark">?</span></h5>
-                <small className="badge bg-primary rounded-pill py-2 px-2">
+                <h5 className=" m-0 text-secondary">Solicitante: <span className="text-dark">?</span></h5>
+                <small className="badge bg-dark rounded-pill py-2 px-2">
                   📅 ? | 🕖 ?
                 </small>
               </div>
-              <h5 className="m-0 text-primary">Motivo: <span className="text-dark">?</span></h5>
-              <h5 className="m-0 text-primary">
+              <h5 className="m-0 text-secondary">Motivo: <span className="text-dark">?</span></h5>
+              <h5 className="m-0 text-secondary">
                 Documento de identidad: <span className="text-dark">?</span>
               </h5>
               <div className="mt-3 d-flex align-items-start justify-content-start">
                 <div className="d-flex gap-1">
                   <button
-                    className="btn btn-primary btn-sm px-4 py-1"
+                    className="btn btn-dark btn-sm px-4 py-1"
                   >
                     ?
                   </button>

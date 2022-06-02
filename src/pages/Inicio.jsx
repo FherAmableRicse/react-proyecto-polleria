@@ -5,7 +5,7 @@ const Inicio = () => {
   return (
     <main className="main">
       <div className="main__container" id="inicio">
-        <div className="menu__container">
+        <div className="menu__container animate__animated animate__zoomIn">
           <Link to="/" className="menu__link"><img src="https://i.postimg.cc/W3drW6P5/menu-promociones.png" alt="imagen promocion"
             className="menu__image" /><span className="menu__text">PROMOCIONES</span></Link>
           <Link to="/" className="menu__link"><img src="https://i.postimg.cc/Zn3NZbn3/menu-pollo.jpg" alt="imagen pollo"

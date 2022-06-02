@@ -19,7 +19,10 @@
 
 .about__message-title {
   font-weight: 800;
+  color: var(--text-color);
+  text-shadow: 0.25rem 0.25rem 0.125rem var(--main-text-color), 0.25rem 0.25rem 0.25rem var(--main-text-color);
   margin: 0;
+
 }
 
 .about__message-subtitle {

@@ -57,12 +57,12 @@ const ReservasForm = ({ reserva, submitReservasForm }) => {
   }, [reserva]);
 
   return (
-    <section className="mb-auto container-reservas-form d-flex flex-column gap-3 col-md-5">
+    <section className="mb-auto container-reservas-form d-flex flex-column gap-3 col-md-5 animate__animated animate__lightSpeedInLeft">
       <form
         className=" sectionForm text-dark rounded container"
         onSubmit={handleSubmit}
       >
-        <h3 className="fw-bolder text-center text-danger" id="formTitle">🍴 {reserva._id ? 'Editar' : 'Crear'} Reserva 🍴</h3>
+        <h3 className="fw-bold text-center text-danger" id="formTitle">🍴 {reserva._id ? 'Editar' : 'Crear'} Reserva 🍴</h3>
         <div className="text-dark form-floating mb-3" style={{ display: "none" }}>
           <input
             type="number"
@@ -126,24 +126,23 @@ const ReservasForm = ({ reserva, submitReservasForm }) => {
           />
           <label htmlFor="hora" className="text-dark">Hora de Reserva</label>
         </div>
+        <select
+          className="form-select text-center mb-3"
+          value={motivo}
+          name="motivo"
+          onChange={handleChange}
+        >
+          <option value="">-- Seleccione motivo --</option>
+          <option value="Reunión">Reunión</option>
+          <option value="Cumpleaños">Cumpleaños</option>
+          <option value="Aniversario">Aniversario</option>
+        </select>
 
-        <div className="form-floating mb-3">
-          <input
-            type="text"
-            name="motivo"
-            placeholder="Motivo de Reserva"
-            className="form-control"
-            value={motivo}
-            onChange={handleChange}
-            required
-          />
-          <label htmlFor="motivo" className="text-dark">Motivo de Reserva</label>
-        </div>
         <button
           type="submit"
-          className="btn btn-primary w-100"
+          className="btn btn-dark w-100"
         >
-          {reserva._id ? 'Editar' : 'Crear'} Reserva
+          {reserva._id ? 'Editar' : 'Crear'}
         </button>
         {
           alert && <Error>Todos los campos son obligatorios</Error>
