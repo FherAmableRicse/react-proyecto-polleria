@@ -15,7 +15,7 @@ const Inicio = () => {
           <Link to="/" className="menu__link"><img src="https://i.postimg.cc/s2D5SCHd/menu-parrilla.jpg" alt="imagen parrillas"
             className="menu__image" /><span className="menu__text">PARRILLLAS</span></Link>
           <Link to="/" className="menu__link"><img src="https://i.postimg.cc/pTSrpg4Z/menu-guarniciones.jpg" alt="imagen guarniciones"
-            className="menu__image" /><span className="menu__text">GUARDICIONES</span></Link>
+            className="menu__image" /><span className="menu__text">GUARNICIONES</span></Link>
           <Link to="/" className="menu__link"><img src="https://i.postimg.cc/3wndHyZz/menu-ensalada.jpg" alt="imagen ensalada"
             className="menu__image" /><span className="menu__text">ENSALADAS</span></Link>
           <Link to="/" className="menu__link"><img src="https://i.postimg.cc/2yB6v0ff/menu-bebidas.jpg" alt="imagen bebidas"

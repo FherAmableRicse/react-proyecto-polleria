@@ -40,19 +40,19 @@ const ReservasReservas = ({ reservas, readReserva, deleteReserva }) => {
               <div className="mt-3 d-flex align-items-start justify-content-start">
                 <div className="d-flex gap-1">
                   <button
-                    className="btn btn-dark btn-sm px-4 py-1"
+                    className="fs-6 btn btn-dark btn-sm px-4 py-1 pe-none"
                   >
                     ?
                   </button>
                   <button
                     type="button"
-                    className="btn btn-warning btn-sm px-4 py-1"
+                    className="fs-6 btn btn-warning btn-sm px-4 py-1 pe-none"
                   >
                     ?
                   </button>
                   <button
                     type="button"
-                    className="btn btn-danger btn-sm px-4 py-1"
+                    className="fs-6 btn btn-danger btn-sm px-4 py-1 pe-none"
                   >
                     ?
                   </button>

@@ -54,7 +54,7 @@ const Reservas = () => {
   }, [reservas]);
 
   return (
-    <main>
+    <main className="main">
       <section className="container-reservas container">
         <div className="container-reservas__reserva">
           <ReservasForm

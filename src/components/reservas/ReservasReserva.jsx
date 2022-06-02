@@ -7,7 +7,7 @@ const ReservasReserva = ({ reserva, readReserva, deleteReserva }) => {
   const handleDelete = (id) => {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
-        confirmButton: 'btn btn-success mx-2',
+        confirmButton: 'btn btn-dark mx-2',
         cancelButton: 'btn btn-danger mx-2'
       },
       buttonsStyling: false
@@ -60,21 +60,21 @@ const ReservasReserva = ({ reserva, readReserva, deleteReserva }) => {
             href={`${urlWhatsapp} Solicitante: ${solicitante}, DNI: ${dni}, Fecha: ${fecha}, Hora: ${hora}, Motivo: ${motivo}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-dark btn-sm"
+            className="fs-6 btn btn-dark btn-sm"
           >
             Confirmar
           </a>
 
           <button
             type="button"
-            className="btn btn-warning btn-sm"
+            className="fs-6 btn btn-warning btn-sm"
             onClick={() => readReserva(_id)}
           >
             Editar
           </button>
           <button
             type="button"
-            className="btn btn-danger btn-sm"
+            className="fs-6 btn btn-danger btn-sm"
             onClick={() => handleDelete(_id)}
           >
             Eliminar
