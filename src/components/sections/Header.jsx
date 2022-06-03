@@ -1,6 +1,7 @@
 import "../../styles/css/Header.css";
 import logo from "../../assets/img/logo.png";
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const headerNavMenuLinkList = useRef();
@@ -58,7 +59,7 @@ const Header = () => {
               <a href="#" className="header-nav__menu-link">NOSOTROS </a>
             </li>
             <li className="header-nav__menu-link-item">
-              <a href="#" className="header-nav__menu-link">CONTÁCTENOS</a>
+              <Link to="/contacto" className="header-nav__menu-link">CONTÁCTENOS</Link>
             </li>
             <li className="header-nav__menu-link-item header-nav__menu-close-icon-container" onClick={closeMenu}>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#fff" className="header-nav__menu-close-icon">

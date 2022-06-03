@@ -6,6 +6,8 @@ import Header from './components/sections/Header';
 import { v4 as uuidv4 } from 'uuid';
 import { Route, Routes } from 'react-router-dom';
 import PolleriaLayout from './layouts/PolleriaLayout';
+import Page404 from './pages/Page404';
+import Contactenos from './pages/Contactenos';
 
 
 function App() {
@@ -41,10 +43,10 @@ function App() {
         <Route path="pedidos" element={<h1>Empieza tu pedido</h1>} />
         <Route path="reservas" element={<h1>Reservas </h1>} />
         <Route path="nosotros" element={<h1>Nosotros</h1>} />
-        <Route path="contacto" element={<h1>Contactenos</h1>} />
+        <Route path="contacto" element={<Contactenos />} />
         <Route index element={<h1>Index</h1>} />
       </Route>
-      <Route path="*" element={<h1>404</h1>} />
+      <Route path="*" element={<Page404 />} />
     </Routes>
 
 
