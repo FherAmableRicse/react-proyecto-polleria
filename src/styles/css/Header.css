@@ -7,11 +7,22 @@
   font-family: var(--font-header-footer);
 }
 
+.header--scroll {
+
+  box-shadow: 0 0.125rem 0.125rem 0 var(--primary-shadow-color);
+}
+
 .header-nav {
   padding: 0;
   margin: 0;
+  transition: var(--all-transitions);
   background-color: var(--primary-theme-color);
 }
+
+.header-nav--scroll {
+  opacity: 85%;
+}
+
 
 .header-nav__container-superior {
   display: none;
@@ -161,6 +172,7 @@
     justify-content: space-between;
     max-width: var(--max-width-container);
     padding: 0 0.5em;
+
     margin-bottom: 0.1rem;
   }
 
