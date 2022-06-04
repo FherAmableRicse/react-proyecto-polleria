@@ -1,10 +1,21 @@
 import "../../styles/css/Header.css";
-import logo from "../../assets/img/logo.png";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const Header = () => {
   const headerNavMenuLinkList = useRef();
+  const headerNavMenuLink = useRef();
+  const header = useRef();
+  const headerNav = useRef();
+
+  const documentScroll = () => {
+    header.current.classList.toggle('header--scroll', window.scrollY > 0);
+    headerNav.current.classList.toggle('header-nav--scroll', window.scrollY > 0);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", documentScroll);
+  }, [documentScroll])
 
   const openMenu = () => {
     headerNavMenuLinkList.current.classList.add(
@@ -18,8 +29,8 @@ const Header = () => {
     );
   };
   return (
-    <header className="header">
-      <nav className="header-nav">
+    <header className="header" ref={header}>
+      <nav className="header-nav" ref={headerNav}>
         <div className="header-nav__container-superior">
           <ul className="header-nav__menu-link-list">
             <li className="header-nav__menu-link-item">
@@ -32,34 +43,38 @@ const Header = () => {
               <p>📞Huancayo: (064) 211445</p>
             </li>
           </ul>
-          <a href="#" className="header-nav__register-link">
+          <Link to="" className="header-nav__register-link">
             👩‍🍳 Ingresar/Registrarse
-          </a>
+          </Link>
         </div>
         <div className="header-nav__container">
-          <a href="/" className="header-nav__link-logo-container">
-            <img src={logo}  alt="Logo Pollería PICOM"className="header-nav__link-logo"/>
-          </a>
-          <button className="header-nav__menu-icon-container"  onClick={openMenu}>
+          <Link to="" className="header-nav__link-logo-container">
+            <img src="https://i.postimg.cc/Cx0GhqjK/logo.png" alt="Logo Pollería PICOM" className="header-nav__link-logo" />
+          </Link>
+          <button className="header-nav__menu-icon-container" onClick={openMenu}>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#fff" className="header-nav__menu-icon" >
               <path d="M4 6h16v2H4zm4 5h12v2H8zm5 5h7v2h-7z"></path>
             </svg>
           </button>
           <ul className="header-nav__menu-link-list" ref={headerNavMenuLinkList} >
             <li className="header-nav__menu-link-item">
-              <a href="#inicio" className="header-nav__menu-link header-nav__menu-link--active">INICIO</a>
+              <Link to="" className="header-nav__menu-link header-nav__menu-link--active" onClick={closeMenu}>INICIO</Link>
             </li>
             <li className="header-nav__menu-link-item">
+<<<<<<< HEAD
               <Link to="/pedidos" className="header-nav__menu-link">EMPIEZA TU PEDIDO</Link>
+=======
+              <Link to="pedidos" className="header-nav__menu-link" ref={headerNavMenuLink} onClick={closeMenu}>EMPIEZA TU PEDIDO</Link>
+>>>>>>> c6277d9393f6cf55dea730b8a308af2bce5e95d1
             </li>
             <li className="header-nav__menu-link-item">
-              <a href="#" className="header-nav__menu-link">RESERVAS</a>
+              <Link to="reservas" className="header-nav__menu-link" ref={headerNavMenuLink} onClick={closeMenu}>RESERVAS</Link>
             </li>
             <li className="header-nav__menu-link-item">
-              <a href="#" className="header-nav__menu-link">NOSOTROS </a>
+              <Link to="nosotros" className="header-nav__menu-link" ref={headerNavMenuLink} onClick={closeMenu}>NOSOTROS </Link>
             </li>
             <li className="header-nav__menu-link-item">
-              <Link to="/contacto" className="header-nav__menu-link">CONTÁCTENOS</Link>
+              <Link to="contacto" className="header-nav__menu-link" ref={headerNavMenuLink} onClick={closeMenu}>CONTÁCTENOS</Link>
             </li>
             <li className="header-nav__menu-link-item header-nav__menu-close-icon-container" onClick={closeMenu}>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#fff" className="header-nav__menu-close-icon">

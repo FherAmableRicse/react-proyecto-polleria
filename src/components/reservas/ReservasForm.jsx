@@ -1,17 +1,26 @@
 import { useEffect, useState } from "react";
 
-const ReservasForm = ({submitReserva}) => {
+import '../../App.css'
+import '../../styles/css/Reservas.css'
+import Alert from "../sections/Alert";
+
+const ReservasForm = ({ reserva, submitReservasForm }) => {
+
+  const todayDate = new Date().toISOString().slice(0, 10);
 
   const [formReserva, setFormReserva] = useState({
-    solicitante: "",
-    dni: "",
-    fecha: "",
-    hora: "",
-    motivo: "",
+    _id: '',
+    solicitante: '',
+    dni: '',
+    fecha: '',
+    hora: '',
+    motivo: '',
   });
 
-  const [alert, setAlert] = useState(false);
-
+  const [alert, setAlert] = useState({
+    message: '',
+    error: false
+  });
   const { solicitante, dni, fecha, hora, motivo } = formReserva;
 
   const handleChange = (e) => {
@@ -23,36 +32,60 @@ const ReservasForm = ({submitReserva}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (
-      [
-        solicitante.trim(),
-        dni.trim(),
-        fecha.trim(),
-        hora.trim(),
-        motivo.trim(),
-      ].includes("")
-    ) {
-      setAlert(true);
-    } else {
-      submitReserva(formReserva);
+    if ([solicitante.trim(), dni.trim(), fecha.trim(), hora.trim(), motivo.trim(),].includes("")) {
+      setAlert({
+        message: 'Todos los campos son obligatorios',
+        error: true
+      });
+    }
+
+    else if (!isNaN(solicitante)) {
+      setAlert({
+        message: 'Nombre inválido',
+        error: true
+      });
+    }
+    else if (dni.trim().length > 8 || dni.trim().length < 8) {
+      setAlert({
+        message: 'DNI inválido',
+        error: true
+      });
+    }
+    else {
+      submitReservasForm(formReserva);
       setFormReserva({
-        solicitante: "",
-        dni: "",
-        fecha: "",
-        hora: "",
-        motivo: "",
+        _id: '',
+        solicitante: '',
+        dni: '',
+        fecha: '',
+        hora: '',
+        motivo: '',
       });
       setAlert(false);
     }
   };
 
-  return ( 
-    <section className="d-flex flex-column gap-3 col-md-5">
+  useEffect(() => {
+    if (reserva._id) {
+      const { _id, solicitante, dni, fecha, hora, motivo } = reserva;
+      setFormReserva({
+        _id,
+        solicitante,
+        dni,
+        fecha,
+        hora,
+        motivo
+      });
+    }
+  }, [reserva]);
+
+  return (
+    <section className="mb-auto container-reservas-form d-flex flex-column gap-3 col-md-5 animate__animated animate__lightSpeedInLeft">
       <form
         className=" sectionForm text-dark rounded container"
         onSubmit={handleSubmit}
       >
-        <h3 className="text-center text-danger" id="formTitle">Crear Reserva</h3>
+        <h3 className="fw-bold text-center text-danger" id="formTitle">🍴 {reserva._id ? 'Editar' : 'Crear'} Reserva 🍴</h3>
         <div className="text-dark form-floating mb-3" style={{ display: "none" }}>
           <input
             type="number"
@@ -93,6 +126,7 @@ const ReservasForm = ({submitReserva}) => {
 
         <div className="form-floating mb-3">
           <input
+            min={todayDate}
             type="date"
             name="fecha"
             placeholder="Fecha de Reserva"
@@ -116,31 +150,32 @@ const ReservasForm = ({submitReserva}) => {
           />
           <label htmlFor="hora" className="text-dark">Hora de Reserva</label>
         </div>
-
-        <div className="form-floating mb-3">
-          <input
-            type="text"
-            name="motivo"
-            placeholder="Motivo de Reserva"
-            className="form-control"
-            value={motivo}
-            onChange={handleChange}
-            required
-          />
-          <label htmlFor="motivo" className="text-dark">Motivo de Reserva</label>
-        </div>
+        <select
+          className="form-select text-center mb-3"
+          value={motivo}
+          name="motivo"
+          onChange={handleChange}
+        >
+          <option value="">-- Seleccione motivo --</option>
+          <option value="Reunión">Reunión</option>
+          <option value="Cumpleaños">Cumpleaños</option>
+          <option value="Aniversario">Aniversario</option>
+        </select>
         <button
           type="submit"
-          className="btn btn-primary w-100"
+          className="btn btn-dark w-100"
         >
-        Reservar
+          {reserva._id ? 'Editar' : 'Crear'}
         </button>
+        {
+          alert.error && <Alert alert={alert} />
+        }
       </form>
-      {
-        alert && <div className="align-self-center badge bg-warning text-dark">Todos los campos son obligatorios</div>
-      }
+
+
+
     </section>
-   );
+  );
 }
- 
+
 export default ReservasForm;
