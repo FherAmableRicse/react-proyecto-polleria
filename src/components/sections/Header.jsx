@@ -1,10 +1,21 @@
 import "../../styles/css/Header.css";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const Header = () => {
   const headerNavMenuLinkList = useRef();
   const headerNavMenuLink = useRef();
+  const header = useRef();
+  const headerNav = useRef();
+
+  const documentScroll = () => {
+    header.current.classList.toggle('header--scroll', window.scrollY > 0);
+    headerNav.current.classList.toggle('header-nav--scroll', window.scrollY > 0);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", documentScroll);
+  }, [documentScroll])
 
   const openMenu = () => {
     headerNavMenuLinkList.current.classList.add(
@@ -18,8 +29,8 @@ const Header = () => {
     );
   };
   return (
-    <header className="header">
-      <nav className="header-nav">
+    <header className="header" ref={header}>
+      <nav className="header-nav" ref={headerNav}>
         <div className="header-nav__container-superior">
           <ul className="header-nav__menu-link-list">
             <li className="header-nav__menu-link-item">

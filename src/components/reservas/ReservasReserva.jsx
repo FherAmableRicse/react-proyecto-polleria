@@ -14,7 +14,7 @@ const ReservasReserva = ({ reserva, readReserva, deleteReserva }) => {
     });
 
     swalWithBootstrapButtons.fire({
-      title: '¿Estás seguro?',
+      title: '¿Estás segur@?',
       text: "No podrás revertir esta acción",
       icon: 'warning',
       showCancelButton: true,
@@ -41,7 +41,7 @@ const ReservasReserva = ({ reserva, readReserva, deleteReserva }) => {
 
   return (
     <li
-      className="d-flex flex-column gap-2 list-group-item list-group-item-action animate__animated animate__bounceInUp"
+      className="mt-3 d-flex flex-column gap-2 list-group-item list-group-item-action animate__animated animate__bounceInUp"
       aria-current="true"
     >
       <div className="d-flex align-items-center justify-content-between">

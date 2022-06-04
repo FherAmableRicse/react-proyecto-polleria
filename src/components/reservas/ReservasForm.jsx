@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
-import Error from "../Error";
+
 import '../../App.css'
 import '../../styles/css/Reservas.css'
+import Alert from "../sections/Alert";
+
 const ReservasForm = ({ reserva, submitReservasForm }) => {
+
+  const todayDate = new Date().toISOString().slice(0, 10);
 
   const [formReserva, setFormReserva] = useState({
     _id: '',
@@ -13,8 +17,10 @@ const ReservasForm = ({ reserva, submitReservasForm }) => {
     motivo: '',
   });
 
-  const [alert, setAlert] = useState(false);
-
+  const [alert, setAlert] = useState({
+    message: '',
+    error: false
+  });
   const { solicitante, dni, fecha, hora, motivo } = formReserva;
 
   const handleChange = (e) => {
@@ -27,8 +33,25 @@ const ReservasForm = ({ reserva, submitReservasForm }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if ([solicitante.trim(), dni.trim(), fecha.trim(), hora.trim(), motivo.trim(),].includes("")) {
-      setAlert(true);
-    } else {
+      setAlert({
+        message: 'Todos los campos son obligatorios',
+        error: true
+      });
+    }
+
+    else if (!isNaN(solicitante)) {
+      setAlert({
+        message: 'Nombre inválido',
+        error: true
+      });
+    }
+    else if (dni.trim().length > 8 || dni.trim().length < 8) {
+      setAlert({
+        message: 'DNI inválido',
+        error: true
+      });
+    }
+    else {
       submitReservasForm(formReserva);
       setFormReserva({
         _id: '',
@@ -103,6 +126,7 @@ const ReservasForm = ({ reserva, submitReservasForm }) => {
 
         <div className="form-floating mb-3">
           <input
+            min={todayDate}
             type="date"
             name="fecha"
             placeholder="Fecha de Reserva"
@@ -137,7 +161,6 @@ const ReservasForm = ({ reserva, submitReservasForm }) => {
           <option value="Cumpleaños">Cumpleaños</option>
           <option value="Aniversario">Aniversario</option>
         </select>
-
         <button
           type="submit"
           className="btn btn-dark w-100"
@@ -145,7 +168,7 @@ const ReservasForm = ({ reserva, submitReservasForm }) => {
           {reserva._id ? 'Editar' : 'Crear'}
         </button>
         {
-          alert && <Error>Todos los campos son obligatorios</Error>
+          alert.error && <Alert alert={alert} />
         }
       </form>
 
