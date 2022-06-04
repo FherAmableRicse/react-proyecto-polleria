@@ -50,7 +50,7 @@ const Header = () => {
               <a href="#inicio" className="header-nav__menu-link header-nav__menu-link--active">INICIO</a>
             </li>
             <li className="header-nav__menu-link-item">
-              <a href="#" className="header-nav__menu-link">EMPIEZA TU PEDIDO</a>
+              <Link to="/pedidos" className="header-nav__menu-link">EMPIEZA TU PEDIDO</Link>
             </li>
             <li className="header-nav__menu-link-item">
               <a href="#" className="header-nav__menu-link">RESERVAS</a>
