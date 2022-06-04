@@ -6,6 +6,7 @@ import Header from "./components/sections/Header";
 import { v4 as uuidv4 } from "uuid";
 import { Route, Routes } from "react-router-dom";
 import PolleriaLayout from "./layouts/PolleriaLayout";
+import Pedidos from "./pages/Pedidos";
 
 function App() {
   const [reservas, setReservas] = useState([]);
@@ -34,7 +35,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<PolleriaLayout />}>
-        <Route path="pedidos" element={<h1>Empieza tu pedido</h1>} />
+        <Route path="pedidos" element={<Pedidos />} />
         <Route path="reservas" element={<h1>Reservas </h1>} />
         <Route path="nosotros" element={<h1>Nosotros</h1>} />
         <Route path="contacto" element={<h1>Contactenos</h1>} />
