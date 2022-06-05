@@ -55,3 +55,28 @@
   .buscador__plato-boton:hover {
     background-color: var(--secondary-button-color);
   }
+
+  @media (min-width: 854px) {
+    .buscador__container {
+      align-items: flex-start;
+    }
+  
+    .buscador__resultados {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 0;
+      padding: 0;
+    }
+  
+    .col-sm-4 {
+      display: flex;
+      flex-direction: column;
+      margin-top: 9rem;
+      margin-bottom: 2rem;
+      position: fixed;
+      top: 0;
+      right: 0;
+    }
+  }
+  

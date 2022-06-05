@@ -10,8 +10,8 @@ export const PolleriaProvider = ({ children }) => {
     try {
       const options = {
         method: "GET",
-        // url: `${process.env.REACT_APP_URL_PLATOS_JSON_URL}`,
-        url: `https://fheramablericse.github.io/api-test/db.json`,
+        url: `${process.env.REACT_APP_URL_PLATOS_JSON_URL}`,
+        // url: `https://fheramablericse.github.io/api-test/db.json`,
       };
       const { data } = await axios(options);
       setPlatos(data);
@@ -20,6 +20,19 @@ export const PolleriaProvider = ({ children }) => {
     } finally {
       //mostrat platos
     }
+  };
+
+  const buscarPlatos=(platos, input)=>{
+    const platosBuscados = platos.filter((element) => {
+      if (input.toLowerCase() === "") {
+        return platos;
+      } else {
+        return element.nombre
+          .toLowerCase()
+          .includes(input.toLowerCase());
+      }
+    });
+    return platosBuscados;
   };
 
   useEffect(() => {
@@ -31,6 +44,7 @@ export const PolleriaProvider = ({ children }) => {
       value={{
         platos,
         getPlatos,
+        buscarPlatos
       }}
     >
       {children}
