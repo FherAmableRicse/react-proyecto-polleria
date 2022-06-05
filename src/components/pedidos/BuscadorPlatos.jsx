@@ -4,18 +4,11 @@ import PlatosCard from "./PlatosCard";
 
 const BuscadorPlatos = () => {
   const { platos, buscarPlatos } = usePolleria();
-  let platosBuscados = [];
-  let platosMostrar = [];
+  const [mostrarPlatos, setMostrarPlatos]=useState(platos);
 
   const handleInput = (e) => {
-    platosBuscados = buscarPlatos(platos, e.target.value);
+    setMostrarPlatos(buscarPlatos(platos, e.target.value));
   };
-
-  // useEffect(() => {
-  //   platosMostrar = platosBuscados.map((plato) => {
-  //     return <PlatosCard key={plato.id} plato={plato} />;
-  //   });
-  // }, [platosBuscados]);
 
   return (
     <section className="my-8 col-sm-8">
@@ -31,7 +24,7 @@ const BuscadorPlatos = () => {
           onChange={handleInput}
         />
         <div className="buscador__resultados">
-          {platos.map((plato) => {
+          {mostrarPlatos.map((plato) => {
             return <PlatosCard key={plato.id} plato={plato} />;
           })}
         </div>
