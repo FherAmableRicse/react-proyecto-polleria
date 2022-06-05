@@ -93,7 +93,7 @@ const Footer = () => {
                 className="footer-nav-navegation__checkbox"
               />
               <ul className="footer-nav-navegation__link-list">
-                <li className="footer-nav-navegation__link-item">
+                <li className="footer-nav-navegation__link-item-contactos">
                   <span className="footer-nav-navegation__link-header">
                     Central en Lima
                   </span>
@@ -101,16 +101,16 @@ const Footer = () => {
                     (01)500 2550
                   </span>
                 </li>
-                <li className="footer-nav-navegation__link-item">
+                <li className="footer-nav-navegation__link-item-contactos">
                   <span className="footer-nav-navegation__link-header">
-                    Huancayo
+                    Huancayo 
                   </span>
                   <span className="footer-nav-navegation__link-text">
                     (064) 211445
                   </span>
                 </li>
-                <li className="footer-nav-navegation__link-item">
-                  <span className="footer-nav-navegation__link-header">Email</span>
+                <li className="footer-nav-navegation__link-item-contactos">
+                  <span className="footer-nav-navegation__link-header">Email </span>
                   <span className="footer-nav-navegation__link-text">
                     pollopicon@gmail.com
                   </span>

@@ -96,8 +96,14 @@
   cursor: pointer;
 }
 
+.footer-nav-navegation__link-item-contactos{
+  display: flex;
+  text-align: left;
+  gap: 1rem;
+}
+
 .footer-nav-navegation__link-header {
-  color: var(--secondary-theme-color);
+  color: var(--primary-shadow-color);
 }
 
 @media (min-width: 854px) {
