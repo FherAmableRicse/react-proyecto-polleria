@@ -6,20 +6,23 @@ import Reservas from './pages/Reservas';
 import Pedidos from './pages/Pedidos';
 import Contactenos from './pages/Contactenos';
 import Page404 from './pages/Page404';
+import { PolleriaProvider } from './context/PolleriaContext';
 
 function App() {
 
   return (
-    <Routes>
-      <Route path="/" element={<PolleriaLayout />}>
-        <Route path="pedidos" element={<Pedidos />} />
-        <Route path="reservas" element={<Reservas />} />
-        <Route path="nosotros" element={<Nosotros />} />
-        <Route path="contacto" element={<Contactenos />} />
-        <Route index element={<Inicio />} />
-      </Route>
-      <Route path="*" element={<Page404 />} />
-    </Routes>
+    <PolleriaProvider>
+      <Routes>
+        <Route path="/" element={<PolleriaLayout />}>
+          <Route path="pedidos" element={<Pedidos />} />
+          <Route path="reservas" element={<Reservas />} />
+          <Route path="nosotros" element={<Nosotros />} />
+          <Route path="contacto" element={<Contactenos />} />
+          <Route index element={<Inicio />} />
+        </Route>
+        <Route path="*" element={<Page404 />} />
+      </Routes>
+    </PolleriaProvider>
   );
 }
 
