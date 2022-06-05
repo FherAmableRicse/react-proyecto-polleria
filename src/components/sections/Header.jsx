@@ -61,11 +61,7 @@ const Header = () => {
               <Link to="" className="header-nav__menu-link header-nav__menu-link--active" onClick={closeMenu}>INICIO</Link>
             </li>
             <li className="header-nav__menu-link-item">
-<<<<<<< HEAD
-              <Link to="/pedidos" className="header-nav__menu-link">EMPIEZA TU PEDIDO</Link>
-=======
               <Link to="pedidos" className="header-nav__menu-link" ref={headerNavMenuLink} onClick={closeMenu}>EMPIEZA TU PEDIDO</Link>
->>>>>>> c6277d9393f6cf55dea730b8a308af2bce5e95d1
             </li>
             <li className="header-nav__menu-link-item">
               <Link to="reservas" className="header-nav__menu-link" ref={headerNavMenuLink} onClick={closeMenu}>RESERVAS</Link>
