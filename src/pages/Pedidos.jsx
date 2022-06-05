@@ -1,6 +1,6 @@
 const Pedidos = () => {
   return (
-    <div className="container">
+    <div className="container__pedidos">
       <div className="row">
         <div className="col-sm-8">
           <div>
