@@ -103,7 +103,7 @@
   bottom: 40px;
   height: 40px;
   cursor: pointer;
-  background-color: #1c1203;
+  background-color: var(--background-color-go-up);
   border-radius: 100%;
 }
 

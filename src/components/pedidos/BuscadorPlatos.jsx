@@ -4,12 +4,14 @@ import PlatosCard from "./PlatosCard";
 
 const BuscadorPlatos = () => {
   const { platos, buscarPlatos } = usePolleria();
-  const [mostrarPlatos, setMostrarPlatos]=useState(platos);
+  const [mostrarPlatos, setMostrarPlatos] = useState(platos);
 
   const handleInput = (e) => {
     setMostrarPlatos(buscarPlatos(platos, e.target.value));
   };
+  useEffect(() => {
 
+  }, [mostrarPlatos]);
   return (
     <section className="my-8 col-sm-8">
       <div>
