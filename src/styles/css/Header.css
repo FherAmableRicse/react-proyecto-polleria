@@ -146,7 +146,7 @@
 .header-nav__menu-link::after {
   content: '';
   position: absolute;
-  right: 0;
+  left: 0;
   bottom: -0.125rem;
   width: 0;
   height: 0.0625rem;
@@ -172,7 +172,6 @@
     justify-content: space-between;
     max-width: var(--max-width-container);
     padding: 0 0.5em;
-
     margin-bottom: 0.1rem;
   }
 

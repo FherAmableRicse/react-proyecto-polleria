@@ -1,12 +1,19 @@
 import "../../styles/css/Header.css";
-import { useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useRef } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
   const headerNavMenuLinkList = useRef();
-  const headerNavMenuLink = useRef();
+
+  const headerNavMenuLinkInicio = useRef();
+  const headerNavMenuLinkPedido = useRef();
+  const headerNavMenuLinkReserva = useRef();
+  const headerNavMenuLinkNosotros = useRef();
+  const headerNavMenuLinkContacto = useRef();
+
   const header = useRef();
   const headerNav = useRef();
+  const sampleLocation = useLocation();
 
   const documentScroll = () => {
     header.current.classList.toggle('header--scroll', window.scrollY > 0);
@@ -14,8 +21,30 @@ const Header = () => {
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", documentScroll);
-  }, [documentScroll])
+
+    if (sampleLocation.pathname === '/') {
+      document.querySelector('.header-nav__menu-link--active')?.classList.remove('header-nav__menu-link--active');
+      headerNavMenuLinkInicio.current.classList.add("header-nav__menu-link--active");
+    }
+    else if (sampleLocation.pathname === '/pedidos') {
+      document.querySelector('.header-nav__menu-link--active')?.classList.remove('header-nav__menu-link--active');
+      headerNavMenuLinkPedido.current.classList.add("header-nav__menu-link--active");
+    }
+    else if (sampleLocation.pathname === '/reservas') {
+      document.querySelector('.header-nav__menu-link--active')?.classList.remove('header-nav__menu-link--active');
+      headerNavMenuLinkReserva.current.classList.add("header-nav__menu-link--active");
+    }
+    else if (sampleLocation.pathname === '/nosotros') {
+      document.querySelector('.header-nav__menu-link--active')?.classList.remove('header-nav__menu-link--active');
+      headerNavMenuLinkNosotros.current.classList.add("header-nav__menu-link--active");
+    }
+    else {
+      document.querySelector('.header-nav__menu-link--active')?.classList.remove('header-nav__menu-link--active');
+      headerNavMenuLinkContacto.current.classList.add("header-nav__menu-link--active");
+    }
+  })
+
+  window.addEventListener("scroll", documentScroll);
 
   const openMenu = () => {
     headerNavMenuLinkList.current.classList.add(
@@ -58,19 +87,19 @@ const Header = () => {
           </button>
           <ul className="header-nav__menu-link-list" ref={headerNavMenuLinkList} >
             <li className="header-nav__menu-link-item">
-              <Link to="" className="header-nav__menu-link header-nav__menu-link--active" onClick={closeMenu}>INICIO</Link>
+              <Link to="" className="header-nav__menu-link" ref={headerNavMenuLinkInicio} onClick={closeMenu}>INICIO</Link>
             </li>
             <li className="header-nav__menu-link-item">
-              <Link to="pedidos" className="header-nav__menu-link" ref={headerNavMenuLink} onClick={closeMenu}>EMPIEZA TU PEDIDO</Link>
+              <Link to="pedidos" className="header-nav__menu-link" ref={headerNavMenuLinkPedido} onClick={closeMenu}>EMPIEZA TU PEDIDO</Link>
             </li>
             <li className="header-nav__menu-link-item">
-              <Link to="reservas" className="header-nav__menu-link" ref={headerNavMenuLink} onClick={closeMenu}>RESERVAS</Link>
+              <Link to="reservas" className="header-nav__menu-link" ref={headerNavMenuLinkReserva} onClick={closeMenu}>RESERVAS</Link>
             </li>
             <li className="header-nav__menu-link-item">
-              <Link to="nosotros" className="header-nav__menu-link" ref={headerNavMenuLink} onClick={closeMenu}>NOSOTROS </Link>
+              <Link to="nosotros" className="header-nav__menu-link" ref={headerNavMenuLinkNosotros} onClick={closeMenu}>NOSOTROS </Link>
             </li>
             <li className="header-nav__menu-link-item">
-              <Link to="contacto" className="header-nav__menu-link" ref={headerNavMenuLink} onClick={closeMenu}>CONTÁCTENOS</Link>
+              <Link to="contacto" className="header-nav__menu-link" ref={headerNavMenuLinkContacto} onClick={closeMenu}>CONTÁCTENOS</Link>
             </li>
             <li className="header-nav__menu-link-item header-nav__menu-close-icon-container" onClick={closeMenu}>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#fff" className="header-nav__menu-close-icon">
