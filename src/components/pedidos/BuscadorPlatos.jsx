@@ -3,7 +3,7 @@ import usePolleria from "../../hooks/usePolleria";
 import PlatosCard from "./PlatosCard";
 
 const BuscadorPlatos = () => {
-  const { platos, buscarPlatos } = usePolleria();
+  const { platos, platosCarrito, buscarPlatos } = usePolleria();
   const [mostrarPlatos, setMostrarPlatos]=useState(platos);
 
   const handleInput = (e) => {

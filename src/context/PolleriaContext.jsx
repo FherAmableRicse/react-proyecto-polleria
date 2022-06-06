@@ -5,6 +5,7 @@ export const PolleriaContext = createContext();
 
 export const PolleriaProvider = ({ children }) => {
   const [platos, setPlatos] = useState([]);
+  const [platosCarrito, setPlatosCarrito] = useState([]);
 
   const getPlatos = async () => {
     try {
@@ -22,14 +23,12 @@ export const PolleriaProvider = ({ children }) => {
     }
   };
 
-  const buscarPlatos=(platos, input)=>{
+  const buscarPlatos = (platos, input) => {
     const platosBuscados = platos.filter((element) => {
       if (input.toLowerCase() === "") {
         return platos;
       } else {
-        return element.nombre
-          .toLowerCase()
-          .includes(input.toLowerCase());
+        return element.nombre.toLowerCase().includes(input.toLowerCase());
       }
     });
     return platosBuscados;
@@ -43,8 +42,10 @@ export const PolleriaProvider = ({ children }) => {
     <PolleriaContext.Provider
       value={{
         platos,
+        platosCarrito,
         getPlatos,
-        buscarPlatos
+        buscarPlatos,
+        setPlatosCarrito,
       }}
     >
       {children}

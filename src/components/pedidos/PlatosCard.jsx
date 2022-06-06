@@ -2,6 +2,12 @@ import usePolleria from "../../hooks/usePolleria";
 import "../../styles/css/PlatosCard.css";
 const PlatosCard = ({ plato }) => {
   const { id, nombre, precio, imagen } = plato;
+  const {platosCarrito, setPlatosCarrito}=usePolleria();
+
+  const agregarCarrito=()=>{
+    setPlatosCarrito([...platosCarrito,plato]);
+  };
+
   return (
     <div className="buscador__plato">
       <figure className="buscador__plato-image-container">
@@ -17,7 +23,11 @@ const PlatosCard = ({ plato }) => {
           minimumFractionDigits: 2,
         })}
       </h3>
-      <button type="button" className="buscador__plato-boton" id="${i}">
+      <button
+        type="button"
+        className="buscador__plato-boton"
+        onClick={agregarCarrito}
+      >
         Agregar
       </button>
     </div>
