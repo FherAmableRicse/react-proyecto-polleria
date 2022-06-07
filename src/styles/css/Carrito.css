@@ -1,0 +1,22 @@
+.carrito{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.carrito__plato{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1em;
+}
+
+.carrito__plato-cantidad{}
+
+.carrito__plato-title{}
+
+.carrito__plato-precio{}
+
+.carrito__plato-boton{
+    background-color: var(--button-color);
+    border-radius: var(--border-radius);
+}

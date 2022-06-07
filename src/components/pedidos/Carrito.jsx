@@ -2,6 +2,7 @@ import usePolleria from "../../hooks/usePolleria";
 import { useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import CarritoCard from "./CarritoCard";
+import "../../styles/css/Carrito.css";
 
 const Carrito = () => {
   const { platosCarrito, setPlatosCarrito } = usePolleria();
@@ -23,7 +24,7 @@ const Carrito = () => {
   return (
     <div className="col-sm-4">
       <h2 className="col-sm-4__title">Carrito</h2>
-      <ul id="carrito" className="list-group">
+      <ul id="carrito" className="carrito list-group">
         {[...new Set(platosCarrito)].map((plato) => {
           return (
             <CarritoCard

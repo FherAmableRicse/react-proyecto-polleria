@@ -1,4 +1,5 @@
 import usePolleria from "../../hooks/usePolleria";
+import "../../styles/css/Carrito.css";
 
 const CarritoCard = ({ plato, repeticion }) => {
   const { platosCarrito, setPlatosCarrito } = usePolleria();
@@ -14,7 +15,7 @@ const CarritoCard = ({ plato, repeticion }) => {
   };
 
   return (
-    <div className="carrito__plato">
+    <li className="carrito__plato">
       <h5 className="carrito__plato-cantidad">{repeticion}</h5>
       <h5 className="carrito__plato-title" id="platoTitle">
         {nombre}
@@ -33,7 +34,7 @@ const CarritoCard = ({ plato, repeticion }) => {
       >
         X
       </button>
-    </div>
+    </li>
   );
 };
 
