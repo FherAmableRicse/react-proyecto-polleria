@@ -22,9 +22,9 @@ const Carrito = () => {
   useEffect(() => {}, [platosCarrito]);
 
   return (
-    <div className="col-sm-4">
-      <h2 className="col-sm-4__title">Carrito</h2>
-      <ul id="carrito" className="carrito list-group">
+    <div className="carrito">
+      <h2 className="carrito__title">Carrito</h2>
+      <ul id="carrito" className="carrito__lista-platos list-group">
         {[...new Set(platosCarrito)].map((plato) => {
           return (
             <CarritoCard
@@ -35,7 +35,7 @@ const Carrito = () => {
           );
         })}
       </ul>
-      <p className="text-right">
+      <p className="carrito__total">
         Total: S/.
         <span id="total">
           {platosCarrito.reduce((total, platosCarrito) => {

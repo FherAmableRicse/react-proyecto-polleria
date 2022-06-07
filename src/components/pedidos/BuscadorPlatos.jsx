@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import usePolleria from "../../hooks/usePolleria";
 import PlatosCard from "./PlatosCard";
+import "../../styles/css/BuscadorPlatos.css";
 
 const BuscadorPlatos = () => {
   const { platos,buscarPlatos } = usePolleria();
@@ -14,7 +15,7 @@ const BuscadorPlatos = () => {
   };
 
   return (
-    <section className="my-8 col-sm-8">
+    <section className="buscador">
       <div>
         <h2>Carta</h2>
       </div>
