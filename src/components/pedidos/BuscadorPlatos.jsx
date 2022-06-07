@@ -3,14 +3,14 @@ import usePolleria from "../../hooks/usePolleria";
 import PlatosCard from "./PlatosCard";
 
 const BuscadorPlatos = () => {
-  const { buscarPlatos } = usePolleria();
+  const { platos,buscarPlatos } = usePolleria();
 
   const [mostrarPlatos, setMostrarPlatos] = useState(
     JSON.parse(localStorage.getItem("listaPlatos"))
   );
 
   const handleInput = (e) => {
-    setMostrarPlatos(buscarPlatos(mostrarPlatos, e.target.value));
+    setMostrarPlatos(buscarPlatos(platos, e.target.value));
   };
 
   return (
