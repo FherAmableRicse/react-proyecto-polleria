@@ -38,11 +38,16 @@ export const PolleriaProvider = ({ children }) => {
     getPlatos();
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem("listaPlatos", JSON.stringify(platos));
+  }, [platos]);
+
   return (
     <PolleriaContext.Provider
       value={{
         platos,
         platosCarrito,
+        setPlatos,
         getPlatos,
         buscarPlatos,
         setPlatosCarrito,
