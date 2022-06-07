@@ -4,7 +4,7 @@ import PlatosCard from "./PlatosCard";
 
 const BuscadorPlatos = () => {
   const { platos, platosCarrito, buscarPlatos } = usePolleria();
-  const [mostrarPlatos, setMostrarPlatos]=useState(platos);
+  const [mostrarPlatos, setMostrarPlatos] = useState(platos);
 
   const handleInput = (e) => {
     setMostrarPlatos(buscarPlatos(platos, e.target.value));
