@@ -27,10 +27,8 @@ export const PolleriaProvider = ({ children }) => {
     }
   };
 
-  const getCarrito = () => {
-    if (JSON.parse(localStorage.getItem("platosCarrito"))) {
-      setPlatosCarrito(JSON.parse(localStorage.getItem("platosCarrito")));
-    } else {
+  const crearLocalStorageCarrito = () => {
+    if (!JSON.parse(localStorage.getItem("platosCarrito"))) {
       localStorage.setItem("platosCarrito", JSON.stringify(platosCarrito));
     }
   };
@@ -48,7 +46,7 @@ export const PolleriaProvider = ({ children }) => {
 
   useEffect(() => {
     getPlatos();
-    getCarrito();
+    crearLocalStorageCarrito();
   }, []);
 
   useEffect(() => {

@@ -8,8 +8,8 @@ import "../../styles/css/Carrito.css";
 const Carrito = () => {
   const { platosCarrito, setPlatosCarrito } = usePolleria();
   const [mostrarPlatosCarrito, setmostrarPlatosCarrito] = useState(platosCarrito);
-  // const urlWhatsapp = `${process.env.REACT_APP_URL}`;
-  const urlWhatsapp = `https://www.google.com/`;
+  const urlWhatsapp = `${process.env.REACT_APP_URL2}`;
+  // const urlWhatsapp = `https://www.google.com/`;
 
   const contarRepeticiones = (plato) => {
     const repeticiones = platosCarrito.reduce((total, platoCarrito) => {
@@ -24,6 +24,9 @@ const Carrito = () => {
   };
 
   const confirmarPedido=(urlWhatsapp)=>{
+    const strPedido=mostrarPlatosCarrito.reduce((final,platoMostrar)=>{
+      return final+= contarRepeticiones(platoMostrar)+" "+platoMostrar.nombre+", ";
+    },"");
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: 'btn btn-dark mx-2',
@@ -39,21 +42,22 @@ const Carrito = () => {
       focusConfirm: false,
       cancelButtonText: '¡No, cancélalo!',
       confirmButtonText:
-        `<a class="text-light text-decoration-none" href='${urlWhatsapp}'
+        `<a class="text-light text-decoration-none" href='${urlWhatsapp} ${strPedido}'
       target="_blank" rel="noopener noreferrer">¡Sí, confírmalo!</a>`
     })
   };
 
   useEffect(() => {
+    console.log(platosCarrito);
+    setmostrarPlatosCarrito([...new Set(platosCarrito)]);
     localStorage.setItem("platosCarrito", JSON.stringify(platosCarrito));
-    setmostrarPlatosCarrito(platosCarrito);
   }, [platosCarrito]);
 
   return (
     <div className="carrito">
       <h2 className="carrito__title">Carrito</h2>
       <ul id="carrito" className="carrito__lista-platos">
-        {[...new Set(mostrarPlatosCarrito)].map((plato) => {
+        {mostrarPlatosCarrito.map((plato) => {
           return (
             <CarritoCard
               key={uuidv4()}
@@ -66,7 +70,7 @@ const Carrito = () => {
       <p className="carrito__total">
         Total: S/.
         <span id="total">
-          {mostrarPlatosCarrito.reduce((total, platosCarrito) => {
+          {platosCarrito.reduce((total, platosCarrito) => {
             return (total += platosCarrito.precio);
           }, 0)}
         </span>
@@ -81,7 +85,7 @@ const Carrito = () => {
       <button
         id="boton-confirmar"
         className="btn btn-success"
-        onClick={()=>confirmarPedido(urlWhatsapp)}
+        onClick={()=>confirmarPedido(urlWhatsapp,platosCarrito)}
       >
         Confirmar Pedido
       </button>
