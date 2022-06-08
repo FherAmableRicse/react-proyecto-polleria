@@ -4,7 +4,6 @@
 
 html {
   min-height: 100%;
-  --gold: #ffd700;
   --text-color: #ffffff;
 }
 
@@ -25,7 +24,7 @@ html {
   --header-link-primary-highlight-color: rgb(194, 173, 173);
   --primary-shadow-color: #2228;
   --button-color: rgb(0, 0, 0);
-  --primary-highlight-color: #7052ff;
+  --primary-highlight-color: #2b2d4d;
   --main-text-color: #fff;
   --background-color-go-up: rgba(255, 255, 255, 0.875);
 }
@@ -33,10 +32,6 @@ html {
 .header {
   text-align: center;
   color: var(--text-color);
-}
-
-.header__name {
-  color: var(--gold);
 }
 
 .header__slogan {

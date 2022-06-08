@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import usePolleria from "../../hooks/usePolleria";
 import PlatosCard from "./PlatosCard";
 
@@ -9,9 +9,7 @@ const BuscadorPlatos = () => {
   const handleInput = (e) => {
     setMostrarPlatos(buscarPlatos(platos, e.target.value));
   };
-  useEffect(() => {
 
-  }, [mostrarPlatos]);
   return (
     <section className="my-8 col-sm-8">
       <div>
