@@ -1,9 +1,9 @@
-.contact {
+.reclamos {
     padding: 3em 0 1em;
     margin-top: 5rem;
 }
 
-.contact__container {
+.reclamos__container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -13,47 +13,47 @@
     padding: var(--padding-container);
 }
 
-.contact__form {
+.reclamos__form {
     display: flex;
     flex-direction: column;
-    width: 60%; 
+    width: 60%;
 }
 
-.contact__form-inputs {
+.reclamos__form-inputs {
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
-
+    
 }
 
-.contact__form-item {
+.reclamos__form-item {
     padding: 1rem 2rem;
     text-align: start;
     border-radius: 2rem;
     border-style: none;
 }
 
-.contact__title {
+.reclamos__title {
     font-size: 1.8rem;
     color: var(--primary-highlight-color);
     text-shadow: 0 0 0.25rem var(--secondary-highlight);
     margin: 0;
 }
 
-.contact__form-textArea {
+.reclamos__form-textArea {
     width: 25rem;
     height: 6.25rem;
 
 }
 
-.contact__form-button-container {
+.reclamos__form-button-container {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
 
 }
 
-.contact__form-button {
+.reclamos__form-button {
     background-color: var(--primary-highlight-color);
     border-radius: 2rem;
     color: var(--text-color);
@@ -67,68 +67,68 @@
     border-style: none;
 }
 
-.contact__form-button:hover {
+.reclamos__form-button:hover {
     transform: scale(1.025);
 }
 
-.contact__form-image-container {
+.reclamos__form-image-container {
     display: none;
 }
 
 
 @media (min-width: 854px) {
-    .contact {
+    .reclamos {
         padding: 2em 0 1em;
         margin-top: 8rem;
     }
 
-    .contact__form {
+    .reclamos__form {
         display: flex;
         flex-direction: column;
         width: 50%;
     }
 
-    .contact__form-image-container {
+    .reclamos__form-image-container {
         display: flex;
         max-width: 456px;
         margin: 0;
     }
 
-    .contact__form-image {
+    .reclamos__form-image {
         width: 400px;
-        height: 398px;
+        height: 465px;
         transition: var(--all-transitions);
     }
 
-    .contact__container {
+    .reclamos__container {
         margin: auto;
     }
 
-    .contact__form {
+    .reclamos__form {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 3rem;
     }
 
-    .contact__form-item {
+    .reclamos__form-item {
         padding: 1rem 2rem;
         text-align: start;
     }
 
-    .contact__title {
+    .reclamos__title {
         font-size: 2rem;
     }
 
-    .contact__form-item--area {
+    .reclamos__form-item--area {
         resize: none;
         text-align: start;
     }
 
-    .contact__form-button {
+    .reclamos__form-button {
         padding: 1rem 4rem;
     }
 
-    .contact__form-inputs {
+    .reclamos__form-inputs {
         gap: 0.5rem;
     }
 }

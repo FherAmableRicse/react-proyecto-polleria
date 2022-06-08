@@ -1,25 +1,26 @@
-import imagen from "../assets/img/Pollo_Picom_Contactenos.png";
-import '../../src/styles/css/Contactenos.css'
+import imagen from "../assets/img/reclamos.png";
+import '../../src/styles/css/Reclamos.css'
 import Swal from "sweetalert2";
 import { useState } from "react";
 
-const Contactenos = () => {
+const Reclamos = () => {
 
-    const [formContactenos, setFormContactenos] = useState({
+    const [formReclamo, setFormReclamo] = useState({
         nombre: '',
         apellido: '',
+        dni: '',
         email: '',
         celular: ''
     });
 
     const [error, setError] = useState(false);
 
-    const { nombre, apellido, email, celular } = formContactenos;
+    const { nombre, apellido, dni, email, celular } = formReclamo;
 
 
     const handleChange = (e) => {
-        setFormContactenos({
-          ...formContactenos,
+        setFormReclamo({
+          ...formReclamo,
           [e.target.name]: e.target.value,
         });
     };
@@ -30,7 +31,7 @@ const Contactenos = () => {
         let message = '';
         let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-        if ([nombre.trim(), apellido.trim(), email.trim(), celular.trim()].includes("")) {
+        if ([nombre.trim(), apellido.trim(), dni.trim(), email.trim(), celular.trim()].includes("")) {
             setError(true);
         }
 
@@ -46,6 +47,16 @@ const Contactenos = () => {
 
             if (apellido.length < 4) {
                 message += `El apellido no es válido <br> `;
+                setError(true);
+                Swal.fire({
+                    icon: 'error',
+                    html: message,
+                    width: '45%'
+                });
+            }
+
+            if (dni.length > 8 || dni.length < 8) {
+                message += `El documento de identidad no es válido <br> `;
                 setError(true);
                 Swal.fire({
                     icon: 'error',
@@ -82,9 +93,10 @@ const Contactenos = () => {
                     timer: 2500,
                     width: '45%'
                 });
-            setFormContactenos({
+            setFormReclamo({
                 nombre: '',
                 apellido: '',
+                dni: '',
                 email: '',
                 celular: ''
             });
@@ -93,45 +105,50 @@ const Contactenos = () => {
     }
     
     return ( 
-        <section className="contact animate__animated animate__backInLeft" id="contact">
-            <div className="contact__container">
-                <h2 className="contact__title">CONTÁCTENOS</h2>
-                <form action="" id="formContactenos" className="contact__form"
+        <section className="reclamos animate__animated animate__backInLeft" id="reclamos">
+            <div className="reclamos__container">
+                <h2 className="reclamos__title">RECLAMOS</h2>
+                <form action="" id="formReclamos" className="reclamos__form"
                 onSubmit={enviar}
                 >
-                    <div className="contact__form-inputs">
-                        <input id="name" className="contact__form-item" type="text" placeholder="Nombre"
+                    <div className="reclamos__form-inputs">
+                        <input id="name" className="reclamos__form-item" type="text" placeholder="Nombre"
                         name="nombre"
                         value={nombre}
                         onChange={handleChange}
                         />
-                        <input id="apellido" className="contact__form-item" type="text" placeholder="Apellido"
+                        <input id="apellido" className="reclamos__form-item" type="text" placeholder="Apellido"
                         name="apellido"
                         value={apellido}
                         onChange={handleChange}
                         />
-                        <input id="email" className="contact__form-item" type="email" placeholder="Email"
+                        <input id="dni" className="reclamos__form-item" type="number" placeholder="DNI / C.E"
+                        name="dni"
+                        value={dni}
+                        onChange={handleChange}
+                        />
+                        <input id="email" className="reclamos__form-item" type="email" placeholder="Email"
                         name="email" 
                         value={email}
                         onChange={handleChange}
                         />
-                        <input id="celular" className="contact__form-item" type="number" placeholder="Celular"
+                        <input id="celular" className="reclamos__form-item" type="number" placeholder="Celular"
                         name="celular" 
                         value={celular}
                         onChange={handleChange}
                         />
-                        <textarea id="area" className="contact__form-item contact__form-item--area"
-                            placeholder="Escribe tu mensaje aquí"></textarea>
-                        <div className="contact__form-button-container">
-                            <button type="submit" className="contact__form-button">Enviar</button>
+                        <textarea id="area" className="reclamos__form-item reclamos__form-item--area"
+                            placeholder="Escribe tu reclamo aquí"></textarea>
+                        <div className="reclamos__form-button-container">
+                            <button type="submit" className="reclamos__form-button">Enviar</button>
                         </div>
                     </div>
-                    <figure className="contact__form-image-container">
-                        <img className="contact__form-image" src={imagen} alt="Logo Contactenos" />
+                    <figure className="reclamos__form-image-container">
+                        <img className="reclamos__form-image" src={imagen} alt="Logo Reclamo" />
                     </figure>
                 </form>
             </div>
         </section>
     );
 }
-export default Contactenos;
+export default Reclamos;

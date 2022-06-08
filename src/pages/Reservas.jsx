@@ -14,7 +14,7 @@ const Reservas = () => {
   const createReserva = (reserva) => {
     reserva._id = uuidv4();
     setReservas([...reservas, reserva]);
-    showToast('success', 'Creado');
+    showToast('success', 'Reserva Creada');
   };
 
   const readReserva = (id) => {
@@ -22,7 +22,6 @@ const Reservas = () => {
       return element._id === id;
     });
     setReserva(reserva);
-    showToast('info', 'Leído');
   };
   const updateReserva = (reserva) => {
     const updatedReservas = reservas.map((element) => {
@@ -30,7 +29,7 @@ const Reservas = () => {
     });
     setReservas(updatedReservas);
     setReserva({});
-    showToast('warning', 'Actualizado');
+    showToast('warning', 'Reserva Actualizada');
   };
 
   const deleteReserva = (id) => {

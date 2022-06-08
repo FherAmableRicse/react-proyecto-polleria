@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import usePolleria from "../../hooks/usePolleria";
 import PlatosCard from "./PlatosCard";
 import "../../styles/css/BuscadorPlatos.css";
