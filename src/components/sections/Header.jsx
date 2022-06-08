@@ -27,6 +27,7 @@ const Header = () => {
     headerNavMenuLinkList.current.classList.remove(
       "header-nav__menu-link-list--open"
     );
+    window.scrollTo({top:0});
   };
   return (
     <header className="header" ref={header}>

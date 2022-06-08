@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import '../styles/css/Inicio.css'
+import imagen6 from "../assets/img/item6.jpg"
 
 const Inicio = () => {
 
@@ -32,7 +33,8 @@ const Inicio = () => {
             <img src="https://i.postimg.cc/pTXKbCnW/item3.jpg" alt="Item 3" className="section__figure-image" />
             <img src="https://i.postimg.cc/T369NrQw/item4.jpg" alt="Item 4" className="section__figure-image" />
             <img src="https://i.postimg.cc/rzXrgGNC/item5-1.jpg" alt="Item 5" className="section__figure-image" />
-            <img src="https://i.postimg.cc/sfG4VnNx/item6.jpg" alt="Item 6" className="section__figure-image" />
+            <img src={imagen6} alt="Item 6" className="section__figure-image" />
+            {/* <img src="https://i.postimg.cc/JtmkxQmC/item6.jpg" alt="Item 6" className="section__figure-image" /> */}
             <img src="https://i.postimg.cc/vZV6kzGn/item7.jpg" alt="Item 7" className="section__figure-image" />
           </figure>
         </section>
