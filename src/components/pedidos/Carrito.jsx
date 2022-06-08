@@ -2,12 +2,13 @@ import usePolleria from "../../hooks/usePolleria";
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import CarritoCard from "./CarritoCard";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 import "../../styles/css/Carrito.css";
 
 const Carrito = () => {
   const { platosCarrito, setPlatosCarrito } = usePolleria();
-  const [mostrarPlatosCarrito, setmostrarPlatosCarrito] = useState(platosCarrito);
+  const [mostrarPlatosCarrito, setmostrarPlatosCarrito] =
+    useState(platosCarrito);
   const urlWhatsapp = `${process.env.REACT_APP_URL2}`;
   // const urlWhatsapp = `https://www.google.com/`;
 
@@ -23,33 +24,37 @@ const Carrito = () => {
     setPlatosCarrito([]);
   };
 
-  const confirmarPedido=(urlWhatsapp)=>{
-    const strPedido=mostrarPlatosCarrito.reduce((final,platoMostrar)=>{
-      return final+= contarRepeticiones(platoMostrar)+" "+platoMostrar.nombre+", ";
-    },"");
+  const confirmarPedido = (urlWhatsapp) => {
+    const strPedido = mostrarPlatosCarrito.reduce((final, platoMostrar) => {
+      return (final +=
+        contarRepeticiones(platoMostrar) + " " + platoMostrar.nombre + ", ");
+    }, "");
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
-        confirmButton: 'btn btn-dark mx-2',
-        cancelButton: 'btn btn-danger mx-2'
+        confirmButton: "btn btn-dark mx-2",
+        cancelButton: "btn btn-danger mx-2",
       },
-      buttonsStyling: false
+      buttonsStyling: false,
     });
     swalWithBootstrapButtons.fire({
-      title: '<strong>Por favor confirma tu pedido!</strong>',
-      icon: 'question',
+      title: "<strong>Por favor confirma tu pedido!</strong>",
+      icon: "question",
       reverseButtons: true,
       showCancelButton: true,
       focusConfirm: false,
-      cancelButtonText: '¡No, cancélalo!',
-      confirmButtonText:
-        `<a class="text-light text-decoration-none" href='${urlWhatsapp} ${strPedido}'
-      target="_blank" rel="noopener noreferrer">¡Sí, confírmalo!</a>`
-    })
+      cancelButtonText: "¡No, cancélalo!",
+      confirmButtonText: `<a class="text-light text-decoration-none" href='${urlWhatsapp} ${strPedido}'
+      target="_blank" rel="noopener noreferrer">¡Sí, confírmalo!</a>`,
+    });
   };
 
   useEffect(() => {
-    console.log(platosCarrito);
-    setmostrarPlatosCarrito([...new Set(platosCarrito)]);
+    setmostrarPlatosCarrito(
+      platosCarrito.filter(
+        (value, index, self) =>
+          index === self.findIndex((t) => t.id === value.id)
+      )
+    );
     localStorage.setItem("platosCarrito", JSON.stringify(platosCarrito));
   }, [platosCarrito]);
 
@@ -85,7 +90,7 @@ const Carrito = () => {
       <button
         id="boton-confirmar"
         className="btn btn-success"
-        onClick={()=>confirmarPedido(urlWhatsapp,platosCarrito)}
+        onClick={() => confirmarPedido(urlWhatsapp, platosCarrito)}
       >
         Confirmar Pedido
       </button>
