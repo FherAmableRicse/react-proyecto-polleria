@@ -22,7 +22,7 @@ export const PolleriaProvider = ({ children }) => {
     }
   };
 
-  const buscarPlatos=(platos, input)=>{
+  const buscarPlatos = (platos, input) => {
     const platosBuscados = platos.filter((element) => {
       if (input.toLowerCase() === "") {
         return platos;

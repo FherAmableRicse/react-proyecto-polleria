@@ -1,107 +1,63 @@
 .about {
+  margin-top: 10rem;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-  min-height: 100vh;
+
 }
 
 .about__message {
   display: flex;
   flex-direction: column;
-  align-items: stretch;
   justify-content: center;
-  gap: 1rem;
-  text-align: center;
+  align-items: center;
 }
 
 .about__message-title {
-  font-weight: 800;
-  color: var(--text-color);
-  text-shadow: 0.25rem 0.25rem 0.125rem var(--main-text-color), 0.25rem 0.25rem 0.25rem var(--main-text-color);
-  margin: 0;
-
-}
-
-.about__message-subtitle {
-
-  font-weight: 400;
-  margin: 0;
-  text-shadow: 0 0 0.125rem var(--primary-highlight-color), 0 0 0.25rem var(--primary-highlight-color);
-}
-
-.about__message-paragraph {
-  font-weight: 300;
-  margin: 0;
-  text-align: justify;
-  text-shadow: 0 0 0.125rem var(--primary-highlight-color), 0 0 0.25rem var(--primary-highlight-color);
+  color: #fff;
+  margin-bottom: 4rem;
 }
 
 .about__phrase {
-  font-weight: 300;
-  margin: 0;
-  text-align: center;
-  text-shadow:
-    0 0 0.125rem var(--primary-highlight-color),
-    0 0 0.25rem var(--primary-highlight-color),
-    0 0 0.5rem var(--primary-highlight-color);
+  max-width: 420px;
+  font-size: 1.5rem;
+  color: rgb(255, 255, 255);
+  text-align: center
 }
 
 
-.about-container {
+.about-image-container {
+  margin: 0;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  gap: 2rem;
-  max-width: 1024px;
-  margin: auto;
-  padding: var(--padding-container);
+  align-items: center;
+}
+
+.about-image {
+  max-width: 420px;
+  width: 100%;
 }
 
 @media (min-width: 854px) {
-  .about-container {
-    display: flex;
-    gap: 2rem;
-    margin: auto;
+
+  .about {
+    margin-top: 15rem;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-left: auto;
+    align-items: center;
+    gap: 0.625rem;
   }
 
-  .about__message {
-    text-align: start;
-    gap: 2rem;
-  }
-
-  .about__message-title {
-    font-weight: 800;
-    font-size: 1.875rem;
-    margin: 0;
-    text-align: center;
-  }
-
-  .about__message-subtitle {
-    font-weight: 400;
-    margin: 0;
-    text-align: center;
-  }
-
-  .about__message-paragraph {
-    font-weight: 300;
-    font-size: 1.25rem;
-    margin: 0;
-    text-align: justify;
+  .about-image {
+    max-width: 500px;
+    width: 100%;
   }
 
   .about__phrase {
-    font-weight: 700;
-    font-size: 1.563rem;
-    margin: 0;
-    text-align: center;
-  }
+    max-width: 700px;
 
-  .menu__container {
-    margin-top: 10rem;
-    padding-top: 2rem;
   }
 }

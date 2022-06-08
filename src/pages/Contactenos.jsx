@@ -19,12 +19,12 @@ const Contactenos = () => {
         let error = false;
         let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-        if (nombre.length < 4) {
+        if (!isNaN(nombre)) {
             message += `El nombre no es válido <br> `;
             error = true;
         }
 
-        if (apellido.length < 4) {
+        if (!isNaN(apellido)) {
             message += `El apellido no es válido <br> `;
             error = true;
         }
@@ -39,7 +39,6 @@ const Contactenos = () => {
             error = true;
         }
 
-        
         if (error) {
             if (window.screen.width > 854) {
                 Swal.fire({
@@ -83,25 +82,25 @@ const Contactenos = () => {
         }
     };
 
-    return ( 
+    return (
         <section className="contact" id="contacto">
             <div className="contact__container">
                 <h2 className="contact__title">CONTÁCTENOS</h2>
                 <form action="" id="formContact" className="contact__form"
-                onSubmit={enviar}
+                    onSubmit={enviar}
                 >
                     <div className="contact__form-inputs">
                         <input id="name" className="contact__form-item" type="text" placeholder="Nombre"
-                        onChange={(e) => setNombre(e.target.value)}
+                            onChange={(e) => setNombre(e.target.value)}
                         />
                         <input id="apellido" className="contact__form-item" type="text" placeholder="Apellido"
-                        onChange={(e) => setApellido(e.target.value)}
+                            onChange={(e) => setApellido(e.target.value)}
                         />
-                        <input id="email" className="contact__form-item" type="email" placeholder="Email" 
-                        onChange={(e) => setEmail(e.target.value)}
+                        <input id="email" className="contact__form-item" type="email" placeholder="Email"
+                            onChange={(e) => setEmail(e.target.value)}
                         />
-                        <input id="celular" className="contact__form-item" type="text" placeholder="Celular" 
-                        onChange={(e) => setCelular(e.target.value)}
+                        <input id="celular" className="contact__form-item" type="text" placeholder="Celular"
+                            onChange={(e) => setCelular(e.target.value)}
                         />
                         <textarea id="area" className="contact__form-item conctact__form-item--area"
                             placeholder="Escribenos..."></textarea>
@@ -115,7 +114,7 @@ const Contactenos = () => {
                 </form>
             </div>
         </section>
-     );
+    );
 }
 
 export default Contactenos;

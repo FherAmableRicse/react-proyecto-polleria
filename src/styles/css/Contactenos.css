@@ -16,14 +16,14 @@
 
 .contact__form {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
 }
 
 .contact__form-inputs {
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
-    
+
 }
 
 .contact__form-item {

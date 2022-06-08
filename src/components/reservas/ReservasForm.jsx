@@ -80,13 +80,16 @@ const ReservasForm = ({ reserva, submitReservasForm }) => {
   }, [reserva]);
 
   return (
-    <section className="mb-auto container-reservas-form d-flex flex-column gap-3 col-md-5 animate__animated animate__lightSpeedInLeft">
+
+
+    <section className="mb-auto container-reservas-form d-flex flex-column gap-3 col-md-5 animate__animated animate__fadeInLeft">
+
       <form
         className=" sectionForm text-dark rounded container"
         onSubmit={handleSubmit}
       >
         <h3 className="fw-bold text-center text-danger" id="formTitle">🍴 {reserva._id ? 'Editar' : 'Crear'} Reserva 🍴</h3>
-        <div className="text-dark form-floating mb-3" style={{ display: "none" }}>
+        <div className="text-dark form-floating mb-3 " style={{ display: "none" }}>
           <input
             type="number"
             className="form-control"
