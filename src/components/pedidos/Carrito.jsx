@@ -52,7 +52,7 @@ const Carrito = () => {
   return (
     <div className="carrito">
       <h2 className="carrito__title">Carrito</h2>
-      <ul id="carrito" className="carrito__lista-platos list-group">
+      <ul id="carrito" className="carrito__lista-platos">
         {[...new Set(mostrarPlatosCarrito)].map((plato) => {
           return (
             <CarritoCard

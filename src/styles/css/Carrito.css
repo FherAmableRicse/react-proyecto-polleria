@@ -5,11 +5,15 @@
     border: 0.25rem solid var(--primary-gradient-color);
     border-radius: var(--border-radius);
     padding: 0.25em;
+    height: 100%;
 }
 .carrito__lista-platos{
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .carrito__plato{
@@ -42,4 +46,11 @@
 .carrito__total{
     margin: 0;
     font-size: 1.5rem;
+}
+
+@media (min-width: 854px){
+    .carrito__plato{
+        padding: 0.25em;
+        gap: 1rem;
+    }
 }
