@@ -4,11 +4,12 @@ import Footer from '../components/sections/Footer'
 import Header from '../components/sections/Header'
 
 const PolleriaLayout = () => {
+
   return (
     <>
       <Header />
       <Outlet />
-      <Footer/>
+      <Footer />
     </>
   )
 }

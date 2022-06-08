@@ -38,10 +38,29 @@ const ReservasReserva = ({ reserva, readReserva, deleteReserva }) => {
       }
     });
   };
-
+  const handleConfirm = (urlWhatsapp, solicitante, dni, fecha, hora, motivo) => {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-dark mx-2',
+        cancelButton: 'btn btn-danger mx-2'
+      },
+      buttonsStyling: false
+    });
+    swalWithBootstrapButtons.fire({
+      title: '<strong>Por favor confirma tu reserva!</strong>',
+      icon: 'question',
+      reverseButtons: true,
+      showCancelButton: true,
+      focusConfirm: false,
+      cancelButtonText: '¡No, cancélalo!',
+      confirmButtonText:
+        `<a class="text-light text-decoration-none" href='${urlWhatsapp} Solicitante: ${solicitante}, DNI: ${dni}, Fecha: ${fecha}, Hora: ${hora}, Motivo: ${motivo}'
+      target="_blank" rel="noopener noreferrer">¡Sí, confírmalo!</a>`
+    })
+  }
   return (
     <li
-      className="mt-3 d-flex flex-column gap-2 list-group-item list-group-item-action animate__animated animate__bounceInUp"
+      className="mt-2 d-flex flex-column gap-2 rounded-3 list-group-item list-group-item-action animate__animated animate__bounceInUp"
       aria-current="true"
     >
       <div className="d-flex align-items-center justify-content-between">
@@ -56,15 +75,15 @@ const ReservasReserva = ({ reserva, readReserva, deleteReserva }) => {
       </h5>
       <div className="mt-3 d-flex align-items-start justify-content-start">
         <div className="d-flex gap-1">
-          <a
-            href={`${urlWhatsapp} Solicitante: ${solicitante}, DNI: ${dni}, Fecha: ${fecha}, Hora: ${hora}, Motivo: ${motivo}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="fs-6 btn btn-dark btn-sm"
-          >
-            Confirmar
-          </a>
-
+          <div className="contact-whatsapp">
+            <button
+              onClick={() => handleConfirm(urlWhatsapp, solicitante, dni, fecha, hora, motivo)}
+              className="fs-6 btn btn-sm text-white"
+            >
+              Confirmar
+            </button>
+            <img className="contact-whatsapp-img" src="https://i.postimg.cc/t407ckP2/wsppng.png" alt="whatsapp icon" />
+          </div>
           <button
             type="button"
             className="fs-6 btn btn-warning btn-sm"
@@ -79,6 +98,7 @@ const ReservasReserva = ({ reserva, readReserva, deleteReserva }) => {
           >
             Eliminar
           </button>
+
         </div>
       </div>
     </li >

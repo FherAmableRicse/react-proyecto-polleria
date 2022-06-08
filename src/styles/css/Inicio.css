@@ -1,5 +1,18 @@
 .main__container {
-  margin-top: 6.5rem;
+  margin-top: 0.5rem;
+}
+
+.main__carrousel {
+  margin-top: 6rem;
+}
+
+.btn-carousel {
+  color: #fbe7c5;
+  transition: var(--all-transitions);
+}
+
+.btn-carousel:hover {
+  color: #fff4e1;
 }
 
 .menu__container {
@@ -10,37 +23,6 @@
   margin-top: 10rem;
   gap: 0.5rem;
   margin-bottom: 2rem;
-}
-
-/* Se uso para el contenido en BOOTSTRAP */
-
-.menu__link {
-  text-decoration: none;
-}
-
-.menu__image {
-  max-width: 7.813rem;
-  height: 7.813rem;
-  border-radius: 50%;
-  border: solid #ffffff;
-}
-
-.menu__image:hover {
-  filter: brightness(150%);
-}
-
-.menu__text {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 0.625rem;
-  color: #000000;
-  text-shadow: 0 0 0.2rem #ffffff;
-  font-family: var(--font-main);
-}
-
-.menu__text:hover {
-  transform: scale(1.125);
 }
 
 .main__publicity-container {
@@ -57,10 +39,8 @@
   text-align: center;
   margin: 0 1rem;
   font-size: 0.743rem;
-
-  text-shadow: 0 0 0.125rem var(--primary-highlight-color), 0 0 0.25rem var(--primary-highlight-color);
-
-  font-family: var(--font-main);
+  text-shadow: 0 0 0.125rem #e20000, 0 0 0.25rem #e20000;
+  font-family: 'Ultra', serif;
 }
 
 .main__publicity-image {
@@ -97,19 +77,24 @@
   display: none;
 }
 
+.go-up {
+  display: none;
+}
+
 .boton {
   position: fixed;
   left: 96%;
   bottom: 40px;
   height: 40px;
   cursor: pointer;
-  background-color: #1c1203;
+  background-color: var(--background-color-go-up);
   border-radius: 100%;
 }
 
 @media (min-width: 854px) {
-  .main__container {
-    margin-top: 9.6rem;
+  .main__carrousel {
+    margin-top: 8.6rem;
+    margin-bottom: 1rem;
   }
 
   .main__publicity-text {
@@ -224,4 +209,7 @@
     transform: translateY(-0.2rem);
   }
 
+  .go-up {
+    display: flex;
+  }
 }

@@ -7,6 +7,7 @@ import Pedidos from './pages/Pedidos';
 import Contactenos from './pages/Contactenos';
 import Page404 from './pages/Page404';
 import { PolleriaProvider } from './context/PolleriaContext';
+import Reclamos from './pages/Reclamos';
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
           <Route path="reservas" element={<Reservas />} />
           <Route path="nosotros" element={<Nosotros />} />
           <Route path="contacto" element={<Contactenos />} />
+          <Route path="reclamos" element={<Reclamos />} />
           <Route index element={<Inicio />} />
         </Route>
         <Route path="*" element={<Page404 />} />
