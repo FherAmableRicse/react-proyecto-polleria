@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import usePolleria from "../../hooks/usePolleria";
 import PlatosCard from "./PlatosCard";
 
 const BuscadorPlatos = () => {
   const { platos, buscarPlatos } = usePolleria();
-  const [mostrarPlatos, setMostrarPlatos]=useState(platos);
+  const [mostrarPlatos, setMostrarPlatos] = useState(platos);
 
   const handleInput = (e) => {
     setMostrarPlatos(buscarPlatos(platos, e.target.value));
