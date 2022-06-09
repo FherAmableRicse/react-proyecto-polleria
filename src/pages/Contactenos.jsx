@@ -30,9 +30,11 @@ const Contactenos = () => {
         let message = '';
         let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
+        if(error){    
         if ([nombre.trim(), apellido.trim(), email.trim(), celular.trim()].includes("")) {
             setError(true);
-        }
+            }
+        
 
             if (nombre.length < 4) {
                 message += `El nombre no es válido <br> `;
@@ -74,7 +76,7 @@ const Contactenos = () => {
                 });
             }
             
-            else{
+            } else{
                 Swal.fire({
                     icon: 'success',
                     title: 'Tus datos han sido enviados',
