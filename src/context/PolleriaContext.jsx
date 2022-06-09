@@ -4,11 +4,17 @@ import axios from "axios";
 export const PolleriaContext = createContext();
 
 export const PolleriaProvider = ({ children }) => {
+  const [loading, setLoading]=useState(false);
   const [platos, setPlatos] = useState([]);
-  const [platosCarrito, setPlatosCarrito] = useState([]);
+  const [platosCarrito, setPlatosCarrito] = useState(
+    JSON.parse(localStorage.getItem("platosCarrito"))
+      ? JSON.parse(localStorage.getItem("platosCarrito"))
+      : []
+  );
 
   const getPlatos = async () => {
     try {
+      setLoading(true);
       const options = {
         method: "GET",
         url: `${process.env.REACT_APP_URL_PLATOS_JSON_URL}`,
@@ -19,7 +25,13 @@ export const PolleriaProvider = ({ children }) => {
     } catch (error) {
       console.log(error.response.data.message);
     } finally {
-      //mostrat platos
+      setLoading(false);
+    }
+  };
+
+  const crearLocalStorageCarrito = () => {
+    if (!JSON.parse(localStorage.getItem("platosCarrito"))) {
+      localStorage.setItem("platosCarrito", JSON.stringify(platosCarrito));
     }
   };
 
@@ -31,12 +43,14 @@ export const PolleriaProvider = ({ children }) => {
         return element.nombre.toLowerCase().includes(input.toLowerCase());
       }
     });
+
     return platosBuscados;
   };
 
   useEffect(() => {
     getPlatos();
-  }, []);
+    crearLocalStorageCarrito();
+  },[]);
 
   useEffect(() => {
     localStorage.setItem("listaPlatos", JSON.stringify(platos));
@@ -45,6 +59,7 @@ export const PolleriaProvider = ({ children }) => {
   return (
     <PolleriaContext.Provider
       value={{
+        loading,
         platos,
         platosCarrito,
         setPlatos,

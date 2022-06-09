@@ -54,7 +54,7 @@
 }
 
 .reclamos__form-button {
-    background-color: var(--primary-highlight-color);
+    background-color: #212529;
     border-radius: 0.25rem;
     color: var(--text-color);
     font-size: 1rem;

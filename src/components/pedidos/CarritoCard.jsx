@@ -16,7 +16,7 @@ const CarritoCard = ({ plato, repeticion }) => {
 
   return (
     <li className="carrito__plato">
-      <h5 className="carrito__plato-cantidad">{repeticion}</h5>
+      <h5 className="carrito__plato-cantidad">{repeticion+" und"}</h5>
       <h5 className="carrito__plato-title" id="platoTitle">
         {nombre}
       </h5>

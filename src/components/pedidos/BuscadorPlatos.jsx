@@ -4,7 +4,7 @@ import PlatosCard from "./PlatosCard";
 import "../../styles/css/BuscadorPlatos.css";
 
 const BuscadorPlatos = () => {
-  const { platos,buscarPlatos } = usePolleria();
+  const { platos, buscarPlatos } = usePolleria();
 
   const [mostrarPlatos, setMostrarPlatos] = useState(
     JSON.parse(localStorage.getItem("listaPlatos"))
@@ -16,9 +16,7 @@ const BuscadorPlatos = () => {
 
   return (
     <section className="buscador">
-      <div>
-        <h2>Carta</h2>
-      </div>
+      <h2 className="buscador_title">Carta</h2>
       <div className="buscador__container">
         <input
           type="text"

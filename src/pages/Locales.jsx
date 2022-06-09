@@ -9,7 +9,9 @@ const Locales = () => {
           <h3 className="locales-title">
             Nuestros Locales
           </h3>
-          <p className="locales-parrafo">
+          <div className="locales-parrafo">
+          En Pollería Pollo PICOM tenemos la misión de brindar al público un servicio de calidad, ofreciendo un buen producto y también dando una excelente atención en nuestros locales acorde con las expectativas de nuestros clientes; modernos y acogedores. Constituyéndonos así en una fuente de trabajo atractiva que ayude al sustento de las familia peruana.<br/><br/>
+
           Actualmente contamos con 2 locales a su disposición:<br/><br/>
             <ul>
               <li>
@@ -22,7 +24,7 @@ const Locales = () => {
               Telf: (064) 211445
               </li>
             </ul>
-          </p>
+          </div>
         </div>
         <figure className="locales-imagenes__container">
           <img className="imagenes" src={local_lima} alt="local lima" />

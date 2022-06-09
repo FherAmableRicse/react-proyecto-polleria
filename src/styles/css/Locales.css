@@ -24,7 +24,7 @@
 
 .imagenes{
     width: 300px;
-    border-radius: 0.3rem;
+    border-radius: 2rem;
     padding: 1rem;
 }
 
@@ -45,7 +45,7 @@
     }
 
     .imagenes{
-        width: 400px;
-        border-radius: 0.3rem;
+        width: 450px;
+        border-radius: 2rem;
     }
 }

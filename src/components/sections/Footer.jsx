@@ -7,25 +7,28 @@ const Footer = () => {
       <div className="footer-container">
         <nav className="footer-nav-redes">
           <h2 className="footer-nav-redes__header">Nuestras Redes</h2>
-          <a href="https://www.instagram.com/poll.opicom/" className="footer-nav-redes__link-one" target="_blank">
+          <a href="https://www.instagram.com/poll.opicom/" className="footer-nav-redes__link-one" target="_blank" rel="noopener noreferrer">
             <img
               src="https://i.postimg.cc/sfJtqS4W/instagram.png"
               alt="Instagram"
-              width="32px"
+              className="footer-nav-redes__link-image"
+
             />
           </a>
-          <a href="https://es-la.facebook.com/picompollo/" className="footer-nav-redes__link-two" target="_blank">
+          <a href="https://es-la.facebook.com/picompollo/" className="footer-nav-redes__link-two" target="_blank" rel="noopener noreferrer">
             <img
               src="https://i.postimg.cc/7YHyZXZX/facebook.png"
               alt="Facebook"
-              width="32px"
+              className="footer-nav-redes__link-image"
+
             />
           </a>
-          <a href="https://www.youtube.com/watch?v=EyRJM5et0Pg&ab_channel=elcholomena" className="footer-nav-redes__link-three" target="_blank">
+          <a href="https://www.youtube.com/watch?v=EyRJM5et0Pg&ab_channel=elcholomena" className="footer-nav-redes__link-three" target="_blank" rel="noopener noreferrer">
             <img
               src="https://i.postimg.cc/dtPYcvbM/youtube.png"
               alt="YouTube"
-              width="32px"
+              className="footer-nav-redes__link-image"
+
             />
           </a>
         </nav>
@@ -75,7 +78,7 @@ const Footer = () => {
                   </Link>
                 </li>
                 <li className="footer-nav-navegation__link-item">
-                  <Link to="reclamos" className="footer-nav-navegation__link" onClick={(e)=>{window.scrollTo({top:0})}}>
+                  <Link to="reclamos" className="footer-nav-navegation__link" onClick={(e) => { window.scrollTo({ top: 0 }) }}>
                     Reclamos
                   </Link>
                 </li>
@@ -104,7 +107,7 @@ const Footer = () => {
                 </li>
                 <li className="footer-nav-navegation__link-item-contactos">
                   <span className="footer-nav-navegation__link-header">
-                    Huancayo 
+                    Huancayo
                   </span>
                   <span className="footer-nav-navegation__link-text">
                     (064) 211445
