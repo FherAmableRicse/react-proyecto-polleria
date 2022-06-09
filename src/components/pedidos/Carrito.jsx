@@ -16,7 +16,6 @@ const Carrito = () => {
     const repeticiones = platosCarrito.reduce((total, platoCarrito) => {
       return platoCarrito.id === plato.id ? (total += 1) : total;
     }, 0);
-
     return repeticiones;
   };
 

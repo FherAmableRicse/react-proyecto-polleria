@@ -58,6 +58,10 @@
   animation: redes-animation 1s ease-in-out -0.5s infinite alternate;
 }
 
+.footer-nav-redes__link-image {
+  width: 2rem;
+}
+
 .footer-nav-navegation {
   font-size: 1.25rem;
 }

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/css/Inicio.css'
-import imagen6 from "../assets/img/item6.jpg"
 
 const Inicio = () => {
 
@@ -22,6 +21,7 @@ const Inicio = () => {
       behavior: 'smooth'
     });
   };
+
   window.addEventListener('scroll', toggleVisible);
 
   return (
@@ -74,14 +74,13 @@ const Inicio = () => {
       <div className="main__container" id="inicio" >
         <section className="section">
           <figure className="section__figure-image-container animate__animated animate__fadeIn">
-            <img src="https://i.postimg.cc/Dym5bv0v/item1.jpg" alt="Item 1" className="section__figure-image" />
-            <img src="https://i.postimg.cc/5yrBmzyx/item2.jpg" alt="Item 2" className="section__figure-image" />
-            <img src="https://i.postimg.cc/pTXKbCnW/item3.jpg" alt="Item 3" className="section__figure-image" />
-            <img src="https://i.postimg.cc/T369NrQw/item4.jpg" alt="Item 4" className="section__figure-image" />
-            <img src="https://i.postimg.cc/rzXrgGNC/item5-1.jpg" alt="Item 5" className="section__figure-image" />
-            <img src={imagen6} alt="Item 6" className="section__figure-image" />
-            {/* <img src="https://i.postimg.cc/JtmkxQmC/item6.jpg" alt="Item 6" className="section__figure-image" /> */}
-            <img src="https://i.postimg.cc/vZV6kzGn/item7.jpg" alt="Item 7" className="section__figure-image" />
+            <Link className="section__figure-image-link" to="pedidos" onClick={scrollToTop}><img src="https://i.postimg.cc/Dym5bv0v/item1.jpg" className="section__figure-image" alt="Item 1" /></Link>
+            <Link className="section__figure-image-link" to="pedidos" onClick={scrollToTop}><img src="https://i.postimg.cc/5yrBmzyx/item2.jpg" className="section__figure-image" alt="Item 2" /></Link>
+            <Link className="section__figure-image-link" to="pedidos" onClick={scrollToTop}><img src="https://i.postimg.cc/pTXKbCnW/item3.jpg" className="section__figure-image" alt="Item 3" /></Link>
+            <Link className="section__figure-image-link" to="pedidos" onClick={scrollToTop}><img src="https://i.postimg.cc/T369NrQw/item4.jpg" className="section__figure-image" alt="Item 4" /></Link>
+            <Link className="section__figure-image-link" to="pedidos" onClick={scrollToTop}><img src="https://i.postimg.cc/rzXrgGNC/item5-1.jpg" className="section__figure-image" alt="Item 5" /></Link>
+            <Link className="section__figure-image-link" to="pedidos" onClick={scrollToTop}><img src="https://i.postimg.cc/J0smvVHh/item6.jpg" className="section__figure-image" alt="Item 6" /></Link>
+            <Link className="section__figure-image-link" to="pedidos" onClick={scrollToTop}><img src="https://i.postimg.cc/vZV6kzGn/item7.jpg" className="section__figure-image" alt="Item 7" /></Link>
           </figure>
         </section>
         <div className="main__publicity-container">

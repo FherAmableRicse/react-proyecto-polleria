@@ -12,6 +12,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 0rem 2rem 0rem;
 }
 
 .about__message-title {
@@ -20,27 +21,24 @@
 }
 
 .about__phrase {
-  max-width: 420px;
   font-size: 1.5rem;
   color: rgb(255, 255, 255);
   text-align: center
 }
-
 
 .about-image-container {
   margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0rem 2rem 0rem;
 }
 
 .about-image {
-  max-width: 420px;
   width: 100%;
 }
 
 @media (min-width: 854px) {
-
   .about {
     margin-top: 15rem;
     flex-direction: row;
@@ -50,9 +48,8 @@
     gap: 0.625rem;
   }
 
-  .about-image {
+  .about-image-container {
     max-width: 500px;
-    width: 100%;
   }
 
   .about__phrase {
