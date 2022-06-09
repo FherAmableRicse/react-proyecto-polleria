@@ -18,6 +18,16 @@
   border-radius: 4px;
 }
 
+.contact-whatsapp {
+  background-color: rgb(0, 153, 0);
+  border-radius: 4px;
+  transition: var(--all-transitions);
+}
+
+.contact-whatsapp:hover {
+  background-color: rgb(31, 185, 31);
+}
+
 .contact-whatsapp-img {
   border-radius: 4px;
   height: 2.2rem;

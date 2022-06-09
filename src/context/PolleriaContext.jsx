@@ -43,6 +43,7 @@ export const PolleriaProvider = ({ children }) => {
         return element.nombre.toLowerCase().includes(input.toLowerCase());
       }
     });
+
     return platosBuscados;
   };
 
