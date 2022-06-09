@@ -1,4 +1,4 @@
-.carrito{
+.carrito {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -7,7 +7,8 @@
     padding: 0.25em;
     height: 100%;
 }
-.carrito__lista-platos{
+
+.carrito__lista-platos {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -16,7 +17,7 @@
     padding: 0;
 }
 
-.carrito__plato{
+.carrito__plato {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -26,30 +27,30 @@
     border-radius: var(--border-radius);
 }
 
-.carrito__plato-cantidad{
+.carrito__plato-cantidad {
     margin: 0;
 }
 
-.carrito__plato-title{
+.carrito__plato-title {
     margin: 0;
 }
 
-.carrito__plato-precio{
+.carrito__plato-precio {
     margin: 0;
 }
 
-.carrito__plato-boton{
+.carrito__plato-boton {
     background-color: var(--button-color);
     border-radius: var(--border-radius);
 }
 
-.carrito__total{
+.carrito__total {
     margin: 0;
     font-size: 1.5rem;
 }
 
-@media (min-width: 854px){
-    .carrito__plato{
+@media (min-width: 854px) {
+    .carrito__plato {
         padding: 0.25em;
         gap: 1rem;
     }
