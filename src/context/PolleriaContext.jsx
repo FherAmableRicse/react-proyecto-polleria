@@ -5,7 +5,11 @@ export const PolleriaContext = createContext();
 
 export const PolleriaProvider = ({ children }) => {
   const [platos, setPlatos] = useState([]);
-  const [platosCarrito, setPlatosCarrito] = useState([]);
+  const [platosCarrito, setPlatosCarrito] = useState(
+    JSON.parse(localStorage.getItem("platosCarrito"))
+      ? JSON.parse(localStorage.getItem("platosCarrito"))
+      : []
+  );
 
   const getPlatos = async () => {
     try {
@@ -23,6 +27,12 @@ export const PolleriaProvider = ({ children }) => {
     }
   };
 
+  const crearLocalStorageCarrito = () => {
+    if (!JSON.parse(localStorage.getItem("platosCarrito"))) {
+      localStorage.setItem("platosCarrito", JSON.stringify(platosCarrito));
+    }
+  };
+
   const buscarPlatos = (platos, input) => {
     const platosBuscados = platos.filter((element) => {
       if (input.toLowerCase() === "") {
@@ -36,6 +46,7 @@ export const PolleriaProvider = ({ children }) => {
 
   useEffect(() => {
     getPlatos();
+    crearLocalStorageCarrito();
   }, []);
 
   useEffect(() => {

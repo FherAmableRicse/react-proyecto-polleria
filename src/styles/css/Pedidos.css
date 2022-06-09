@@ -8,6 +8,7 @@
 
 @media (min-width: 854px){
     .pedidos-container{
+        margin-top: 8rem;
         flex-direction: row-reverse;
         justify-content: center;
     }
