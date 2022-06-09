@@ -1,12 +1,9 @@
 :root {
   --main-text-color: #000000;
   --main-shadow-color: #ffffff;
-  /* --secondary-theme-color: #ff0000; */
   --primary-gradient-color: #c4c5c7;
   --secondary-gradient-color: #ebebeb;
-  /* --primary-theme-color: #8b5d3e; */
   --primary-theme-color: #1c1203;
-  /* --secondary-theme-color: #b99d73; */
   --secondary-theme-color: #241805;
   --text-color: #fff;
   --primary-shadow-color: #867e7e88;
@@ -23,7 +20,6 @@
   --border-radius: 0.5rem;
   --all-transitions: all 0.25s;
   --button-color: #ffffff;
-  /* --button-color-active: #fff; */
   --button-text-color: #000;
   --font-main: 'Ultra', serif;
   --font-header-footer: 'Oswald', sans-serif;

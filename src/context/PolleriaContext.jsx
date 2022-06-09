@@ -4,7 +4,7 @@ import axios from "axios";
 export const PolleriaContext = createContext();
 
 export const PolleriaProvider = ({ children }) => {
-  const [loading, setLoading]=useState(false);
+  const [loading, setLoading] = useState(false);
   const [platos, setPlatos] = useState([]);
   const [platosCarrito, setPlatosCarrito] = useState(
     JSON.parse(localStorage.getItem("platosCarrito"))
@@ -18,7 +18,6 @@ export const PolleriaProvider = ({ children }) => {
       const options = {
         method: "GET",
         url: `${process.env.REACT_APP_URL_PLATOS_JSON_URL}`,
-        // url: `https://fheramablericse.github.io/api-test/db.json`,
       };
       const { data } = await axios(options);
       setPlatos(data);
@@ -50,7 +49,7 @@ export const PolleriaProvider = ({ children }) => {
   useEffect(() => {
     getPlatos();
     crearLocalStorageCarrito();
-  },[]);
+  }, []);
 
   useEffect(() => {
     localStorage.setItem("listaPlatos", JSON.stringify(platos));

@@ -135,14 +135,14 @@ const Header = () => {
               <p>📞Huancayo: (064) 211445</p>
             </li>
           </ul>
-          <Link to="" className="header-nav__register-link">
+          {/* <Link to="" className="header-nav__register-link">
             👩‍🍳 Ingresar/Registrarse
-          </Link>
+          </Link> */}
         </div>
         <div className="header-nav__container">
           <Link to="" className="header-nav__link-logo-container">
             <img
-              src="https://i.postimg.cc/Cx0GhqjK/logo.png"
+              src="https://i.postimg.cc/pLgmgMDd/logo.png"
               alt="Logo Pollería PICOM"
               className="header-nav__link-logo"
             />

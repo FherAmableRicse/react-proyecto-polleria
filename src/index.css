@@ -1,7 +1,6 @@
 @import url(../src/styles/css/Variables.css);
 
 .body {
-  /* background-image: linear-gradient(var(--primary-gradient-color), var(--secondary-gradient-color)); */
   color: var(--text-color);
   font-family: var(--font-header-footer);
 }
