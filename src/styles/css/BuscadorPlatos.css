@@ -8,11 +8,20 @@
     height: 100%;
 }
 
+.buscador_title{
+    margin: 0;
+}
+
 .buscador__container{
     display: flex;
     flex-direction: column;
+    gap: 0.5rem;
 }
 
-.buscador__input{}
+.buscador__input{
+    margin: 0;
+}
 
-.buscador__resultados{}
+.buscador__resultados{
+    transition: var(--all-transitions);
+}
