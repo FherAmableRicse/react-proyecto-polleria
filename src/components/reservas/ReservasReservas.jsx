@@ -1,5 +1,5 @@
 import ReservasReserva from "./ReservasReserva";
-const ReservasReservas = ({ reservas, readReserva, deleteReserva }) => {
+const ReservasReservas = ({ reservas, setReserva, readReserva, deleteReserva }) => {
   return (
     <section className="d-flex flex-column gap-3 col-md-6 animate__animated animate__fadeInRight">
       <ul className="list-group">

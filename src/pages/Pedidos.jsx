@@ -27,8 +27,8 @@ const Pedidos = () => {
   return (
     <section className="pedidos">
       <div className="pedidos-container">
-        <Carrito/>
-        <BuscadorPlatos/>
+        <Carrito />
+        <BuscadorPlatos />
       </div>
       <div className="go-up">
           <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-caret-up-square-fill boton" viewBox="0 0 16 16" onClick={scrollToTop} style={{ display: visible ? 'inline' : 'none' }}>

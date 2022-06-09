@@ -38,7 +38,7 @@ const ReservasReserva = ({ reserva, readReserva, deleteReserva }) => {
       }
     });
   };
-  const handleConfirm = (urlWhatsapp, solicitante, dni, fecha, hora, motivo) => {
+  const handleConfirm = (urlWhatsapp, solicitante, dni, fecha, hora, motivo, id) => {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: 'btn btn-dark mx-2',
@@ -56,7 +56,22 @@ const ReservasReserva = ({ reserva, readReserva, deleteReserva }) => {
       confirmButtonText:
         `<a class="text-light text-decoration-none" href='${urlWhatsapp} Solicitante: ${solicitante}, DNI: ${dni}, Fecha: ${fecha}, Hora: ${hora}, Motivo: ${motivo}'
       target="_blank" rel="noopener noreferrer">¡Sí, confírmalo!</a>`
-    })
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteReserva(id);
+        swalWithBootstrapButtons.fire(
+          '¡Confirmada!',
+          'La reserva ha sido confirmada',
+          'success'
+        );
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        swalWithBootstrapButtons.fire(
+          '¡Cancelado!',
+          'Tu reserva se mantiene :)',
+          'error'
+        );
+      }
+    });
   }
   return (
     <li
@@ -77,7 +92,7 @@ const ReservasReserva = ({ reserva, readReserva, deleteReserva }) => {
         <div className="d-flex gap-1">
           <div className="contact-whatsapp">
             <button
-              onClick={() => handleConfirm(urlWhatsapp, solicitante, dni, fecha, hora, motivo)}
+              onClick={() => handleConfirm(urlWhatsapp, solicitante, dni, fecha, hora, motivo, _id)}
               className="fs-6 btn btn-sm text-white"
             >
               Confirmar

@@ -10,8 +10,11 @@
 
 .footer {
   width: 100%;
+  height: 100%;
   font-family: "Oswald", sans-serif;
   margin-top: 8rem;
+  text-align: center;
+  color: var(--text-color);
 }
 
 .footer-container {
@@ -55,6 +58,10 @@
   animation: redes-animation 1s ease-in-out -0.5s infinite alternate;
 }
 
+.footer-nav-redes__link-image {
+  width: 2rem;
+}
+
 .footer-nav-navegation {
   font-size: 1.25rem;
 }
@@ -96,7 +103,7 @@
   cursor: pointer;
 }
 
-.footer-nav-navegation__link-item-contactos{
+.footer-nav-navegation__link-item-contactos {
   display: flex;
   text-align: left;
   gap: 1rem;
