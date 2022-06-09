@@ -45,14 +45,14 @@ const Footer = () => {
               />
               <ul className="footer-nav-navegation__link-list">
                 <li className="footer-nav-navegation__link-item">
-                  <a href="#" className="footer-nav-navegation__link">
-                    Informacion de la empresa
-                  </a>
+                  <Link to="nosotros" className="footer-nav-navegation__link" onClick={(e)=>{window.scrollTo({top:0})}}>
+                      Informacion de la empresa
+                  </Link>
                 </li>
                 <li className="footer-nav-navegation__link-item">
-                  <a href="#" className="footer-nav-navegation__link">
+                  <Link to="locales" className="footer-nav-navegation__link" onClick={(e)=>{window.scrollTo({top:0})}}>
                     Nuestros locales
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </li>
@@ -70,9 +70,9 @@ const Footer = () => {
               />
               <ul className="footer-nav-navegation__link-list">
                 <li className="footer-nav-navegation__link-item">
-                  <a href="#" className="footer-nav-navegation__link">
+                  <Link to="preguntas" className="footer-nav-navegation__link" onClick={(e)=>{window.scrollTo({top:0})}}>
                     Preguntas frecuentes
-                  </a>
+                  </Link>
                 </li>
                 <li className="footer-nav-navegation__link-item">
                   <Link to="reclamos" className="footer-nav-navegation__link" onClick={(e)=>{window.scrollTo({top:0})}}>
@@ -99,7 +99,7 @@ const Footer = () => {
                     Central en Lima
                   </span>
                   <span className="footer-nav-navegation__link-text">
-                    (01)500 2550
+                    (01) 500 2550
                   </span>
                 </li>
                 <li className="footer-nav-navegation__link-item-contactos">
