@@ -1,6 +1,6 @@
-# [Polleria Pollo PICOM](https://pokemons-crud-redux-react.netlify.app) | [<img src="https://i.postimg.cc/dtPYcvbM/youtube.png" alt="YouTube" height="20px"/>](https://www.youtube.com/watch?v=EyRJM5et0Pg&ab_channel=elcholomena) | [<img src="https://i.postimg.cc/sfJtqS4W/instagram.png" alt="Instagram" height="20px"/>](https://www.instagram.com/poll.opicom/) | [<img src="https://i.postimg.cc/7YHyZXZX/facebook.png" alt="Facebook" height="20px"/>](https://es-la.facebook.com/picompollo/)
+# [Polleria Pollo PICOM](https://pollo-picom.netlify.app) | [<img src="https://i.postimg.cc/dtPYcvbM/youtube.png" alt="YouTube" height="20px"/>](https://www.youtube.com/watch?v=EyRJM5et0Pg&ab_channel=elcholomena) | [<img src="https://i.postimg.cc/sfJtqS4W/instagram.png" alt="Instagram" height="20px"/>](https://www.instagram.com/poll.opicom/) | [<img src="https://i.postimg.cc/7YHyZXZX/facebook.png" alt="Facebook" height="20px"/>](https://es-la.facebook.com/picompollo/)
 
-[![Pokémons CRUD Redux React](https://i.postimg.cc/y60c6YVc/imagen-2022-06-08-231345134.png)](https://pokemons-crud-redux-react.netlify.app)
+[![Polleria Pollo PICOM](https://i.postimg.cc/y60c6YVc/imagen-2022-06-08-231345134.png)](https://pollo-picom.netlify.app)
 
 ## 📜 Resumen 📜
 Aplicación Web para mejorar el servicio al cliente proporcionándole las opciones de realizar sus pedidos y reservas de la pollería Pollo PICOM.
