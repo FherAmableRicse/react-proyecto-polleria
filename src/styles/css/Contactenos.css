@@ -1,0 +1,135 @@
+.contact {
+    padding: 3em 0 1em;
+    margin-top: 5rem;
+}
+
+.contact__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin: auto;
+    padding: var(--padding-container);
+}
+
+.contact__form {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
+
+.contact__form-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+
+}
+
+.contact__form-item {
+    padding: 1rem 0.75rem;
+    text-align: start;
+    border-radius: 0.25rem;
+    border-style: none;
+}
+
+.contact__title {
+    font-size: 1.75rem;
+    color: #aa0213;
+    margin: 0;
+    font-weight: 700;
+}
+
+.contact__form-textArea {
+    width: 25rem;
+    height: 6.25rem;
+
+}
+
+.contact__form-button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+}
+
+.contact__form-button {
+    background-color: #212529;
+    border-radius: 0.25rem;
+    color: var(--text-color);
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 0.375rem 0.75rem;
+    text-decoration: none;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: var(--all-transitions);
+    border-style: none;
+}
+
+.contact__form-button:hover {
+    transform: scale(1.025);
+}
+
+.contact__form-image-container {
+    display: none;
+}
+
+
+@media (min-width: 854px) {
+    .contact {
+        padding: 2em 0 1em;
+        margin-top: 8rem;
+    }
+
+    .contact__form {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+    }
+
+    .contact__form-image-container {
+        display: flex;
+        max-width: 456px;
+        margin: 0;
+    }
+
+    .contact__form-image {
+        width: 400px;
+        height: 378px;
+        transition: var(--all-transitions);
+        border-radius: 0.25rem;
+    }
+
+    .contact__container {
+        margin: auto;
+    }
+
+    .contact__form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+    }
+
+    .contact__form-item {
+        padding: 1rem 0.75rem;
+        text-align: start;
+    }
+
+    .contact__title {
+        font-size: 2rem;
+    }
+
+    .contact__form-item--area {
+        resize: none;
+        text-align: start;
+    }
+
+    .contact__form-button {
+        padding: 0.375rem 0.75rem;
+    }
+
+    .contact__form-inputs {
+        gap: 0.5rem;
+    }
+}

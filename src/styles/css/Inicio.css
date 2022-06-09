@@ -1,0 +1,225 @@
+.main__container {
+  margin-top: 0.5rem;
+}
+
+.section {
+  display: flex;
+}
+
+.main__carrousel {
+  margin-top: 6rem;
+}
+
+.btn-carousel {
+  color: #fbe7c5;
+  transition: var(--all-transitions);
+}
+
+.btn-carousel:hover {
+  color: #fff4e1;
+}
+
+.menu__container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10rem;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.main__publicity-container {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.main__publicity-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 0 1rem;
+  color: #fff;
+  font-size: 0.743rem;
+  text-shadow: 0 0 0.125rem #e20000, 0 0 0.25rem #e20000;
+  font-family: 'Ultra', serif;
+}
+
+.main__publicity-image {
+  display: none;
+}
+
+.section__figure-image-container {
+  display: grid;
+  gap: 0.5rem;
+  max-width: var(--max-width-container);
+  margin: auto;
+  padding: var(--padding-container);
+}
+
+.section__figure-image {
+  width: 100%;
+}
+
+.section__figure-image-link:nth-child(1) {
+  display: none;
+}
+
+.section__figure-image-link:nth-child(2) {
+  display: none;
+}
+
+.section__figure-image-link:nth-child(3) {
+  display: none;
+}
+
+.section__figure-image-link:nth-child(6) {
+  display: none;
+}
+
+.go-up {
+  display: none;
+}
+
+.boton {
+  position: fixed;
+  left: 96%;
+  bottom: 40px;
+  height: 40px;
+  cursor: pointer;
+  background-color: var(--background-color-go-up);
+  border-radius: 100%;
+}
+
+@media (min-width: 854px) {
+  .main__carrousel {
+    margin-top: 8.6rem;
+    margin-bottom: 1rem;
+  }
+
+  .main__publicity-text {
+    font-size: 0.938rem;
+  }
+
+  .main__publicity-image {
+    display: flex;
+    margin: 0 2rem;
+    width: 20rem;
+  }
+
+  .menu__container {
+    margin-top: 10rem;
+    padding-top: 2rem;
+  }
+
+  .section__figure-image-container {
+    width: 65%;
+  }
+
+  .section__figure-image-link:nth-child(n) {
+    display: flex;
+  }
+
+  .section__figure-image-link:nth-child(7) {
+    display: none;
+  }
+
+  .section__figure-image-container {
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+      "item1 item3 item5"
+      "item2 item3 item6"
+      "item4 item4 item6";
+  }
+
+  .section__figure-image-link:nth-child(1) {
+    grid-area: item1;
+    transition: all ease-in-out 0.25s
+  }
+
+  .section__figure-image-link:nth-child(1):hover {
+    cursor: pointer;
+    box-shadow:
+      0 0 0.25rem 0 var(--primary-highlight-color),
+      0 0 0.5rem 0 var(--primary-highlight-color);
+    transform: translateY(-0.2rem);
+  }
+
+  .section__figure-image-link:nth-child(2) {
+    grid-area: item2;
+    transition: all ease-in-out 0.25s;
+  }
+
+  .section__figure-image-link:nth-child(2):hover {
+    cursor: pointer;
+    box-shadow:
+      0 0 0.25rem 0 var(--primary-highlight-color),
+      0 0 0.5rem 0 var(--primary-highlight-color);
+    transform: translateY(-0.2rem);
+  }
+
+  .section__figure-image-link:nth-child(3) {
+    grid-area: item3;
+    transition: all ease-in-out 0.25s;
+    height: 100%;
+
+  }
+
+  .section__figure-image-link:nth-child(3):hover {
+    cursor: pointer;
+    box-shadow:
+      0 0 0.25rem 0 var(--primary-highlight-color),
+      0 0 0.5rem 0 var(--primary-highlight-color);
+    transform: translateY(-0.2rem);
+  }
+
+  .section__figure-image-link:nth-child(4) {
+    grid-area: item4;
+    transition: all ease-in-out 0.25s;
+  }
+
+  .section__figure-image-link:nth-child(4):hover {
+    cursor: pointer;
+    box-shadow:
+      0 0 0.25rem 0 var(--primary-highlight-color),
+      0 0 0.5rem 0 var(--primary-highlight-color);
+    transform: translateY(-0.2rem);
+  }
+
+  .section__figure-image-link:nth-child(5) {
+    grid-area: item5;
+    width: 100%;
+    transition: all ease-in-out 0.25s;
+  }
+
+  .section__figure-image-link:nth-child(5):hover {
+    cursor: pointer;
+    box-shadow:
+      0 0 0.25rem 0 var(--primary-highlight-color),
+      0 0 0.5rem 0 var(--primary-highlight-color);
+    transform: translateY(-0.2rem);
+  }
+
+
+  .section__figure-image-link:nth-child(6) {
+    grid-area: item6;
+    height: 100%;
+    transition: all ease-in-out 0.25s;
+  }
+
+  .section__figure-image-link:nth-child(6):hover {
+    cursor: pointer;
+    box-shadow:
+      0 0 0.25rem 0 var(--primary-highlight-color),
+      0 0 0.5rem 0 var(--primary-highlight-color);
+    transform: translateY(-0.2rem);
+  }
+
+  .go-up {
+    display: flex;
+  }
+}

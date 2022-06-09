@@ -1,0 +1,52 @@
+.locales-article {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 7rem;
+    gap: 1.5rem;
+    padding: 0 2rem;
+}
+
+.locales-title {
+    font-size: 2rem;
+    color: #aa0213;
+}
+
+.locales-parrafo {
+    font-size: 1.5rem;
+}
+
+.locales-imagenes__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.imagenes {
+    width: 300px;
+    border-radius: 2rem;
+    padding: 1rem;
+}
+
+@media (min-width: 854px) {
+    .locales-article {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-top: 12rem;
+        gap: 5rem;
+        padding: 0 5rem;
+    }
+
+    .locales-imagenes__container {
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+    }
+
+    .imagenes {
+        width: 450px;
+        border-radius: 2rem;
+    }
+}

@@ -1,0 +1,27 @@
+.buscador {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    border: 0.25rem solid var(--primary-gradient-color);
+    border-radius: var(--border-radius);
+    padding: 0.25em;
+    height: 100%;
+}
+
+.buscador_title {
+    margin: 0;
+}
+
+.buscador__container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.buscador__input {
+    margin: 0;
+}
+
+.buscador__resultados {
+    transition: var(--all-transitions);
+}
