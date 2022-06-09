@@ -50,7 +50,7 @@ export const PolleriaProvider = ({ children }) => {
   useEffect(() => {
     getPlatos();
     crearLocalStorageCarrito();
-  }, []);
+  },[]);
 
   useEffect(() => {
     localStorage.setItem("listaPlatos", JSON.stringify(platos));

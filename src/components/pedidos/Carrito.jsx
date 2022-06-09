@@ -26,7 +26,13 @@ const Carrito = () => {
   const confirmarPedido = (urlWhatsapp) => {
     const strPedido = mostrarPlatosCarrito.reduce((final, platoMostrar) => {
       return (final +=
-        contarRepeticiones(platoMostrar) + " " + platoMostrar.nombre + ", ");
+        "(" +
+        contarRepeticiones(platoMostrar) +
+        ")" +
+        "und" +
+        " " +
+        platoMostrar.nombre +
+        ", ");
     }, "");
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
@@ -86,13 +92,15 @@ const Carrito = () => {
       >
         Vaciar Carrito
       </button>
-      <button
-        id="boton-confirmar"
-        className="btn btn-success"
-        onClick={() => confirmarPedido(urlWhatsapp, platosCarrito)}
-      >
-        Confirmar Pedido
-      </button>
+      {platosCarrito.length ? (
+        <button
+          id="boton-confirmar"
+          className="btn btn-success"
+          onClick={() => confirmarPedido(urlWhatsapp, platosCarrito)}
+        >
+          Confirmar Pedido
+        </button>
+      ) : null}
     </div>
   );
 };
