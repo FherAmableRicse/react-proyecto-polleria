@@ -10,8 +10,11 @@
 
 .footer {
   width: 100%;
+  height: 100%;
   font-family: "Oswald", sans-serif;
   margin-top: 8rem;
+  text-align: center;
+  color: var(--text-color);
 }
 
 .footer-container {
@@ -96,7 +99,7 @@
   cursor: pointer;
 }
 
-.footer-nav-navegation__link-item-contactos{
+.footer-nav-navegation__link-item-contactos {
   display: flex;
   text-align: left;
   gap: 1rem;

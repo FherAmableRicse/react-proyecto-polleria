@@ -6,8 +6,8 @@ const Pedidos = () => {
   return (
     <section className="pedidos">
       <div className="pedidos-container">
-        <Carrito/>
-        <BuscadorPlatos/>
+        <Carrito />
+        <BuscadorPlatos />
       </div>
     </section>
   );
