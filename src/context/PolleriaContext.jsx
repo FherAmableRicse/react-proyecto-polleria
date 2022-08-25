@@ -17,7 +17,7 @@ export const PolleriaProvider = ({ children }) => {
       setLoading(true);
       const options = {
         method: "GET",
-        url: `${process.env.REACT_APP_URL_PLATOS_JSON_URL}`,
+        url: `${process.env.REACT_APP_URL_PLATOS_JSON_URL}/platos`,
       };
       const { data } = await axios(options);
       setPlatos(data);
@@ -55,6 +55,26 @@ export const PolleriaProvider = ({ children }) => {
     localStorage.setItem("listaPlatos", JSON.stringify(platos));
   }, [platos]);
 
+  const crearPedido=async (pedido)=>{
+    try{
+      fetch(`${process.env.REACT_APP_URL_PLATOS_JSON_URL}/pedidos`,{
+        method:"POST",
+        headers:{
+          'Accept': 'application/json',
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+          "id":pedido.id,
+          "fecha_registro":pedido.fecha_registro,
+          "cliente_id":pedido.cliente_id,
+          "lista_platos":pedido.lista_platos
+        }),
+      });
+    }catch(error){
+      console.log(error.response.data.message);
+    }
+  };
+
   return (
     <PolleriaContext.Provider
       value={{
@@ -65,6 +85,7 @@ export const PolleriaProvider = ({ children }) => {
         getPlatos,
         buscarPlatos,
         setPlatosCarrito,
+        crearPedido
       }}
     >
       {children}

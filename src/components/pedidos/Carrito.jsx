@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import "../../styles/css/Carrito.css";
 
 const Carrito = () => {
-  const { platosCarrito, setPlatosCarrito } = usePolleria();
+  const { platosCarrito, setPlatosCarrito, crearPedido } = usePolleria();
   const [mostrarPlatosCarrito, setmostrarPlatosCarrito] =
     useState(platosCarrito);
   const urlWhatsapp = `${process.env.REACT_APP_URL2}`;
@@ -50,6 +50,17 @@ const Carrito = () => {
       cancelButtonText: "¡No, cancélalo!",
       confirmButtonText: `<a class="text-light text-decoration-none" href='${urlWhatsapp} ${strPedido}'
       target="_blank" rel="noopener noreferrer">¡Sí, confírmalo!</a>`,
+    }).then((result)=>{
+      if(result.isConfirmed){
+        const objPedido={
+          "id":1,
+          "fecha_registro":"2022-08-20",
+          "cliente_id":1,
+          "lista_platos":platosCarrito
+        };
+        crearPedido(objPedido);
+        console.log('pedido confirmado')
+      }
     });
   };
 
