@@ -135,9 +135,9 @@ const Header = () => {
               <p>📞Huancayo: (064) 211445</p>
             </li>
           </ul>
-          {/* <Link to="" className="header-nav__register-link">
-            👩‍🍳 Ingresar/Registrarse
-          </Link> */}
+          <Link to="login" className="header-nav__register-link1">
+            Iniciar Sesión
+          </Link>
         </div>
         <div className="header-nav__container">
           <Link to="" className="header-nav__link-logo-container">
@@ -148,6 +148,9 @@ const Header = () => {
             />
           </Link>
           <div className="header-nav__theme-menu-container">
+            <Link to="login" className="header-nav__register-link2">
+              Iniciar Sesión
+            </Link>
             <button
               className="header-nav__theme-icon-container"
               ref={headerNavThemeIconContainer}
@@ -185,7 +188,7 @@ const Header = () => {
               </li>
               <li className="header-nav__menu-link-item">
                 <Link
-                  to="pedidos"
+                  to="login"
                   className="header-nav__menu-link"
                   ref={headerNavMenuLinkPedido}
                   onClick={closeMenu}
