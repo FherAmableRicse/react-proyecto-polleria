@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
+//import { v4 as uuidv4 } from "uuid";
+import axios from "axios";
 import { showToast } from "../utils/sweetalert";
 import ReservasForm from "../components/reservas/ReservasForm";
 import ReservasReservas from "../components/reservas/ReservasReservas";
-
 const Reservas = () => {
   let localStorageReservas =
     JSON.parse(localStorage.getItem("reservasData")) ?? [];
@@ -11,38 +11,96 @@ const Reservas = () => {
   const [reserva, setReserva] = useState({});
   const [reservas, setReservas] = useState(localStorageReservas);
 
-  const createReserva = (reserva) => {
-    reserva._id = uuidv4();
-    setReservas([...reservas, reserva]);
-    showToast("success", "Reserva Creada");
+  const createReserva = async(reserva) => {
+    
+    try {
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        data: reserva,
+        url: `http://localhost:5000/reserva`
+      };
+      const { data } = await axios(options);
+      console.log(data)
+      setReservas([...reservas, data.content]);
+      showToast("success", "Reserva Creada");
+    } catch (error) {
+      console.log(error)
+    } 
+  
   };
+  
+  const readReservas =  async() =>{
+    try {
+      const options = {
+        method: 'GET',
+        url: 'http://localhost:5000/reserva'
+      };
+      const { data } = await axios(options);
+     setReservas(data.content);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
-  const readReserva = (id) => {
-    const reserva = reservas.find((element) => {
-      return element._id === id;
-    });
-    setReserva(reserva);
-  };
-  const updateReserva = (reserva) => {
-    const updatedReservas = reservas.map((element) => {
-      return reserva._id === element._id ? reserva : element;
-    });
-    setReservas(updatedReservas);
-    setReserva({});
-    showToast("warning", "Reserva Actualizada");
-  };
+  const readReserva = async(_id) => {
+    try {
+     
+      const options = {
+        method: 'GET',
+        url: `http://localhost:5000/reserva/${_id}`
+      };
+      const { data } = await axios(options);
+      setReserva(data.content);
+    } catch (error) {
+       console.log(error)
+    }
 
-  const deleteReserva = (id) => {
-    setReservas(
-      reservas.filter((element) => {
-        return element._id !== id;
+  };
+  const updateReserva = async(reserva) => {
+
+    try {
+      const options = {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        data: reserva,
+        url: `http://localhost:5000/reserva/${reserva._id}`
+      };
+      const { data } = await axios(options);
+      const dataActualizada= reservas.map((reserva) => {
+        return reserva._id === data.content._id ? data.content : reserva;
       })
-    );
-    setReserva({});
+      setReservas(dataActualizada);
+      setReserva({});
+      showToast("warning", "Reserva Actualizada");
+    } catch (error) {
+      console.log(error)
+    } 
+  };
+
+  const deleteReserva = async(_id) => {
+    try {
+     
+      const options = {
+        method: 'DELETE',
+        url: `http://localhost:5000/reserva/${_id}`
+      };
+      const { data } = await axios(options);
+      console.log(data)
+      setReservas(reservas.filter(reserva => reserva._id !== _id));
+      setReserva({});
+    } catch (error) {
+     console.log(error)
+    } 
+
   };
 
   const submitReservasForm = (reserva) => {
-    if (reserva._id === "") {
+    if (reserva._id === undefined) {
       createReserva(reserva);
     } else {
       updateReserva(reserva);
@@ -52,6 +110,10 @@ const Reservas = () => {
   useEffect(() => {
     localStorage.setItem("reservasData", JSON.stringify(reservas));
   }, [reservas]);
+
+  useEffect(() => {
+    readReservas();
+  }, []);
 
   return (
     <main className="main">

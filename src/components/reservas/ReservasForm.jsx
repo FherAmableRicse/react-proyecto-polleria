@@ -8,7 +8,6 @@ const ReservasForm = ({ reserva, submitReservasForm }) => {
   const todayDate = new Date().toISOString().slice(0, 10);
 
   const [formReserva, setFormReserva] = useState({
-    _id: "",
     solicitante: "",
     dni: "",
     fecha: "",
@@ -57,7 +56,6 @@ const ReservasForm = ({ reserva, submitReservasForm }) => {
     } else {
       submitReservasForm(formReserva);
       setFormReserva({
-        _id: "",
         solicitante: "",
         dni: "",
         fecha: "",
@@ -91,23 +89,6 @@ const ReservasForm = ({ reserva, submitReservasForm }) => {
         <h3 className="fw-bold text-center text-danger" id="formTitle">
           🍴 {reserva._id ? "Editar" : "Crear"} Reserva 🍴
         </h3>
-        <div
-          className="text-dark form-floating mb-3 "
-          style={{ display: "none" }}
-        >
-          <input
-            type="number"
-            className="form-control"
-            name="id"
-            placeholder="Id"
-            id="formId"
-            readOnly
-          />
-          <label htmlFor="id" className="text-dark">
-            Id
-          </label>
-        </div>
-
         <div className="form-floating mb-3">
           <input
             type="text"
