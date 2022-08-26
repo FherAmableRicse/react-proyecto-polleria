@@ -30,7 +30,7 @@ function App() {
         </Route>
         <Route path="login" element={<Login />} />
         <Route path="recover-password" element={<RecoverPassword />}/>
-        <Route path="recover-password/:id" element={<NewPassword />}/>
+        <Route path="new-password/:id" element={<NewPassword />}/>
         <Route path="*" element={<Page404 />} />
       </Routes>
     </PolleriaProvider>

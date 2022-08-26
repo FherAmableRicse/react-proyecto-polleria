@@ -5,9 +5,11 @@ import Swal from 'sweetalert2';
 
 const NewPassword = () => {
     const params = useParams();
-    const { id } = params;
-    console.log(id)
-    const urlNewPassword = `http://localhost:5000/usuario/new-password/${id}`;
+   // const { id } = params;
+   const id="123"
+    //console.log(params)
+    //console.log(id)
+    
     //const [validToken, setValidToken] = useState(false);
     const [passwordChanged, setPasswordChanged] = useState(false);
     const [passwords, setPasswords] = useState({
@@ -50,9 +52,9 @@ const NewPassword = () => {
         })
     } else {
         try {
+        const urlNewPassword = `http://localhost:5000/usuario/new-password/${id}`;
+        await axios.post(urlNewPassword,{password:password})
         
-        await axios.post(urlNewPassword,{password:password});
-            
         setPasswords({
             password: '',
             repeatedPassword: ''
@@ -64,7 +66,18 @@ const NewPassword = () => {
         // });
         setPasswordChanged(true);
         } catch (error) {
-            //console.log(error.response.data.message)
+            Swal.fire({
+                position: 'top',
+                icon: 'error',
+                title: error.response.data.message,
+                showConfirmButton: false,
+                timer: 1500
+            })
+            setPasswords({
+                password: '',
+                repeatedPassword: ''
+            });
+
         // setAlert({
         //     message: error.response.data.message,
         //     error: true
