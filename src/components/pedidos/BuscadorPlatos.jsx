@@ -16,7 +16,7 @@ const BuscadorPlatos = () => {
 
   return (
     <section className="buscador">
-      <h2 className="buscador_title">Carta</h2>
+      <h2 className="buscador_title">Nuestra Carta</h2>
       <div className="buscador__container">
         <input
           type="text"

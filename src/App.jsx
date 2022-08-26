@@ -10,6 +10,7 @@ import { PolleriaProvider } from "./context/PolleriaContext";
 import Reclamos from "./pages/Reclamos";
 import Preguntas from "./pages/Preguntas";
 import Locales from "./pages/Locales";
+import Login from "./pages/Login";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="reclamos" element={<Reclamos />} />
           <Route index element={<Inicio />} />
         </Route>
+        <Route path="login" element={<Login />} />
         <Route path="*" element={<Page404 />} />
       </Routes>
     </PolleriaProvider>
