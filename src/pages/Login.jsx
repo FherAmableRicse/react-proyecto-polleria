@@ -1,7 +1,7 @@
 import "../styles/css/Login.css";
 import { useState } from "react";
 import axios from 'axios';
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 import Swal from 'sweetalert2';
 
 const urlUsuario = "http://localhost:5000/usuario";
@@ -171,7 +171,7 @@ const Login = () => {
                 <input id="tab-1" type="radio" name="tab" className="sign-in" defaultChecked/><label htmlFor="tab-1" className="tab">Inicia Sesión</label>
                 <input id="tab-2" type="radio" name="tab" className="sign-up"/><label htmlFor="tab-2" className="tab">Registrate</label>
                 <div className="login-space">
-                    <div className="login">
+                <div className="login">
                         <div className="group">
                             <label className="label">Usuario</label>
                             <input 
@@ -200,7 +200,7 @@ const Login = () => {
                         </div>
                         <div className="hr"></div>
                         <div className="foot">
-                            <a className="lostPassword" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">¿Olvidaste tu contraseña?</a>
+                            <Link to="/recover-password">¿Olvidaste tu contraseña?</Link>
     
                         </div>
                     </div>
@@ -262,7 +262,7 @@ const Login = () => {
         </div>
         </div>
         </div>
-        <div className="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        {/* <div className="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog">
                 <div className="modal-content">
                 <div className="modal-header bg-danger">
@@ -282,7 +282,7 @@ const Login = () => {
                 </div>
                 </div>
             </div>
-        </div>
+        </div> */}
       </>
     );
   };
