@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import "../../styles/css/Carrito.css";
 
 const Carrito = () => {
-  const { platosCarrito, setPlatosCarrito, crearPedido } = usePolleria();
+  const { platosCarrito, setPlatosCarrito, crearPedido,usuarioId } = usePolleria();
   const [mostrarPlatosCarrito, setmostrarPlatosCarrito] =
     useState(platosCarrito);
   const urlWhatsapp = `${process.env.REACT_APP_URL2}`;
@@ -52,14 +52,23 @@ const Carrito = () => {
       target="_blank" rel="noopener noreferrer">¡Sí, confírmalo!</a>`,
     }).then((result)=>{
       if(result.isConfirmed){
-        const objPedido={
-          "id":1,
-          "fecha_registro":"2022-08-20",
-          "cliente_id":1,
-          "lista_platos":platosCarrito
-        };
-        crearPedido(objPedido);
-        console.log('pedido confirmado')
+        if(localStorage.getItem('token')){
+          var today=new Date();
+          var monthStr="";
+          if((today.getMonth() + 1)<10){
+            monthStr="0"+(today.getMonth() + 1);
+          }else{
+            monthStr=today.getMonth() + 1;
+          }
+          const objPedido={
+            "fecha_registro":today.getFullYear() + '-' + monthStr + '-' + today.getDate(),
+            "cliente_id":usuarioId,
+            "lista_platos":platosCarrito
+          };
+          console.log(objPedido);
+          crearPedido(objPedido);
+          console.log('pedido confirmado')
+        }
       }
     });
   };
