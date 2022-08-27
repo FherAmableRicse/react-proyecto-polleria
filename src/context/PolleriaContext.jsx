@@ -12,6 +12,7 @@ export const PolleriaProvider = ({ children }) => {
       : []
   );
   const [usuario, setUsuario]=useState({});
+  const [isAuthenticated, setIsAuthenticated]=useState(false);
 
   const getPlatos = async () => {
     try {
@@ -88,7 +89,9 @@ export const PolleriaProvider = ({ children }) => {
         buscarPlatos,
         setPlatosCarrito,
         setUsuario,
-        crearPedido
+        crearPedido,
+        isAuthenticated,
+        setIsAuthenticated
       }}
     >
       {children}

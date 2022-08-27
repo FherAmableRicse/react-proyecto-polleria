@@ -4,7 +4,7 @@ const ReservasReserva = ({ reserva, readReserva, deleteReserva }) => {
   const { _id, solicitante, dni, fecha, hora, motivo } = reserva;
   const urlWhatsapp = `${process.env.REACT_APP_URL}`;
 
-  const handleDelete = (id) => {
+  const handleDelete = (_id) => {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: "btn btn-dark mx-2",
@@ -25,7 +25,7 @@ const ReservasReserva = ({ reserva, readReserva, deleteReserva }) => {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          deleteReserva(id);
+          deleteReserva(_id);
           swalWithBootstrapButtons.fire(
             "¡Eliminado!",
             "La reserva ha sido eliminada.",
