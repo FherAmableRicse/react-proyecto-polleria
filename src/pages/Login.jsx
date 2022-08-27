@@ -11,7 +11,7 @@ const urlPedidos = "http://localhost:5000/pedidos";
 
 const Login = () => {
     const navigate = useNavigate();
-    const {setIsAuthenticated } = useContext(PolleriaContext);
+    const {setIsAuthenticated, setUsuarioId } = useContext(PolleriaContext);
     const [formLogIn, setFormLogIn] = useState({
         usuario: "",
         password: ""
@@ -78,6 +78,7 @@ const Login = () => {
                     console.log(response);
                     localStorage.setItem('token',response.data.token);
                     setIsAuthenticated(true);
+                    setUsuarioId(response.data.content.id);
                     navigate('/pedidos');
                 })
         }catch(error){
