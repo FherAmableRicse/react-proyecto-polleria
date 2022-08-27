@@ -11,7 +11,7 @@ export const PolleriaProvider = ({ children }) => {
       ? JSON.parse(localStorage.getItem("platosCarrito"))
       : []
   );
-  const [usuario, setUsuario]=useState({});
+  const [usuarioId, setUsuarioId]=useState("");
 
   const getPlatos = async () => {
     try {
@@ -65,7 +65,6 @@ export const PolleriaProvider = ({ children }) => {
           "Content-Type":"application/json"
         },
         body:JSON.stringify({
-          "id":pedido.id,
           "fecha_registro":pedido.fecha_registro,
           "cliente_id":pedido.cliente_id,
           "lista_platos":pedido.lista_platos
@@ -82,12 +81,12 @@ export const PolleriaProvider = ({ children }) => {
         loading,
         platos,
         platosCarrito,
-        usuario,
+        usuarioId,
         setPlatos,
         getPlatos,
         buscarPlatos,
         setPlatosCarrito,
-        setUsuario,
+        setUsuarioId,
         crearPedido
       }}
     >
