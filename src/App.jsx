@@ -15,6 +15,7 @@ import RecoverPassword from "./pages/RecoverPassword";
 import NewPassword from "./pages/NewPassword";
 
 function App() {
+  
   return (
     <PolleriaProvider>
       <Routes>
