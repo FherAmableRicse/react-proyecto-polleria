@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, } from "react-router-dom";
 import PolleriaLayout from "./layouts/PolleriaLayout";
 import Inicio from "./pages/Inicio";
 import Nosotros from "./pages/Nosotros";
