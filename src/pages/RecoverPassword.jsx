@@ -33,8 +33,7 @@ const RecoverPassword = () => {
                 })
                )
                setCorreo('');
-        
-            //console.log(data.message)
+    
            
           } catch (error) {
             Swal.fire({

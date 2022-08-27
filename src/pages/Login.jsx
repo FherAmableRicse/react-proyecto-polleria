@@ -1,17 +1,16 @@
 import "../styles/css/Login.css";
 import { useState,useContext } from "react";
-import { PolleriaContext } from "../context/PolleriaContext";
 import axios from 'axios';
 import { useNavigate,Link } from "react-router-dom";
 import Swal from 'sweetalert2';
+import { PolleriaContext } from "../context/PolleriaContext";
 
 const urlUsuario = "http://localhost:5000/usuario";
 const urlLogin = "http://localhost:5000/login";
-const urlPedidos = "http://localhost:5000/pedidos";
 
 const Login = () => {
     const navigate = useNavigate();
-    const {setIsAuthenticated, setUsuarioId } = useContext(PolleriaContext);
+    const { setUsuarioId } = useContext(PolleriaContext);
     const [formLogIn, setFormLogIn] = useState({
         usuario: "",
         password: ""
@@ -77,7 +76,6 @@ const Login = () => {
                 .then(response=>{
                     console.log(response);
                     localStorage.setItem('token',response.data.token);
-                    setIsAuthenticated(true);
                     setUsuarioId(response.data.content.id);
                     navigate('/pedidos');
                 })
