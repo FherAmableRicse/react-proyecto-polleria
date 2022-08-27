@@ -12,7 +12,6 @@ const Reservas = () => {
   const [reservas, setReservas] = useState(localStorageReservas);
 
   const createReserva = async(reserva) => {
-    
     try {
       const options = {
         method: 'POST',
