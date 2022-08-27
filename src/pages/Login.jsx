@@ -1,15 +1,17 @@
 import "../styles/css/Login.css";
-import { useState } from "react";
+import { useState,useContext } from "react";
+import { PolleriaContext } from "../context/PolleriaContext";
 import axios from 'axios';
 import { useNavigate,Link } from "react-router-dom";
 import Swal from 'sweetalert2';
 
 const urlUsuario = "http://localhost:5000/usuario";
-const urlAuth = "http://localhost:5000/auth";
+const urlLogin = "http://localhost:5000/login";
 const urlPedidos = "http://localhost:5000/pedidos";
 
 const Login = () => {
     const navigate = useNavigate();
+    const {setIsAuthenticated, setUsuarioId } = useContext(PolleriaContext);
     const [formLogIn, setFormLogIn] = useState({
         usuario: "",
         password: ""
@@ -71,10 +73,12 @@ const Login = () => {
                 })
                 return;
             }
-            await axios.post(urlAuth,{usuario: usuario,password:password})
+            await axios.post(urlLogin,{usuario: usuario,password:password})
                 .then(response=>{
-                    console.log(response.data);
-                    //localStorage.setItem('token',);
+                    console.log(response);
+                    localStorage.setItem('token',response.data.token);
+                    setIsAuthenticated(true);
+                    setUsuarioId(response.data.content.id);
                     navigate('/pedidos');
                 })
         }catch(error){

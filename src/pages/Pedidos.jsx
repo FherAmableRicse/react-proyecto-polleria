@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { Navigate } from "react-router-dom";
 import BuscadorPlatos from "../components/pedidos/BuscadorPlatos";
 import Carrito from "../components/pedidos/Carrito";
+import { PolleriaContext } from "../context/PolleriaContext";
 import "../styles/css/Pedidos.css";
 
 const Pedidos = () => {
   const [visible, setVisible] = useState(false);
+  const {isAuthenticated } = useContext(PolleriaContext);
 
   const toggleVisible = () => {
     if (window.scrollY > 300) {
@@ -21,6 +24,9 @@ const Pedidos = () => {
     });
   };
   window.addEventListener("scroll", toggleVisible);
+
+  if(!isAuthenticated) return <Navigate to={"/login"}/>
+  
 
   return (
     <section className="pedidos">
