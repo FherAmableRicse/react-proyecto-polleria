@@ -114,7 +114,7 @@ const Reclamos = () => {
         nombre: "",
         apellido: "",
         dni: "",
-        email: "",
+        correo: "",
         celular: "",
         dataReclamo:""
 
