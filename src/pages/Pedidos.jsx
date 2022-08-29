@@ -25,7 +25,6 @@ const Pedidos = () => {
   window.addEventListener("scroll", toggleVisible);
 
   if(!isAuthValid()) return <Navigate to={"/login"}/>
-  
 
   return (
     <section className="pedidos">

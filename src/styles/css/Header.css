@@ -28,6 +28,14 @@
   display: none;
 }
 
+.login-name1 {
+  display: none;
+}
+
+.login-name2 {
+  display: block;
+}
+
 .header-nav__register-link1 {
   display: none
 }
@@ -42,6 +50,7 @@
     margin: 0;
     padding: 0.0625em 1em;
     transition: var(--all-transitions);
+    border:white;
 }
 
 .header-nav__container {
@@ -232,6 +241,14 @@
     margin-bottom: 0.1rem;
   }
 
+  .login-name1 {
+    display: block;
+  }
+
+  .login-name2 {
+    display: none;
+  }
+
   .header-nav__register-link1 {
     display: flex;
     background-color: #ffffff;
@@ -242,6 +259,7 @@
     margin: 0;
     padding: 0.0625em 1em;
     transition: var(--all-transitions);
+    border:white;
   }
 
   .header-nav__register-link2 {

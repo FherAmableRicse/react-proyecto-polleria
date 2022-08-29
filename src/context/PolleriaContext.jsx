@@ -12,6 +12,7 @@ export const PolleriaProvider = ({ children }) => {
       : []
   );
   const [usuarioId, setUsuarioId]=useState("");
+  const [usuario, setUsuario]=useState("");
 
   const getPlatos = async () => {
     try {
@@ -82,11 +83,13 @@ export const PolleriaProvider = ({ children }) => {
         platos,
         platosCarrito,
         usuarioId,
+        usuario,
         setPlatos,
         getPlatos,
         buscarPlatos,
         setPlatosCarrito,
         setUsuarioId,
+        setUsuario,
         crearPedido
       }}
     >
