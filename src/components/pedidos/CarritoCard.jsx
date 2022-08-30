@@ -3,7 +3,7 @@ import "../../styles/css/Carrito.css";
 
 const CarritoCard = ({ plato, repeticion }) => {
   const { platosCarrito, setPlatosCarrito } = usePolleria();
-  const { id, nombre, precio, imagen } = plato;
+  const { nombre, precio } = plato;
 
   const eliminarPlato = () => {
     const platoEliminar = plato;

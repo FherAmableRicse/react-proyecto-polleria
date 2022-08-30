@@ -5,8 +5,8 @@ import { useNavigate,Link } from "react-router-dom";
 import Swal from 'sweetalert2';
 import { PolleriaContext } from "../context/PolleriaContext";
 
-const urlUsuario = "http://localhost:5000/usuario";
-const urlLogin = "http://localhost:5000/login";
+const urlUsuario = `${process.env.REACT_APP_API_URL_BACKEND}/usuario`;
+const urlLogin = `${process.env.REACT_APP_API_URL_BACKEND}/login`;
 
 const Login = () => {
     const navigate = useNavigate();
@@ -130,7 +130,6 @@ const Login = () => {
 
             await axios.post(urlUsuario,{usuario: nuevoUsuario,password:nuevoPassword,correo:correo})
                 .then(response=>{
-                    console.log(response.data)
                     Swal.fire({
                         position: 'top',
                         icon: 'success',

@@ -5,7 +5,7 @@ import axios from "axios";
 
 const Reclamos = () => {
 
-  const urlReclamos= "http://localhost:5000/reclamo/confirmed";
+  const urlReclamos= `${process.env.REACT_APP_API_URL_BACKEND}/reclamo/confirmed`;
   const [formReclamo, setFormReclamo] = useState({
     nombre: "",
     apellido: "",

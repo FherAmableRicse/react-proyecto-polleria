@@ -1,6 +1,8 @@
 import { createContext, useState, useEffect } from "react";
-import axios from "axios";
 import Swal from "sweetalert2";
+import {GetPlatos} from "../services/platosServices";
+import {PostPedido} from "../services/pedidosServices";
+import {PostPago} from "../services/pagoServices";
 
 export const PolleriaContext = createContext();
 
@@ -21,11 +23,7 @@ export const PolleriaProvider = ({ children }) => {
   const getPlatos = async () => {
     try {
       setLoading(true);
-      const options = {
-        method: "GET",
-        url: `${process.env.REACT_APP_URL_PLATOS_JSON_URL}/platos`,
-      };
-      const { data } = await axios(options);
+      const data=await GetPlatos();
       setPlatos(data);
     } catch (error) {
       console.log(error.response.data.message);
@@ -55,6 +53,7 @@ export const PolleriaProvider = ({ children }) => {
   useEffect(() => {
     getPlatos();
     crearLocalStorageCarrito();
+    //eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -63,19 +62,7 @@ export const PolleriaProvider = ({ children }) => {
 
   const crearPedido=async (pedido)=>{
     try{
-      fetch(`${process.env.REACT_APP_URL_PLATOS_JSON_URL}/pedidos`,{
-        method:"POST",
-        headers:{
-          'Authorization':`Bearer ${localStorage.getItem('token')}`,
-          'Accept': 'application/json',
-          "Content-Type":"application/json"
-        },
-        body:JSON.stringify({
-          "fecha_registro":pedido.fecha_registro,
-          "cliente_id":pedido.cliente_id,
-          "lista_platos":pedido.lista_platos
-        }),
-      });
+      await PostPedido(pedido);
     }catch(error){
       console.log(error.response.data.message);
     }
@@ -83,24 +70,7 @@ export const PolleriaProvider = ({ children }) => {
 
   const realizarPago=async (detallePago)=>{
     try{
-      fetch(`${process.env.REACT_APP_URL_PLATOS_JSON_URL}/pagos`,{
-        method:"POST",
-        headers:{
-          'Authorization':`Bearer ${localStorage.getItem('token')}`,
-          'Accept':'application/json',
-          "Content-Type":"application/json"
-        },
-        body:JSON.stringify({
-          "numero_tarjeta":detallePago.numero_tarjeta,
-          "fecha_vencimiento_tarjeta":detallePago.fecha_vencimiento_tarjeta,
-          "cvv_tarjeta":detallePago.cvv_tarjeta,
-          "nombre_tarjeta":detallePago.nombre_tarjeta,
-          "apellido_tarjeta":detallePago.apellido_tarjeta,
-          "email_tarjeta":detallePago.email_tarjeta,
-          "cuotas":detallePago.cuotas,
-          "monto":detallePago.monto
-        })
-      });
+      await PostPago(detallePago)
       Swal.fire({
         position: 'top',
         icon: 'success',

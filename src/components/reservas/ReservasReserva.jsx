@@ -3,8 +3,7 @@ import Swal from "sweetalert2";
 
 const ReservasReserva = ({ reserva, readReserva, deleteReserva }) => {
   const { _id, solicitante, dni,correo, fecha, hora, motivo } = reserva;
-  //const urlWhatsapp = `${process.env.REACT_APP_URL}`;
-  const urlReservaConfirmed = "http://localhost:5000/reserva/confirmed";
+  const urlReservaConfirmed = `${process.env.REACT_APP_API_URL_BACKEND}/reserva/confirmed`;
   const handleDelete = (_id) => {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {

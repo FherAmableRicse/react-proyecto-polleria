@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 
 const RecoverPassword = () => {
 
-    const urlRecoverPassword = "http://localhost:5000/usuario/recover-password";
+    const urlRecoverPassword = `${process.env.REACT_APP_API_URL_BACKEND}/usuario/recover-password`;
 
     const [correo, setCorreo] = useState('');
 

@@ -2,7 +2,6 @@ import { useState } from "react";
 import usePolleria from "../../hooks/usePolleria";
 import "../../App.css";
 import "../../styles/css/Reservas.css";
-import Alert from "../sections/Alert";
 
 const FormularioPago=()=>{
     const todayDate = new Date().toISOString().slice(0, 10);
@@ -17,11 +16,6 @@ const FormularioPago=()=>{
         email_tarjeta:"",
         cuotas:1,
         monto:montoTotal,
-    });
-
-    const [alert, setAlert] = useState({
-        message: "",
-        error: false,
     });
 
     const {
@@ -45,7 +39,6 @@ const FormularioPago=()=>{
     const handleSubmit=(e)=>{
         e.preventDefault();
         realizarPago(formPago);
-        console.log(pedidoCliente);
         crearPedido(pedidoCliente);
         setPlatosCarrito([]);
         localStorage.removeItem('platosCarrito');

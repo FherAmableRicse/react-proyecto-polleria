@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-//import { v4 as uuidv4 } from "uuid";
-import axios from "axios";
 import { showToast } from "../utils/sweetalert";
 import ReservasForm from "../components/reservas/ReservasForm";
 import ReservasReservas from "../components/reservas/ReservasReservas";
+import {GetReservas,PostReserva,GetReserva,UpdateReserva,DeleteReserva} from "../services/reservaServices";
 const Reservas = () => {
   let localStorageReservas =
     JSON.parse(localStorage.getItem("reservasData")) ?? [];
@@ -13,16 +12,7 @@ const Reservas = () => {
 
   const createReserva = async(reserva) => {
     try {
-      const options = {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        data: reserva,
-        url: `http://localhost:5000/reserva`
-      };
-      const { data } = await axios(options);
-      console.log(data)
+      const data=await PostReserva(reserva);
       setReservas([...reservas, data.content]);
       showToast("success", "Reserva Creada");
     } catch (error) {
@@ -33,11 +23,7 @@ const Reservas = () => {
   
   const readReservas =  async() =>{
     try {
-      const options = {
-        method: 'GET',
-        url: 'http://localhost:5000/reserva'
-      };
-      const { data } = await axios(options);
+      const data=await GetReservas();
      setReservas(data.content);
     } catch (error) {
       console.log(error);
@@ -47,11 +33,7 @@ const Reservas = () => {
   const readReserva = async(_id) => {
     try {
      
-      const options = {
-        method: 'GET',
-        url: `http://localhost:5000/reserva/${_id}`
-      };
-      const { data } = await axios(options);
+      const data=await GetReserva(_id);
       setReserva(data.content);
     } catch (error) {
        console.log(error)
@@ -61,15 +43,7 @@ const Reservas = () => {
   const updateReserva = async(reserva) => {
 
     try {
-      const options = {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        data: reserva,
-        url: `http://localhost:5000/reserva/${reserva._id}`
-      };
-      const { data } = await axios(options);
+      const data=await UpdateReserva(reserva)
       const dataActualizada= reservas.map((reserva) => {
         return reserva._id === data.content._id ? data.content : reserva;
       })
@@ -83,13 +57,7 @@ const Reservas = () => {
 
   const deleteReserva = async(_id) => {
     try {
-     
-      const options = {
-        method: 'DELETE',
-        url: `http://localhost:5000/reserva/${_id}`
-      };
-      const { data } = await axios(options);
-      console.log(data)
+      await DeleteReserva(_id);
       setReservas(reservas.filter(reserva => reserva._id !== _id));
       setReserva({});
     } catch (error) {

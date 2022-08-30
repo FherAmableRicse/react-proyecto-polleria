@@ -51,7 +51,7 @@ const NewPassword = () => {
             })
         } else {
             try {
-                    const urlNewPassword = `http://localhost:5000/usuario/new-password/${id}`;
+                    const urlNewPassword = `${process.env.REACT_APP_API_URL_BACKEND}/usuario/new-password/${id}`;
                 
                     await axios.post(urlNewPassword,{password:password})
                                 .then(response=>{
