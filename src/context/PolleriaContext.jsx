@@ -6,12 +6,15 @@ export const PolleriaContext = createContext();
 export const PolleriaProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [platos, setPlatos] = useState([]);
+  const [montoTotal,setMontoTotal]=useState(0);
+  const [pedidoCliente,setPedidoCliente]=useState({});
   const [platosCarrito, setPlatosCarrito] = useState(
     JSON.parse(localStorage.getItem("platosCarrito"))
       ? JSON.parse(localStorage.getItem("platosCarrito"))
       : []
   );
   const [usuarioId, setUsuarioId]=useState("");
+  const [procederPago,setProcederPago]=useState(false);
 
   const getPlatos = async () => {
     try {
@@ -75,6 +78,30 @@ export const PolleriaProvider = ({ children }) => {
     }
   };
 
+  const realizarPago=async (detallePago)=>{
+    try{
+      fetch(`${process.env.REACT_APP_URL_PLATOS_JSON_URL}/pagos`,{
+        method:"POST",
+        headers:{
+          'Accept':'application/json',
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+          "numero_tarjeta":detallePago.numero_tarjeta,
+          "fecha_vencimiento_tarjeta":detallePago.fecha_vencimiento_tarjeta,
+          "cvv_tarjeta":detallePago.cvv_tarjeta,
+          "nombre_tarjeta":detallePago.nombre_tarjeta,
+          "apellido_tarjeta":detallePago.apellido_tarjeta,
+          "email_tarjeta":detallePago.email_tarjeta,
+          "cuotas":detallePago.cuotas,
+          "monto":detallePago.monto
+        })
+      });
+    }catch(error){
+      console.log(error);
+    }
+  }
+
   return (
     <PolleriaContext.Provider
       value={{
@@ -82,12 +109,19 @@ export const PolleriaProvider = ({ children }) => {
         platos,
         platosCarrito,
         usuarioId,
+        procederPago,
+        montoTotal,
+        pedidoCliente,
         setPlatos,
         getPlatos,
         buscarPlatos,
+        setMontoTotal,
         setPlatosCarrito,
         setUsuarioId,
-        crearPedido
+        crearPedido,
+        setProcederPago,
+        realizarPago,
+        setPedidoCliente
       }}
     >
       {children}
