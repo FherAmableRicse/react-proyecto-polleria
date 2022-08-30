@@ -1,17 +1,20 @@
 import "../../src/styles/css/Contactenos.css";
 import Swal from "sweetalert2";
 import { useState } from "react";
+import axios from "axios";
 
 const Contactenos = () => {
+
+  const urlContactenos= "http://localhost:5000/contacto/confirmed";
   const [formContactenos, setFormContactenos] = useState({
     nombre: "",
     apellido: "",
-    email: "",
+    correo: "",
     celular: "",
-    mensaje: ""
+    dataContacto:""
   });
 
-  const { nombre, apellido, email, celular, mensaje } = formContactenos;
+  const { nombre, apellido, correo, celular,dataContacto } = formContactenos;
 
   const handleChange = (e) => {
     setFormContactenos({
@@ -29,10 +32,11 @@ const Contactenos = () => {
     if (
       nombre.trim() === "" ||
       apellido.trim() === "" ||
-      email.trim() === "" ||
+      correo.trim() === "" ||
       celular.trim() === "" ||
-      mensaje.trim() === ""
-    ) {
+      dataContacto.trim() === ""
+      )
+      {
       Swal.fire({
         position: "top",
         icon: "warning",
@@ -65,7 +69,7 @@ const Contactenos = () => {
       return;
     }
 
-    if (!reg.test(email)) {
+    if (!reg.test(correo)) {
       Swal.fire({
         position: "top",
         icon: "warning",
@@ -90,23 +94,30 @@ const Contactenos = () => {
     if (
       nombre.trim() !== "" ||
       apellido.trim() !== "" ||
-      email.trim() !== "" ||
+      correo.trim() !== "" ||
       celular.trim() !== "" ||
-      mensaje.trim() !== ""
+      dataContacto.trim() !== ""
     ) {
-      Swal.fire({
-        position: "top",
-        icon: "success",
-        title: "Se enviaron los datos",
-        showConfirmButton: false,
-        timer: 1500,
-      });
+      try{ 
+        axios.post(urlContactenos,{nombre, apellido, correo, celular,dataContacto})
+       .then(response=>
+         Swal.fire({
+             position: 'top',
+             icon: 'success',
+             title: response.data.message,
+             showConfirmButton: false,
+             timer: 1500
+         })
+        )
+     }catch(error){
+       console.log(error)
+     }
       setFormContactenos({
         nombre: "",
         apellido: "",
-        email: "",
+        correo: "",
         celular: "",
-        mensaje: ""
+        dataContacto:""
       });
     }
   };
@@ -150,8 +161,8 @@ const Contactenos = () => {
               className="contact__form-item"
               type="email"
               placeholder="Email"
-              name="email"
-              value={email}
+              name="correo"
+              value={correo}
               onChange={handleChange}
               required
             />
@@ -167,11 +178,12 @@ const Contactenos = () => {
             />
             <textarea
               id="area"
+              type="text"
               className="contact__form-item contact__form-item--area"
-              placeholder="Escribe tu mensaje aquí"
-              name="mensaje"
-              value={mensaje}
+              name="dataContacto"
+              value={dataContacto}
               onChange={handleChange}
+              placeholder="Escribe tu mensaje aquí"
               required
             ></textarea>
             <div className="contact__form-button-container">

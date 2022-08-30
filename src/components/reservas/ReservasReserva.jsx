@@ -1,9 +1,10 @@
+import axios from "axios";
 import Swal from "sweetalert2";
 
 const ReservasReserva = ({ reserva, readReserva, deleteReserva }) => {
-  const { _id, solicitante, dni, fecha, hora, motivo } = reserva;
-  const urlWhatsapp = `${process.env.REACT_APP_URL}`;
-
+  const { _id, solicitante, dni,correo, fecha, hora, motivo } = reserva;
+  //const urlWhatsapp = `${process.env.REACT_APP_URL}`;
+  const urlReservaConfirmed = "http://localhost:5000/reserva/confirmed";
   const handleDelete = (_id) => {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
@@ -40,15 +41,8 @@ const ReservasReserva = ({ reserva, readReserva, deleteReserva }) => {
         }
       });
   };
-  const handleConfirm = (
-    urlWhatsapp,
-    solicitante,
-    dni,
-    fecha,
-    hora,
-    motivo,
-    id
-  ) => {
+  const handleConfirm = async( solicitante,dni,correo, fecha,hora,motivo, id) => {
+
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: "btn btn-dark mx-2",
@@ -64,17 +58,23 @@ const ReservasReserva = ({ reserva, readReserva, deleteReserva }) => {
         showCancelButton: true,
         focusConfirm: false,
         cancelButtonText: "¡No, cancélalo!",
-        confirmButtonText: `<a class="text-light text-decoration-none" href='${urlWhatsapp} Solicitante: ${solicitante}, DNI: ${dni}, Fecha: ${fecha}, Hora: ${hora}, Motivo: ${motivo}'
-      target="_blank" rel="noopener noreferrer">¡Sí, confírmalo!</a>`,
+        confirmButtonText:"¡Sí, confírmalo!"
       })
       .then((result) => {
         if (result.isConfirmed) {
-          deleteReserva(id);
-          swalWithBootstrapButtons.fire(
-            "¡Confirmada!",
-            "La reserva ha sido confirmada",
-            "success"
-          );
+          
+          try {
+             axios.post(urlReservaConfirmed,{solicitante,dni,correo,fecha,hora,motivo,id})
+             deleteReserva(id);
+             swalWithBootstrapButtons.fire(
+              "¡Confirmada!",
+              "La reserva ha sido confirmada",
+              "success"
+            );
+          } catch (error) {
+            console.log(error)
+          }
+        
         } else if (result.dismiss === Swal.DismissReason.cancel) {
           swalWithBootstrapButtons.fire(
             "¡Cancelado!",
@@ -103,15 +103,20 @@ const ReservasReserva = ({ reserva, readReserva, deleteReserva }) => {
       <h5 className="m-0 text-secondary">
         Documento de identidad: <span className="text-dark">{dni}</span>
       </h5>
+
+      <h5 className="m-0 text-secondary">
+        Email: <span className="text-dark">{correo}</span>
+      </h5>
+
       <div className="mt-3 d-flex align-items-start justify-content-start">
         <div className="d-flex gap-1">
           <div className="contact-whatsapp">
             <button
               onClick={() =>
                 handleConfirm(
-                  urlWhatsapp,
                   solicitante,
                   dni,
+                  correo,
                   fecha,
                   hora,
                   motivo,
@@ -122,11 +127,6 @@ const ReservasReserva = ({ reserva, readReserva, deleteReserva }) => {
             >
               Confirmar
             </button>
-            <img
-              className="contact-whatsapp-img"
-              src="https://i.postimg.cc/t407ckP2/wsppng.png"
-              alt="whatsapp icon"
-            />
           </div>
           <button
             type="button"
