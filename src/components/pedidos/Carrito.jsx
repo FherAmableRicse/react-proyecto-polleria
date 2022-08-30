@@ -6,11 +6,9 @@ import Swal from "sweetalert2";
 import "../../styles/css/Carrito.css";
 
 const Carrito = () => {
-  const { platosCarrito, setPlatosCarrito, crearPedido,usuarioId,setProcederPago,setMontoTotal,setPedidoCliente } = usePolleria();
+  const { platosCarrito, setPlatosCarrito,usuarioId,setProcederPago,setMontoTotal,setPedidoCliente } = usePolleria();
   const [mostrarPlatosCarrito, setmostrarPlatosCarrito] =
     useState(platosCarrito);
-  const urlWhatsapp = `${process.env.REACT_APP_URL2}`;
-  // const urlWhatsapp = `https://www.google.com/`;
 
   const contarRepeticiones = (plato) => {
     const repeticiones = platosCarrito.reduce((total, platoCarrito) => {
@@ -23,17 +21,7 @@ const Carrito = () => {
     setPlatosCarrito([]);
   };
 
-  const confirmarPedido = (urlWhatsapp) => {
-    const strPedido = mostrarPlatosCarrito.reduce((final, platoMostrar) => {
-      return (final +=
-        "(" +
-        contarRepeticiones(platoMostrar) +
-        ")" +
-        "und" +
-        " " +
-        platoMostrar.nombre +
-        ", ");
-    }, "");
+  const confirmarPedido = () => {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: "btn btn-dark mx-2",
@@ -48,8 +36,7 @@ const Carrito = () => {
       showCancelButton: true,
       focusConfirm: false,
       cancelButtonText: "¡No, cancélalo!",
-      confirmButtonText: `<a class="text-light text-decoration-none" href='${urlWhatsapp} ${strPedido}'
-      target="_blank" rel="noopener noreferrer">¡Sí, confírmalo!</a>`,
+      confirmButtonText: "¡Sí, confírmalo!",
     }).then((result)=>{
       if(result.isConfirmed){
         if(localStorage.getItem('token')){
@@ -65,13 +52,11 @@ const Carrito = () => {
             "cliente_id":usuarioId,
             "lista_platos":platosCarrito
           };
-          console.log(objPedido);
           setMontoTotal(platosCarrito.reduce((total, platosCarrito) => {
             return (total += platosCarrito.precio);
           }, 0));
           setPedidoCliente(objPedido);
           setProcederPago(true);
-          console.log('pedido confirmado')
         }
       }
     });
@@ -120,7 +105,7 @@ const Carrito = () => {
         <button
           id="boton-confirmar"
           className="btn btn-success"
-          onClick={() => confirmarPedido(urlWhatsapp, platosCarrito)}
+          onClick={() => confirmarPedido(platosCarrito)}
         >
           Confirmar Pedido
         </button>

@@ -5,12 +5,13 @@ import { useNavigate,Link } from "react-router-dom";
 import Swal from 'sweetalert2';
 import { PolleriaContext } from "../context/PolleriaContext";
 
-const urlUsuario = "http://localhost:5000/usuario";
-const urlLogin = "http://localhost:5000/login";
+const urlUsuario = `${process.env.REACT_APP_API_URL_BACKEND}/usuario`;
+const urlLogin = `${process.env.REACT_APP_API_URL_BACKEND}/login`;
 
 const Login = () => {
     const navigate = useNavigate();
     const { setUsuarioId } = useContext(PolleriaContext);
+    const { setUsuario } = useContext(PolleriaContext);
     const [formLogIn, setFormLogIn] = useState({
         usuario: "",
         password: ""
@@ -40,7 +41,7 @@ const Login = () => {
     };
 
     const ingresar = async (e) => {
-        e.preventDefault();
+        //e.preventDefault();
         try {
             if(usuario.trim() === '' && password.trim()===''){
                 Swal.fire({
@@ -74,9 +75,9 @@ const Login = () => {
             }
             await axios.post(urlLogin,{usuario: usuario,password:password})
                 .then(response=>{
-                    console.log(response);
                     localStorage.setItem('token',response.data.token);
                     setUsuarioId(response.data.content.id);
+                    setUsuario(response.data.content.usuario);
                     navigate('/pedidos');
                 })
         }catch(error){
@@ -93,6 +94,7 @@ const Login = () => {
 
     const registrar = async (e) => {
         e.preventDefault();
+        //eslint-disable-next-line
         const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         try {
             if(nuevoUsuario.trim() === '' || nuevoPassword.trim()===''  || confirmPassword.trim()==='' || correo.trim()===''){
@@ -128,7 +130,6 @@ const Login = () => {
 
             await axios.post(urlUsuario,{usuario: nuevoUsuario,password:nuevoPassword,correo:correo})
                 .then(response=>{
-                    console.log(response.data)
                     Swal.fire({
                         position: 'top',
                         icon: 'success',
@@ -155,6 +156,12 @@ const Login = () => {
         }
     }
 
+    const teclaEnter = (e) =>{
+        if (e.keyCode === 13) {
+            ingresar();
+          }
+    }
+
     return (
       <>
       <div className="container-fluid">
@@ -163,13 +170,14 @@ const Login = () => {
                 <div className="card bg-transparent">
         <div className="login-box">
             <div className="login-snip ">
-            <div className="logo-container">
-                <img
+            <Link to="/" className="logo-container">    
+            <img
               src="https://i.postimg.cc/pLgmgMDd/logo.png"
               alt="Logo Pollería PICOM"
               className="logo"
             />
-            </div>
+            </Link>
+
                 <input id="tab-1" type="radio" name="tab" className="sign-in" defaultChecked/><label htmlFor="tab-1" className="tab">Inicia Sesión</label>
                 <input id="tab-2" type="radio" name="tab" className="sign-up"/><label htmlFor="tab-2" className="tab">Registrate</label>
                 <div className="login-space">
@@ -183,6 +191,7 @@ const Login = () => {
                             name="usuario"
                             value={usuario}
                             onChange={handleChangeLogIn}
+                            onKeyDown={teclaEnter}
                             required/>
                         </div>
                         <div className="group">
@@ -195,6 +204,7 @@ const Login = () => {
                             name="password"
                             value={password}
                             onChange={handleChangeLogIn}
+                            onKeyDown={teclaEnter}
                             required/>
                         </div>
                         <div className="group">

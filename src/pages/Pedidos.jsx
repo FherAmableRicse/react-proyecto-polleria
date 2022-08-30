@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import {useState} from "react";
 import usePolleria from "../hooks/usePolleria";
 import { Navigate } from "react-router-dom";
 import BuscadorPlatos from "../components/pedidos/BuscadorPlatos";
@@ -28,7 +28,6 @@ const Pedidos = () => {
   window.addEventListener("scroll", toggleVisible);
 
   if(!isAuthValid()) return <Navigate to={"/login"}/>
-  
 
   return (
     <section className="pedidos">

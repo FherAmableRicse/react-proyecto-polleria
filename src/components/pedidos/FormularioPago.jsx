@@ -2,11 +2,10 @@ import { useState } from "react";
 import usePolleria from "../../hooks/usePolleria";
 import "../../App.css";
 import "../../styles/css/Reservas.css";
-import Alert from "../sections/Alert";
 
 const FormularioPago=()=>{
     const todayDate = new Date().toISOString().slice(0, 10);
-    const {pedidoCliente,crearPedido, setProcederPago, realizarPago,montoTotal}=usePolleria();
+    const {pedidoCliente,crearPedido, setProcederPago, realizarPago,montoTotal,setPlatosCarrito}=usePolleria();
     
     const [formPago,setFormPago]=useState({
         numero_tarjeta:"",
@@ -17,11 +16,6 @@ const FormularioPago=()=>{
         email_tarjeta:"",
         cuotas:1,
         monto:montoTotal,
-    });
-
-    const [alert, setAlert] = useState({
-        message: "",
-        error: false,
     });
 
     const {
@@ -46,6 +40,8 @@ const FormularioPago=()=>{
         e.preventDefault();
         realizarPago(formPago);
         crearPedido(pedidoCliente);
+        setPlatosCarrito([]);
+        localStorage.removeItem('platosCarrito');
         setProcederPago(false);
     }
 
@@ -65,6 +61,8 @@ const FormularioPago=()=>{
                     <label htmlFor="solicitante" className="text-dark">
                         Numero de tarjeta
                     </label>
+                </div>
+                <div className="form-floating mb-3">
                     <input
                         min={todayDate}
                         type="date"
@@ -78,6 +76,8 @@ const FormularioPago=()=>{
                     <label htmlFor="solicitante" className="text-dark">
                         Fecha de vencimiento
                     </label>
+                </div>
+                <div className="form-floating mb-3">
                     <input
                         type="text"
                         name="cvv_tarjeta"
@@ -90,6 +90,8 @@ const FormularioPago=()=>{
                     <label htmlFor="solicitante" className="text-dark">
                         CVV
                     </label>
+                </div>
+                <div className="form-floating mb-3">
                     <input
                         type="text"
                         name="nombre_tarjeta"
@@ -102,6 +104,8 @@ const FormularioPago=()=>{
                     <label htmlFor="solicitante" className="text-dark">
                         Nombre del titular
                     </label>
+                </div>
+                <div className="form-floating mb-3">
                     <input
                         type="text"
                         name="apellido_tarjeta"
@@ -114,6 +118,8 @@ const FormularioPago=()=>{
                     <label htmlFor="solicitante" className="text-dark">
                         Apellido del titular
                     </label>
+                </div>
+                <div className="form-floating mb-3">
                     <input
                         type="text"
                         name="email_tarjeta"
@@ -126,6 +132,8 @@ const FormularioPago=()=>{
                     <label htmlFor="solicitante" className="text-dark">
                         Email del titular
                     </label>
+                </div>
+                <div className="form-floating mb-3">
                     <input
                         type="number"
                         name="cuotas"
@@ -138,6 +146,8 @@ const FormularioPago=()=>{
                     <label htmlFor="solicitante" className="text-dark">
                         Numero de cuotas
                     </label>
+                </div>
+                <div className="form-floating mb-3">
                     <input
                         type="number"
                         name="monto"
