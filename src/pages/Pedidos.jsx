@@ -1,12 +1,15 @@
-import { useState } from "react";
+import { useContext, useState, useEffect } from "react";
+import usePolleria from "../hooks/usePolleria";
 import { Navigate } from "react-router-dom";
 import BuscadorPlatos from "../components/pedidos/BuscadorPlatos";
 import Carrito from "../components/pedidos/Carrito";
+import FormularioPago from "../components/pedidos/FormularioPago";
 import { isAuthValid } from "../services/authServices";
 import "../styles/css/Pedidos.css";
 
 const Pedidos = () => {
   const [visible, setVisible] = useState(false);
+  const {procederPago}=usePolleria();
 
   const toggleVisible = () => {
     if (window.scrollY > 300) {
@@ -28,10 +31,18 @@ const Pedidos = () => {
 
   return (
     <section className="pedidos">
-      <div className="pedidos-container">
-        <Carrito />
-        <BuscadorPlatos />
-      </div>
+        {
+          procederPago ?(
+            <div className="pedidos-container">
+              <FormularioPago/>
+            </div>
+          ):(
+            <div className="pedidos-container">
+              <Carrito/>
+              <BuscadorPlatos/>
+            </div>
+          )
+        }
       <div className="go-up">
         <svg
           xmlns="http://www.w3.org/2000/svg"
