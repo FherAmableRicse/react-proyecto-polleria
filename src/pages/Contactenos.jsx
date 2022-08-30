@@ -8,10 +8,10 @@ const Contactenos = () => {
     apellido: "",
     email: "",
     celular: "",
+    mensaje: ""
   });
 
-  let errorForm = false;
-  const { nombre, apellido, email, celular } = formContactenos;
+  const { nombre, apellido, email, celular, mensaje } = formContactenos;
 
   const handleChange = (e) => {
     setFormContactenos({
@@ -22,74 +22,95 @@ const Contactenos = () => {
 
   const enviar = (e) => {
     e.preventDefault();
-    let message = "";
-    let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+    //eslint-disable-next-line
+    let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
     if (
-      [nombre.trim(), apellido.trim(), email.trim(), celular.trim()].includes(
-        ""
-      )
+      nombre.trim() === "" ||
+      apellido.trim() === "" ||
+      email.trim() === "" ||
+      celular.trim() === "" ||
+      mensaje.trim() === ""
     ) {
-      errorForm = true;
-    }
-    if (nombre.length < 4) {
-      message += `El nombre no es válido <br> `;
-      errorForm = true;
-
       Swal.fire({
-        icon: "error",
-        html: message,
-        width: "45%",
+        position: "top",
+        icon: "warning",
+        title: "Llenar todos los campos",
+        showConfirmButton: false,
+        timer: 1500,
       });
+      return;
+    }
+
+    if (nombre.length < 4) {
+      Swal.fire({
+        position: "top",
+        icon: "warning",
+        title: "Nombre no valido",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      return;
     }
 
     if (apellido.length < 4) {
-      message += `El apellido no es válido <br> `;
-      errorForm = true;
       Swal.fire({
-        icon: "error",
-        html: message,
-        width: "45%",
+        position: "top",
+        icon: "warning",
+        title: "Apellido no valido",
+        showConfirmButton: false,
+        timer: 1500,
       });
+      return;
     }
 
-    if (!regexEmail.test(email)) {
-      message += `El email no es válido <br> `;
-      errorForm = true;
-
+    if (!reg.test(email)) {
       Swal.fire({
-        icon: "error",
-        html: message,
-        width: "45%",
+        position: "top",
+        icon: "warning",
+        title: "Correo no valido",
+        showConfirmButton: false,
+        timer: 1500,
       });
+      return;
     }
 
     if (celular.length > 9 || celular.length < 9) {
-      message += `El celular no es válido <br> `;
-      errorForm = true;
       Swal.fire({
-        icon: "error",
-        html: message,
-        width: "45%",
-      });
-    }
-    if (errorForm === false) {
-      Swal.fire({
-        icon: "success",
-        title: "Tus datos han sido enviados",
+        position: "top",
+        icon: "warning",
+        title: "El celular no es válido",
         showConfirmButton: false,
-        timer: 2500,
-        width: "45%",
+        timer: 1500,
+      });
+      return;
+    }
+
+    if (
+      nombre.trim() !== "" ||
+      apellido.trim() !== "" ||
+      email.trim() !== "" ||
+      celular.trim() !== "" ||
+      mensaje.trim() !== ""
+    ) {
+      Swal.fire({
+        position: "top",
+        icon: "success",
+        title: "Se enviaron los datos",
+        showConfirmButton: false,
+        timer: 1500,
       });
       setFormContactenos({
         nombre: "",
         apellido: "",
         email: "",
         celular: "",
+        mensaje: ""
       });
-      errorForm = false;
     }
   };
+
   return (
     <section
       className="contact animate__animated animate__backInLeft"
@@ -148,6 +169,10 @@ const Contactenos = () => {
               id="area"
               className="contact__form-item contact__form-item--area"
               placeholder="Escribe tu mensaje aquí"
+              name="mensaje"
+              value={mensaje}
+              onChange={handleChange}
+              required
             ></textarea>
             <div className="contact__form-button-container">
               <button type="submit" className="contact__form-button">

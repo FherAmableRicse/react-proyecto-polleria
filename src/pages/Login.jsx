@@ -94,6 +94,7 @@ const Login = () => {
 
     const registrar = async (e) => {
         e.preventDefault();
+        //eslint-disable-next-line
         const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         try {
             if(nuevoUsuario.trim() === '' || nuevoPassword.trim()===''  || confirmPassword.trim()==='' || correo.trim()===''){

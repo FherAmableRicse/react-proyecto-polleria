@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import { useState } from "react";
 import { Navigate } from "react-router-dom";
 import BuscadorPlatos from "../components/pedidos/BuscadorPlatos";
 import Carrito from "../components/pedidos/Carrito";
