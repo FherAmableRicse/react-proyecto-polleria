@@ -22,7 +22,7 @@ const RecoverPassword = () => {
         } else {
           try {
            
-            await axios.post(urlRecoverPassword,{correo:correo})
+            await axios.post(urlRecoverPassword,{correo})
             .then(response=>
                 Swal.fire({
                     position: 'top',

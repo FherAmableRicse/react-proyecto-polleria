@@ -1,19 +1,23 @@
 import "../../src/styles/css/Reclamos.css";
 import Swal from "sweetalert2";
 import { useState } from "react";
+import axios from "axios";
 
 const Reclamos = () => {
+
+  const urlReclamos= "http://localhost:5000/reclamo/confirmed";
   const [formReclamo, setFormReclamo] = useState({
     nombre: "",
     apellido: "",
     dni: "",
-    email: "",
+    correo: "",
     celular: "",
+    dataReclamo:""
   });
 
   let errorForm = false;
 
-  const { nombre, apellido, dni, email, celular } = formReclamo;
+  const { nombre, apellido, dni, correo, celular,dataReclamo } = formReclamo;
 
   const handleChange = (e) => {
     setFormReclamo({
@@ -33,8 +37,9 @@ const Reclamos = () => {
         nombre.trim(),
         apellido.trim(),
         dni.trim(),
-        email.trim(),
+        correo.trim(),
         celular.trim(),
+        dataReclamo.trim()
       ].includes("")
     ) {
       errorForm = true;
@@ -70,7 +75,7 @@ const Reclamos = () => {
       });
     }
 
-    if (!regexEmail.test(email)) {
+    if (!regexEmail.test(correo)) {
       message += `El email no es válido <br> `;
       errorForm = true;
       Swal.fire({
@@ -91,19 +96,28 @@ const Reclamos = () => {
     }
 
     if (errorForm === false) {
-      Swal.fire({
-        icon: "success",
-        title: "Tus datos han sido enviados",
-        showConfirmButton: false,
-        timer: 2500,
-        width: "45%",
-      });
+      try{ 
+        axios.post(urlReclamos,{nombre, apellido, dni,correo, celular,dataReclamo})
+       .then(response=>
+         Swal.fire({
+             position: 'top',
+             icon: 'success',
+             title: response.data.message,
+             showConfirmButton: false,
+             timer: 1500
+         })
+        )
+     }catch(error){
+       console.log(error)
+     }
       setFormReclamo({
         nombre: "",
         apellido: "",
         dni: "",
-        email: "",
+        correo: "",
         celular: "",
+        dataReclamo:""
+
       });
       errorForm = false;
     }
@@ -158,8 +172,8 @@ const Reclamos = () => {
               className="reclamos__form-item"
               type="email"
               placeholder="Email"
-              name="email"
-              value={email}
+              name="correo"
+              value={correo}
               onChange={handleChange}
               required
             />
@@ -175,8 +189,13 @@ const Reclamos = () => {
             />
             <textarea
               id="area"
+              type="text"
               className="reclamos__form-item reclamos__form-item--area"
+              name="dataReclamo"
+              value={dataReclamo}
+              onChange={handleChange}
               placeholder="Escribe tu reclamo aquí"
+              required
             ></textarea>
             <div className="reclamos__form-button-container">
               <button type="submit" className="reclamos__form-button">

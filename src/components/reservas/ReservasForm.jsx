@@ -10,6 +10,7 @@ const ReservasForm = ({ reserva, submitReservasForm }) => {
   const [formReserva, setFormReserva] = useState({
     solicitante: "",
     dni: "",
+    correo:"",
     fecha: "",
     hora: "",
     motivo: "",
@@ -19,7 +20,7 @@ const ReservasForm = ({ reserva, submitReservasForm }) => {
     message: "",
     error: false,
   });
-  const { solicitante, dni, fecha, hora, motivo } = formReserva;
+  const { solicitante, dni, correo,fecha, hora, motivo } = formReserva;
 
   const handleChange = (e) => {
     setFormReserva({
@@ -34,6 +35,7 @@ const ReservasForm = ({ reserva, submitReservasForm }) => {
       [
         solicitante.trim(),
         dni.trim(),
+        correo.trim(),
         fecha.trim(),
         hora.trim(),
         motivo.trim(),
@@ -58,6 +60,7 @@ const ReservasForm = ({ reserva, submitReservasForm }) => {
       setFormReserva({
         solicitante: "",
         dni: "",
+        correo:"",
         fecha: "",
         hora: "",
         motivo: "",
@@ -68,11 +71,12 @@ const ReservasForm = ({ reserva, submitReservasForm }) => {
 
   useEffect(() => {
     if (reserva._id) {
-      const { _id, solicitante, dni, fecha, hora, motivo } = reserva;
+      const { _id, solicitante, dni,correo, fecha, hora, motivo } = reserva;
       setFormReserva({
         _id,
         solicitante,
         dni,
+        correo,
         fecha,
         hora,
         motivo,
@@ -116,6 +120,21 @@ const ReservasForm = ({ reserva, submitReservasForm }) => {
           />
           <label htmlFor="dni" className="text-dark">
             Documento de Identidad
+          </label>
+        </div>
+
+        <div className="form-floating mb-3">
+          <input
+            type="email"
+            name="correo"
+            placeholder="Email"
+            className="form-control"
+            value={correo}
+            onChange={handleChange}
+            required
+          />
+          <label htmlFor="dni" className="text-dark">
+            Email
           </label>
         </div>
 
