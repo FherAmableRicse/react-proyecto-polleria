@@ -121,7 +121,7 @@ const Login = () => {
                 Swal.fire({
                     position: 'top',
                     icon: 'warning',
-                    title: 'Correo no valido',
+                    title: 'Correo no válido',
                     showConfirmButton: false,
                     timer: 1500
                 })
