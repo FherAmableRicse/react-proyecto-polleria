@@ -1,7 +1,7 @@
 import usePolleria from "../../hooks/usePolleria";
 import "../../styles/css/PlatosCard.css";
 const PlatosCard = ({ plato }) => {
-  const { id, nombre, precio, imagen } = plato;
+  const { nombre, precio, imagen } = plato;
   const { platosCarrito, setPlatosCarrito } = usePolleria();
 
   const agregarCarrito = () => {

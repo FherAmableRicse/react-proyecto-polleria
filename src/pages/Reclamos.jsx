@@ -1,19 +1,21 @@
 import "../../src/styles/css/Reclamos.css";
 import Swal from "sweetalert2";
 import { useState } from "react";
+import axios from "axios";
 
 const Reclamos = () => {
+
+  const urlReclamos= `${process.env.REACT_APP_API_URL_BACKEND}/reclamo/confirmed`;
   const [formReclamo, setFormReclamo] = useState({
     nombre: "",
     apellido: "",
     dni: "",
-    email: "",
+    correo: "",
     celular: "",
+    dataReclamo:""
   });
 
-  let errorForm = false;
-
-  const { nombre, apellido, dni, email, celular } = formReclamo;
+  const { nombre, apellido, dni, correo, celular,dataReclamo } = formReclamo;
 
   const handleChange = (e) => {
     setFormReclamo({
@@ -25,87 +27,113 @@ const Reclamos = () => {
   const enviar = (e) => {
     e.preventDefault();
 
-    let message = "";
-    let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    //eslint-disable-next-line
+    let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
     if (
-      [
-        nombre.trim(),
-        apellido.trim(),
-        dni.trim(),
-        email.trim(),
-        celular.trim(),
-      ].includes("")
+      nombre.trim() === "" ||
+      apellido.trim() === "" ||
+      dni.trim() === "" ||
+      correo.trim() === "" ||
+      celular.trim() === "" ||
+      dataReclamo.trim() === ""
     ) {
-      errorForm = true;
+      Swal.fire({
+        position: "top",
+        icon: "warning",
+        title: "Llenar todos los campos",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      return;
     }
 
     if (nombre.length < 4) {
-      message += `El nombre no es válido <br> `;
-      errorForm = true;
       Swal.fire({
-        icon: "error",
-        html: message,
-        width: "45%",
+        position: "top",
+        icon: "warning",
+        title: "Nombre no valido",
+        showConfirmButton: false,
+        timer: 1500,
       });
+      return;
     }
 
     if (apellido.length < 4) {
-      message += `El apellido no es válido <br> `;
-      errorForm = true;
       Swal.fire({
-        icon: "error",
-        html: message,
-        width: "45%",
+        position: "top",
+        icon: "warning",
+        title: "Apellido no valido",
+        showConfirmButton: false,
+        timer: 1500,
       });
+      return;
     }
 
     if (dni.length > 8 || dni.length < 8) {
-      message += `El documento de identidad no es válido <br> `;
-      errorForm = true;
       Swal.fire({
-        icon: "error",
-        html: message,
-        width: "45%",
+        position: "top",
+        icon: "warning",
+        title: "El documento de identidad no es válido",
+        showConfirmButton: false,
+        timer: 1500,
       });
+      return;
     }
 
-    if (!regexEmail.test(email)) {
-      message += `El email no es válido <br> `;
-      errorForm = true;
+    if (!reg.test(correo)) {
       Swal.fire({
-        icon: "error",
-        html: message,
-        width: "45%",
+        position: "top",
+        icon: "warning",
+        title: "Correo no valido",
+        showConfirmButton: false,
+        timer: 1500,
       });
+      return;
     }
 
     if (celular.length > 9 || celular.length < 9) {
-      message += `El celular no es válido <br> `;
-      errorForm = true;
       Swal.fire({
-        icon: "error",
-        html: message,
-        width: "45%",
+        position: "top",
+        icon: "warning",
+        title: "El celular no es válido",
+        showConfirmButton: false,
+        timer: 1500,
       });
+      return;
     }
 
-    if (errorForm === false) {
-      Swal.fire({
-        icon: "success",
-        title: "Tus datos han sido enviados",
-        showConfirmButton: false,
-        timer: 2500,
-        width: "45%",
-      });
+    if (
+      nombre.trim() !== "" ||
+      apellido.trim() !== "" ||
+      dni.trim() !== "" ||
+      correo.trim() !== "" ||
+      celular.trim() !== "" ||
+      dataReclamo.trim() !== ""
+    ) {
+
+      try{ 
+        axios.post(urlReclamos,{nombre, apellido, dni,correo, celular,dataReclamo})
+       .then(response=>
+         Swal.fire({
+             position: 'top',
+             icon: 'success',
+             title: response.data.message,
+             showConfirmButton: false,
+             timer: 1500
+         })
+        )
+     }catch(error){
+       console.log(error)
+     }
       setFormReclamo({
         nombre: "",
         apellido: "",
         dni: "",
-        email: "",
+        correo: "",
         celular: "",
+        dataReclamo:""
       });
-      errorForm = false;
     }
   };
 
@@ -158,8 +186,8 @@ const Reclamos = () => {
               className="reclamos__form-item"
               type="email"
               placeholder="Email"
-              name="email"
-              value={email}
+              name="correo"
+              value={correo}
               onChange={handleChange}
               required
             />
@@ -175,8 +203,13 @@ const Reclamos = () => {
             />
             <textarea
               id="area"
+              type="text"
               className="reclamos__form-item reclamos__form-item--area"
+              name="dataReclamo"
+              value={dataReclamo}
+              onChange={handleChange}
               placeholder="Escribe tu reclamo aquí"
+              required
             ></textarea>
             <div className="reclamos__form-button-container">
               <button type="submit" className="reclamos__form-button">

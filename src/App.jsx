@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, } from "react-router-dom";
 import PolleriaLayout from "./layouts/PolleriaLayout";
 import Inicio from "./pages/Inicio";
 import Nosotros from "./pages/Nosotros";
@@ -10,8 +10,12 @@ import { PolleriaProvider } from "./context/PolleriaContext";
 import Reclamos from "./pages/Reclamos";
 import Preguntas from "./pages/Preguntas";
 import Locales from "./pages/Locales";
+import Login from "./pages/Login";
+import RecoverPassword from "./pages/RecoverPassword";
+import NewPassword from "./pages/NewPassword";
 
 function App() {
+  
   return (
     <PolleriaProvider>
       <Routes>
@@ -25,6 +29,9 @@ function App() {
           <Route path="reclamos" element={<Reclamos />} />
           <Route index element={<Inicio />} />
         </Route>
+        <Route path="login" element={<Login />} />
+        <Route path="recover-password" element={<RecoverPassword />}/>
+        <Route path="new-password/:id" element={<NewPassword />}/>
         <Route path="*" element={<Page404 />} />
       </Routes>
     </PolleriaProvider>

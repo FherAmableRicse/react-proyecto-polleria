@@ -65,7 +65,7 @@ const Inicio = () => {
                   className="btn btn-danger mb-4 rounded-pill py-2 px-4"
                 >
                   <Link
-                    to="pedidos"
+                    to="login"
                     className="btn-carousel text-decoration-none"
                   >
                     EMPIEZA TU PEDIDO AQUI
@@ -85,7 +85,7 @@ const Inicio = () => {
                   className="btn btn-danger mb-4 rounded-pill py-2 px-4"
                 >
                   <Link
-                    to="pedidos"
+                    to="login"
                     className="btn-carousel text-decoration-none"
                   >
                     EMPIEZA TU PEDIDO AQUI
@@ -105,7 +105,7 @@ const Inicio = () => {
                   className="btn btn-danger mb-4 rounded-pill py-2 px-4"
                 >
                   <Link
-                    to="pedidos"
+                    to="login"
                     className="btn-carousel text-decoration-none"
                   >
                     EMPIEZA TU PEDIDO AQUI
@@ -145,7 +145,7 @@ const Inicio = () => {
           <figure className="section__figure-image-container animate__animated animate__fadeIn">
             <Link
               className="section__figure-image-link"
-              to="pedidos"
+              to="login"
               onClick={scrollToTop}
             >
               <img
@@ -156,7 +156,7 @@ const Inicio = () => {
             </Link>
             <Link
               className="section__figure-image-link"
-              to="pedidos"
+              to="login"
               onClick={scrollToTop}
             >
               <img
@@ -167,7 +167,7 @@ const Inicio = () => {
             </Link>
             <Link
               className="section__figure-image-link"
-              to="pedidos"
+              to="login"
               onClick={scrollToTop}
             >
               <img
@@ -178,7 +178,7 @@ const Inicio = () => {
             </Link>
             <Link
               className="section__figure-image-link"
-              to="pedidos"
+              to="login"
               onClick={scrollToTop}
             >
               <img
@@ -189,7 +189,7 @@ const Inicio = () => {
             </Link>
             <Link
               className="section__figure-image-link"
-              to="pedidos"
+              to="login"
               onClick={scrollToTop}
             >
               <img
@@ -200,7 +200,7 @@ const Inicio = () => {
             </Link>
             <Link
               className="section__figure-image-link"
-              to="pedidos"
+              to="login"
               onClick={scrollToTop}
             >
               <img
@@ -211,7 +211,7 @@ const Inicio = () => {
             </Link>
             <Link
               className="section__figure-image-link"
-              to="pedidos"
+              to="login"
               onClick={scrollToTop}
             >
               <img

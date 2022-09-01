@@ -1,17 +1,20 @@
 import "../../src/styles/css/Contactenos.css";
 import Swal from "sweetalert2";
 import { useState } from "react";
+import axios from "axios";
 
 const Contactenos = () => {
+
+  const urlContactenos= `${process.env.REACT_APP_API_URL_BACKEND}/contacto/confirmed`;
   const [formContactenos, setFormContactenos] = useState({
     nombre: "",
     apellido: "",
-    email: "",
+    correo: "",
     celular: "",
+    dataContacto:""
   });
 
-  let errorForm = false;
-  const { nombre, apellido, email, celular } = formContactenos;
+  const { nombre, apellido, correo, celular,dataContacto } = formContactenos;
 
   const handleChange = (e) => {
     setFormContactenos({
@@ -22,74 +25,103 @@ const Contactenos = () => {
 
   const enviar = (e) => {
     e.preventDefault();
-    let message = "";
-    let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+    //eslint-disable-next-line
+    let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
     if (
-      [nombre.trim(), apellido.trim(), email.trim(), celular.trim()].includes(
-        ""
+      nombre.trim() === "" ||
+      apellido.trim() === "" ||
+      correo.trim() === "" ||
+      celular.trim() === "" ||
+      dataContacto.trim() === ""
       )
-    ) {
-      errorForm = true;
-    }
-    if (nombre.length < 4) {
-      message += `El nombre no es válido <br> `;
-      errorForm = true;
-
+      {
       Swal.fire({
-        icon: "error",
-        html: message,
-        width: "45%",
+        position: "top",
+        icon: "warning",
+        title: "Llenar todos los campos",
+        showConfirmButton: false,
+        timer: 1500,
       });
+      return;
+    }
+
+    if (nombre.length < 4) {
+      Swal.fire({
+        position: "top",
+        icon: "warning",
+        title: "Nombre no valido",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      return;
     }
 
     if (apellido.length < 4) {
-      message += `El apellido no es válido <br> `;
-      errorForm = true;
       Swal.fire({
-        icon: "error",
-        html: message,
-        width: "45%",
+        position: "top",
+        icon: "warning",
+        title: "Apellido no valido",
+        showConfirmButton: false,
+        timer: 1500,
       });
+      return;
     }
 
-    if (!regexEmail.test(email)) {
-      message += `El email no es válido <br> `;
-      errorForm = true;
-
+    if (!reg.test(correo)) {
       Swal.fire({
-        icon: "error",
-        html: message,
-        width: "45%",
+        position: "top",
+        icon: "warning",
+        title: "Correo no valido",
+        showConfirmButton: false,
+        timer: 1500,
       });
+      return;
     }
 
     if (celular.length > 9 || celular.length < 9) {
-      message += `El celular no es válido <br> `;
-      errorForm = true;
       Swal.fire({
-        icon: "error",
-        html: message,
-        width: "45%",
-      });
-    }
-    if (errorForm === false) {
-      Swal.fire({
-        icon: "success",
-        title: "Tus datos han sido enviados",
+        position: "top",
+        icon: "warning",
+        title: "El celular no es válido",
         showConfirmButton: false,
-        timer: 2500,
-        width: "45%",
+        timer: 1500,
       });
+      return;
+    }
+
+    if (
+      nombre.trim() !== "" ||
+      apellido.trim() !== "" ||
+      correo.trim() !== "" ||
+      celular.trim() !== "" ||
+      dataContacto.trim() !== ""
+    ) {
+      try{ 
+        axios.post(urlContactenos,{nombre, apellido, correo, celular,dataContacto})
+       .then(response=>
+         Swal.fire({
+             position: 'top',
+             icon: 'success',
+             title: response.data.message,
+             showConfirmButton: false,
+             timer: 1500
+         })
+        )
+     }catch(error){
+       console.log(error)
+     }
       setFormContactenos({
         nombre: "",
         apellido: "",
-        email: "",
+        correo: "",
         celular: "",
+        dataContacto:""
       });
-      errorForm = false;
     }
   };
+
   return (
     <section
       className="contact animate__animated animate__backInLeft"
@@ -129,8 +161,8 @@ const Contactenos = () => {
               className="contact__form-item"
               type="email"
               placeholder="Email"
-              name="email"
-              value={email}
+              name="correo"
+              value={correo}
               onChange={handleChange}
               required
             />
@@ -146,8 +178,13 @@ const Contactenos = () => {
             />
             <textarea
               id="area"
+              type="text"
               className="contact__form-item contact__form-item--area"
+              name="dataContacto"
+              value={dataContacto}
+              onChange={handleChange}
               placeholder="Escribe tu mensaje aquí"
+              required
             ></textarea>
             <div className="contact__form-button-container">
               <button type="submit" className="contact__form-button">

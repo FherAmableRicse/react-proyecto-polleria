@@ -8,9 +8,9 @@ const ReservasForm = ({ reserva, submitReservasForm }) => {
   const todayDate = new Date().toISOString().slice(0, 10);
 
   const [formReserva, setFormReserva] = useState({
-    _id: "",
     solicitante: "",
     dni: "",
+    correo:"",
     fecha: "",
     hora: "",
     motivo: "",
@@ -20,7 +20,7 @@ const ReservasForm = ({ reserva, submitReservasForm }) => {
     message: "",
     error: false,
   });
-  const { solicitante, dni, fecha, hora, motivo } = formReserva;
+  const { solicitante, dni, correo,fecha, hora, motivo } = formReserva;
 
   const handleChange = (e) => {
     setFormReserva({
@@ -35,6 +35,7 @@ const ReservasForm = ({ reserva, submitReservasForm }) => {
       [
         solicitante.trim(),
         dni.trim(),
+        correo.trim(),
         fecha.trim(),
         hora.trim(),
         motivo.trim(),
@@ -57,9 +58,9 @@ const ReservasForm = ({ reserva, submitReservasForm }) => {
     } else {
       submitReservasForm(formReserva);
       setFormReserva({
-        _id: "",
         solicitante: "",
         dni: "",
+        correo:"",
         fecha: "",
         hora: "",
         motivo: "",
@@ -70,11 +71,12 @@ const ReservasForm = ({ reserva, submitReservasForm }) => {
 
   useEffect(() => {
     if (reserva._id) {
-      const { _id, solicitante, dni, fecha, hora, motivo } = reserva;
+      const { _id, solicitante, dni,correo, fecha, hora, motivo } = reserva;
       setFormReserva({
         _id,
         solicitante,
         dni,
+        correo,
         fecha,
         hora,
         motivo,
@@ -91,23 +93,6 @@ const ReservasForm = ({ reserva, submitReservasForm }) => {
         <h3 className="fw-bold text-center text-danger" id="formTitle">
           🍴 {reserva._id ? "Editar" : "Crear"} Reserva 🍴
         </h3>
-        <div
-          className="text-dark form-floating mb-3 "
-          style={{ display: "none" }}
-        >
-          <input
-            type="number"
-            className="form-control"
-            name="id"
-            placeholder="Id"
-            id="formId"
-            readOnly
-          />
-          <label htmlFor="id" className="text-dark">
-            Id
-          </label>
-        </div>
-
         <div className="form-floating mb-3">
           <input
             type="text"
@@ -135,6 +120,21 @@ const ReservasForm = ({ reserva, submitReservasForm }) => {
           />
           <label htmlFor="dni" className="text-dark">
             Documento de Identidad
+          </label>
+        </div>
+
+        <div className="form-floating mb-3">
+          <input
+            type="email"
+            name="correo"
+            placeholder="Email"
+            className="form-control"
+            value={correo}
+            onChange={handleChange}
+            required
+          />
+          <label htmlFor="dni" className="text-dark">
+            Email
           </label>
         </div>
 
